@@ -29,6 +29,9 @@ public class Controller implements ActionListener, KeyListener {
         		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
         			mainBird.setSpacePressed(true);
         		}
+			if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.exit(1);
+				}
         	}
 
 			@Override

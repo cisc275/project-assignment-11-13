@@ -25,6 +25,11 @@ public class Controller implements ActionListener, KeyListener {
         		}
         		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
         			mainBird.setDownPressed(true);
+        			System.out.print(e.getKeyCode());
+        		}
+        		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        			mainBird.setSpacePressed(true);
+        			System.out.print(e.getKeyCode());
         		}
         	}
 
@@ -38,8 +43,12 @@ public class Controller implements ActionListener, KeyListener {
 				if (e.getKeyCode() == KeyEvent.VK_UP) {
 					mainBird.setUpPressed(false);
 	    		}
-	    		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 					mainBird.setDownPressed(false);
+	    		}
+				else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					mainBird.setSpacePressed(false);
+					
 	    		}
 			}
         });
@@ -70,5 +79,6 @@ public class Controller implements ActionListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+		
     }
 }

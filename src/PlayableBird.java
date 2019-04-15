@@ -2,6 +2,7 @@ public class PlayableBird extends Animal {
 	final int yIncr = 8; //Just made up this value for now
 	boolean upPressed = false;
 	boolean downPressed = false;
+	boolean spacePressed = false;
 
     public PlayableBird(String picFile, String name){
         super(picFile, name);
@@ -15,11 +16,14 @@ public class PlayableBird extends Animal {
     	if (upPressed && yPos - yIncr > 0) {
     		yPos -= yIncr; 
     	}
-    	if (downPressed && yPos + yIncr < frameHeight - ySize) {
+    	if (downPressed && yPos + yIncr < frameHeight - ySize-150) {
     		yPos += yIncr;
     	}
+    	if (spacePressed && yPos + yIncr < frameHeight - ySize) {
+    	    		yPos += yIncr;    		
+    	}
     	
-    	
+ 
     	
     	//System.out.println("Bird's y-position: " + yPos); //For testing to see that value was updating
     	return true;
@@ -43,5 +47,13 @@ public class PlayableBird extends Animal {
 
 	void setDownPressed(boolean down){
     	this.downPressed = down;
+	}
+	
+	public boolean getSpacePressed(){
+    	return this.spacePressed;
+	}
+
+	void setSpacePressed(boolean space){
+    	this.spacePressed = space;
 	}
 }

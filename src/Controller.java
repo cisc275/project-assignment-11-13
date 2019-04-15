@@ -22,7 +22,6 @@ public class Controller implements ActionListener, KeyListener {
         	public void keyPressed(KeyEvent e) {
         		if (e.getKeyCode() == KeyEvent.VK_UP) {
         			mainBird.setUpPressed(true);
-        			System.out.print(mainBird.moveFrameHeight);
         		}
         		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
         			mainBird.setDownPressed(true);
@@ -55,7 +54,7 @@ public class Controller implements ActionListener, KeyListener {
     }
 
     void start(){
-    	for (int i = 0; i < 1000; i++) {
+    	while(true) {
     		model.update();
     		
     		view.update(mainBird.xPos, mainBird.yPos, mainBird, foe);

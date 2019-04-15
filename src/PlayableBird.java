@@ -1,4 +1,7 @@
+import java.awt.image.BufferedImage;
+
 public class PlayableBird extends Animal {
+
 	final int yIncr = 8; //Just made up this value for now
 	boolean upPressed = false;
 	boolean downPressed = false;
@@ -6,7 +9,8 @@ public class PlayableBird extends Animal {
 	int moveFrameHeight;
 
     public PlayableBird(String picFile, String name){
-        super(picFile, name);
+		super(picFile, name);
+    	this.picFile = picFile;
         //Hard coding in the image size for now:
         xSize = 123;
         ySize = 102;
@@ -14,19 +18,21 @@ public class PlayableBird extends Animal {
 
     public boolean move(int frameHeight){
     	moveFrameHeight = frameHeight;
-    	//This method should only deal with up and down, right? Because the bird doesn't move left/right, the background and everything else does. 
-    	if (upPressed && yPos - yIncr > 0) {
-    		yPos -= yIncr; 
-    	}
-    	if (downPressed && yPos + yIncr < (frameHeight/2)-ySize) {
-    		yPos += yIncr;
-    	}
-    	if (dive()) {
-    	    yPos += yIncr;    		
-    	}
-    	if (!dive() && yPos>(frameHeight/2)-ySize) {
-    		yPos-=yIncr;
-    	}
+    	//This method should only deal with up and down, right? Because the bird doesn't move left/right, the background and everything else does.
+		if (dive()) {
+			yPos += 2*yIncr;
+		}
+		else {
+			if (upPressed && yPos - yIncr > 0) {
+				yPos -= yIncr;
+			}
+			if (downPressed && yPos + yIncr < (moveFrameHeight / 2) - ySize) {
+				yPos += yIncr;
+			}
+			if (!dive() && yPos > (moveFrameHeight / 2) - ySize) {
+				yPos -= yIncr;
+			}
+		}
     	
  
     	

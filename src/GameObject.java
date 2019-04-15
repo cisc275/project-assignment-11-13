@@ -1,13 +1,16 @@
 public class GameObject {
+
     String picFile;
     int xPos;
     int yPos;
     int xSize;
     int ySize;
     int frameCount;
-    
-    GameObject(){
-    	
+
+    GameObject(){}
+
+    GameObject(String picFile){
+    	this.picFile = picFile;
     	//this.frameCount = frameCount;
     }
 

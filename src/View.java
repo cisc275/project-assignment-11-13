@@ -41,7 +41,7 @@ public class View extends JPanel {
     
     public View(){
     	frame.getContentPane().add(this);
-        frame.setBackground(Color.gray);
+        frame.setBackground(Color.cyan);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(frameWidth, frameHeight);
         frame.setVisible(true);
@@ -49,13 +49,14 @@ public class View extends JPanel {
         frame.setFocusable(true);
 
 
-        birdImg = createImage(birdPicFile);
-        foeImg = createImage(foePicFile);
+
     }
 
     public void addObjects(PlayableBird bird, Foe foe) {
         this.mainBird = bird;
         this.foe = foe;
+        foeImg = createImage(this.foe.picFile);
+        birdImg = createImage(this.mainBird.picFile);
     }
     
     public void update(int x, int y, PlayableBird bird, Foe foe){
@@ -88,7 +89,7 @@ public class View extends JPanel {
 
 
     public void paint(Graphics g){
-        g.drawImage(birdImg, mainBird.getxPos(), mainBird.getyPos(), Color.gray, this);
-        g.drawImage(foeImg, foe.getxPos(), foe.getyPos(), Color.gray, this);
+        g.drawImage(birdImg, mainBird.getxPos(), mainBird.getyPos(), Color.cyan, this);
+        g.drawImage(foeImg, foe.getxPos(), foe.getyPos(), Color.cyan, this);
     }
 }

@@ -6,13 +6,16 @@ import java.awt.event.KeyListener;
 public class Controller implements ActionListener, KeyListener {
     private View view;
     private Model model;
-	private PlayableBird mainBird = new PlayableBird("ProjectPics/Osprey.jpg", "Osprey");
+	private PlayableBird mainBird;
+	private Foe foe;
 
     Controller(){
-
     	view = new View();
-    	model = new Model(view.getWidth(), view.getHeight(), mainBird);
-
+    	mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
+    	foe = new Foe("ProjectPics/Eagle.png", "Eagle", view.getWidth(), view.getHeight());
+    	model = new Model(view.getWidth(), view.getHeight(), mainBird, foe);
+    	view.addObjects(mainBird, foe);
+    	
     	view.frame.addKeyListener(new KeyListener() {
         	public void keyPressed(KeyEvent e) {
         		if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -41,10 +44,10 @@ public class Controller implements ActionListener, KeyListener {
     }
 
     void start(){
-    	for (int i = 0; i < 100; i++) {
+    	for (int i = 0; i < 1000; i++) {
     		model.update();
     		
-    		view.update(mainBird.xPos, mainBird.yPos, mainBird);
+    		view.update(mainBird.xPos, mainBird.yPos, mainBird, foe);
     	}
     }
 

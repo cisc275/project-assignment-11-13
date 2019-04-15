@@ -10,14 +10,20 @@ import java.util.ArrayList;
 
 public class View extends JPanel {
     JFrame frame = new JFrame();
-    BufferedImage img;
     final static int frameWidth = 600;
     final static int frameHeight = 400;
-    String picFile = "ProjectPics/Osprey.jpg";
     String name;
 
+    //Need to not hard code this stuff!
+    BufferedImage birdImg;
+    BufferedImage foeImg;
+    String birdPicFile = "ProjectPics/Osprey.png";
+    String foePicFile = "ProjectPics/Eagle.png";
+    
     private int xloc;
     private int yloc;
+    PlayableBird mainBird;
+    Foe foe;
     
     public static void main(String[] args) {
         Controller control = new Controller();
@@ -41,25 +47,33 @@ public class View extends JPanel {
         
         frame.setFocusable(true);
 
-        PlayableBird bird = new PlayableBird(picFile, name);
-        img = createImage(picFile);
+
+        birdImg = createImage(birdPicFile);
+        foeImg = createImage(foePicFile);
     }
 
-    public void update(int x, int y, PlayableBird bird){
-        this.xloc = x;
+    public void addObjects(PlayableBird bird, Foe foe) {
+        this.mainBird = bird;
+        this.foe = foe;
+    }
+    
+    public void update(int x, int y, PlayableBird bird, Foe foe){
+        this.mainBird = bird;
+        this.foe = foe;
+    	this.xloc = x;
         this.yloc = y;
         //this.picFile = bird.picFile;
         //this.name = bird.name;
 
         frame.repaint();
         try {
-            Thread.sleep(100);
+            Thread.sleep(33);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    private BufferedImage createImage(String path) {
+    public BufferedImage createImage(String path) {
         BufferedImage bufferedImage;
         try {
             System.out.println();
@@ -73,6 +87,7 @@ public class View extends JPanel {
 
 
     public void paint(Graphics g){
-        g.drawImage(img, xloc, yloc, Color.gray, this);
+        g.drawImage(birdImg, mainBird.getxPos(), mainBird.getyPos(), Color.gray, this);
+        g.drawImage(foeImg, foe.getxPos(), foe.getyPos(), Color.gray, this);
     }
 }

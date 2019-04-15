@@ -5,6 +5,26 @@ public class GameObject {
     int xSize;
     int ySize;
     int frameCount;
-
+    
     GameObject(){}
+
+    public String getPicFile() {
+    	return picFile;
+    }
+    
+	public int getxPos() {
+		return xPos;
+	}
+
+	public int getyPos() {
+		return yPos;
+	}
+
+	public int getxSize() {
+		return xSize;
+	}
+
+	public int getySize() {
+		return ySize;
+	}
 }

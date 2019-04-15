@@ -3,20 +3,23 @@ public class Model {
     private int frameWidth;
     private int frameHeight;
     private PlayableBird mainBird;
+    private Foe foe;
     
     //These two vars are irrelevant now, right?
     //int imgWidth;
     //int imgHeight;
     
-    public Model(int frameWidth, int frameHeight, PlayableBird bird) {//, int imgWidth, int imgHeight){
+    public Model(int frameWidth, int frameHeight, PlayableBird bird, Foe foe) {//, int imgWidth, int imgHeight){
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
         this.mainBird = bird;
+        this.foe = foe;
         //this.imgWidth = imgWidth;
         //this.imgHeight = imgHeight;
     }
 
     public void update(){
-    	mainBird.move();
+    	mainBird.move(frameHeight);
+    	foe.move(frameWidth, frameHeight);
     }
 }

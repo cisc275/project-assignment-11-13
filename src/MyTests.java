@@ -2,10 +2,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*
 // TODO: Auto-generated Javadoc
 /**
  * The Class MyTests.
- */
+ 
 public class MyTests {
 	
 	@Test
@@ -53,3 +54,4 @@ public class MyTests {
     }
 
 }
+*/

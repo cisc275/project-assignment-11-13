@@ -7,9 +7,11 @@ public class Controller implements ActionListener, KeyListener {
     private View view;
     private Model model;
 	private PlayableBird mainBird;
+	private DropBird dropbird;
 	private Foe foe;
 
     Controller(){
+    	
     	view = new View();
     	mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
     	foe = new Foe("ProjectPics/Eagle.png", "Eagle", view.getWidth(), view.getHeight());
@@ -41,6 +43,7 @@ public class Controller implements ActionListener, KeyListener {
 	    		}
 			}
         });
+        
     }
 
     void start(){

@@ -6,7 +6,10 @@ public class GameObject {
     int ySize;
     int frameCount;
     
-    GameObject(){}
+    GameObject(){
+    	
+    	//this.frameCount = frameCount;
+    }
 
     public String getPicFile() {
     	return picFile;

@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class View extends JPanel {
+	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     JFrame frame = new JFrame();
-    final static int frameWidth = 600;
-    final static int frameHeight = 400;
+    final static int frameWidth = (int) screenSize.getWidth();
+    final static int frameHeight = (int) screenSize.getHeight();
     String name;
 
     //Need to not hard code this stuff!

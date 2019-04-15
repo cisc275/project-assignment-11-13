@@ -3,6 +3,7 @@ public class PlayableBird extends Animal {
 	boolean upPressed = false;
 	boolean downPressed = false;
 	boolean spacePressed = false;
+	int moveFrameHeight;
 
     public PlayableBird(String picFile, String name){
         super(picFile, name);
@@ -12,15 +13,19 @@ public class PlayableBird extends Animal {
     }
 
     public boolean move(int frameHeight){
+    	moveFrameHeight = frameHeight;
     	//This method should only deal with up and down, right? Because the bird doesn't move left/right, the background and everything else does. 
     	if (upPressed && yPos - yIncr > 0) {
     		yPos -= yIncr; 
     	}
-    	if (downPressed && yPos + yIncr < frameHeight - ySize-150) {
+    	if (downPressed && yPos + yIncr < (frameHeight/2)-ySize) {
     		yPos += yIncr;
     	}
-    	if (spacePressed && yPos + yIncr < frameHeight - ySize) {
-    	    		yPos += yIncr;    		
+    	if (dive()) {
+    	    yPos += yIncr;    		
+    	}
+    	if (!dive() && yPos>(frameHeight/2)-ySize) {
+    		yPos-=yIncr;
     	}
     	
  
@@ -30,7 +35,11 @@ public class PlayableBird extends Animal {
     }
 
     public boolean dive(){
+    if (spacePressed && yPos + yIncr < moveFrameHeight - ySize) {
         return true;
+    }
+    else 
+    	return false;
     }
 
     public boolean getUpPressed(){

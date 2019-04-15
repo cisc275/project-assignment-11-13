@@ -22,14 +22,13 @@ public class Controller implements ActionListener, KeyListener {
         	public void keyPressed(KeyEvent e) {
         		if (e.getKeyCode() == KeyEvent.VK_UP) {
         			mainBird.setUpPressed(true);
+        			System.out.print(mainBird.moveFrameHeight);
         		}
         		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
         			mainBird.setDownPressed(true);
-        			System.out.print(e.getKeyCode());
         		}
         		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
         			mainBird.setSpacePressed(true);
-        			System.out.print(e.getKeyCode());
         		}
         	}
 

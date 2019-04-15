@@ -4,20 +4,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
 public class Controller implements ActionListener, KeyListener {
-    View view;
-    Model model;
+    private View view;
+    private Model model;
+	private PlayableBird mainBird = new PlayableBird("ProjectPics/Osprey.jpg", "Osprey");
 
-    public Controller(){
+    Controller(){
+
     	view = new View();
-    	model = new Model(view.getWidth(), view.getHeight());
-    	
+    	model = new Model(view.getWidth(), view.getHeight(), mainBird);
+
     	view.frame.addKeyListener(new KeyListener() {
         	public void keyPressed(KeyEvent e) {
         		if (e.getKeyCode() == KeyEvent.VK_UP) {
-        			model.mainBird.upPressed = true; //Probably shouldn't call the bird's attributes like this directly, right? how should we change it?
+        			mainBird.setUpPressed(true);
         		}
         		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-        			model.mainBird.downPressed = true; //Probably shouldn't call the bird's attributes like this directly, right? how should we change it?
+        			mainBird.setDownPressed(true);
         		}
         	}
 
@@ -29,20 +31,20 @@ public class Controller implements ActionListener, KeyListener {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_UP) {
-					model.mainBird.upPressed = false;
+					mainBird.setUpPressed(false);
 	    		}
 	    		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-	    			model.mainBird.downPressed = false;
+					mainBird.setDownPressed(false);
 	    		}
 			}
         });
     }
 
-    public void start(){
+    void start(){
     	for (int i = 0; i < 100; i++) {
     		model.update();
     		
-    		view.update();
+    		view.update(mainBird.xPos, mainBird.yPos, mainBird);
     	}
     }
 

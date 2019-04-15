@@ -22,4 +22,20 @@ public class PlayableBird extends Animal {
     public boolean dive(){
         return true;
     }
+
+    public boolean getUpPressed(){
+    	return this.upPressed;
+	}
+
+	void setUpPressed(boolean up){
+    	this.upPressed = up;
+	}
+
+	public boolean getDownPressed(){
+    	return this.downPressed;
+	}
+
+	void setDownPressed(boolean down){
+    	this.downPressed = down;
+	}
 }

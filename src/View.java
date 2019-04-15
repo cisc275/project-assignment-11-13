@@ -9,10 +9,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class View extends JPanel {
-    PlayableBird bird;
     JFrame frame = new JFrame();
+    BufferedImage img;
     final static int frameWidth = 600;
     final static int frameHeight = 400;
+    String picFile = "ProjectPics/Osprey.jpg";
+    String name;
+
+    private int xloc;
+    private int yloc;
     
     public static void main(String[] args) {
         Controller control = new Controller();
@@ -35,18 +40,39 @@ public class View extends JPanel {
         frame.setVisible(true);
         
         frame.setFocusable(true);
+
+        PlayableBird bird = new PlayableBird(picFile, name);
+        img = createImage(picFile);
     }
 
-    public void update(){
-    	//frame.repaint();
+    public void update(int x, int y, PlayableBird bird){
+        this.xloc = x;
+        this.yloc = y;
+        //this.picFile = bird.picFile;
+        //this.name = bird.name;
+
+        frame.repaint();
         try {
-            Thread.sleep(500);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public void createImage(){}
+    private BufferedImage createImage(String path) {
+        BufferedImage bufferedImage;
+        try {
+            System.out.println();
+            bufferedImage = ImageIO.read(new File(path)); //Utilizes the path name
+            return bufferedImage;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-    public void paint(){}
+
+    public void paint(Graphics g){
+        g.drawImage(img, xloc, yloc, Color.gray, this);
+    }
 }

@@ -1,17 +1,17 @@
 public class Model {
     GameState gameState;
-    int frameWidth;
-    int frameHeight;
+    private int frameWidth;
+    private int frameHeight;
+    private PlayableBird mainBird;
     
     //These two vars are irrelevant now, right?
     //int imgWidth;
     //int imgHeight;
     
-    PlayableBird mainBird = new PlayableBird("Osprey.png", "Osprey");
-
-    public Model(int frameWidth, int frameHeight) {//, int imgWidth, int imgHeight){
+    public Model(int frameWidth, int frameHeight, PlayableBird bird) {//, int imgWidth, int imgHeight){
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
+        this.mainBird = bird;
         //this.imgWidth = imgWidth;
         //this.imgHeight = imgHeight;
     }

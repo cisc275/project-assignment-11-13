@@ -1,7 +1,7 @@
 public enum GameState {
-	FOODGAME("foodGame"),
-	NESTGAME("nestGame"),
-	MIGRATION("migrationGame"),
+	FOODGAME("FoodGame"),
+	NESTGAME("NestGame"),
+	MIGRATIONGAME("MigrationGame"),
 	STARTMENU("start"),
 	SCOREBOARD("score");
 	

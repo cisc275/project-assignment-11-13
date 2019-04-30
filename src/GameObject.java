@@ -1,3 +1,4 @@
+import java.awt.Rectangle;
 public class GameObject {
 
     String picFile;
@@ -6,11 +7,15 @@ public class GameObject {
     int xSize;
     int ySize;
     int frameCount;
+    Rectangle hitBox;
 
-    GameObject(){}
+    GameObject(){
+    	hitBox = new Rectangle();
+    }
 
     GameObject(String picFile){
     	this.picFile = picFile;
+    	hitBox = new Rectangle();
     	//this.frameCount = frameCount;
     }
 
@@ -32,5 +37,13 @@ public class GameObject {
 
 	public int getySize() {
 		return ySize;
+	}
+	
+	void updateHitBox() { // ALWAYS CALL THIS AFTER MODIFYING SIZE OR POSITIONS
+		this.hitBox.setBounds(xPos, yPos, xSize, ySize);
+	}
+	
+	public boolean collidesWith(GameObject other) {
+		return this.hitBox.intersects(other.hitBox);
 	}
 }

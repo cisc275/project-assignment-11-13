@@ -11,11 +11,14 @@ public class Controller implements ActionListener, KeyListener {
 	private DropBird dropbird;
 	private Foe foe;
 	private GameState gs;
+	private Scoreboard scoreboard;
 
     Controller(){
     	gs = GameState.STARTMENU;
     	startView = new ViewStartMenu();
+    	scoreboard = new Scoreboard(); // the same scoreboard instance exists across all games
     	gs = startView.gs;
+    	gs = GameState.FOODGAME;
     	checkGameState();
 
     }
@@ -26,8 +29,8 @@ public class Controller implements ActionListener, KeyListener {
 				view = new View();
 				mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
 				foe = new Foe("ProjectPics/Eagle.png", "Eagle", view.getWidth(), view.getHeight());
-				model = new Model(view.getWidth(), view.getHeight(), mainBird, foe);
-				view.addObjects(mainBird, foe);
+				model = new Model(view.getWidth(), view.getHeight(), mainBird, foe, scoreboard);
+				view.addObjects(mainBird, foe, scoreboard);
 
 				view.frame.addKeyListener(new KeyListener() {
 					public void keyPressed(KeyEvent e) {

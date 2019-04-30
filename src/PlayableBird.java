@@ -14,6 +14,8 @@ public class PlayableBird extends Animal {
         //Hard coding in the image size for now:
         xSize = 123;
         ySize = 102;
+        
+        super.updateHitBox();
     }
 
     public boolean move(int frameHeight){
@@ -37,6 +39,7 @@ public class PlayableBird extends Animal {
  
     	
     	//System.out.println("Bird's y-position: " + yPos); //For testing to see that value was updating
+		super.updateHitBox();
     	return true;
     }
 

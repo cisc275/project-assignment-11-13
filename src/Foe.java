@@ -15,19 +15,24 @@ public class Foe extends Animal {
         speed = Math.abs(rand.nextInt())%5+15;
     	xPos = frameWidth;
     	yPos = Math.abs(rand.nextInt()) % ((frameHeight/2)-ySize);
+    	
+    	super.updateHitBox();
     }
 
     public boolean move(int frameWidth, int frameHeight){
     	xPos -= speed;
     	if (xPos < -xSize) {
-    		xPos += frameWidth + 2*xSize;
-    		yPos = Math.abs(rand.nextInt()) % ((frameHeight/2)-ySize);
-    		speed = Math.abs(rand.nextInt())%5+15;
+    		reset(frameWidth, frameHeight);
     	}
+    	super.updateHitBox();
         return true;
     }
-
-    public boolean isCollided(){
-        return true;
+    
+    public void reset(int frameWidth, int frameHeight) {
+    	xPos += frameWidth + 2*xSize;
+		yPos = Math.abs(rand.nextInt()) % ((frameHeight/2)-ySize);
+		speed = Math.abs(rand.nextInt())%5+15;
+		super.updateHitBox();
     }
+    
 }

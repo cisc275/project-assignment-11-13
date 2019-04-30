@@ -1,4 +1,8 @@
 public class Scoreboard extends EnvironmentObject {
 
-    public Scoreboard(){}
+	int foodGameScore;
+	
+    public Scoreboard(){
+    	foodGameScore = 0;
+    }
 }

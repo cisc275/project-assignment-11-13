@@ -25,6 +25,7 @@ public class View extends JPanel {
     private int yloc;
     PlayableBird mainBird;
     Foe foe;
+    Scoreboard scoreboard;
     
     public static void main(String[] args) {
         Controller control = new Controller();
@@ -41,7 +42,7 @@ public class View extends JPanel {
     
     public View(){
     	frame.getContentPane().add(this);
-        frame.setBackground(Color.black);
+        frame.setBackground(Color.white);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(frameWidth, frameHeight);
         frame.setUndecorated(true);
@@ -52,9 +53,10 @@ public class View extends JPanel {
 
     }
 
-    public void addObjects(PlayableBird bird, Foe foe) {
+    public void addObjects(PlayableBird bird, Foe foe, Scoreboard scoreboard) {
         this.mainBird = bird;
         this.foe = foe;
+        this.scoreboard = scoreboard;
         foeImg = createImage(this.foe.picFile);
         birdImg = createImage(this.mainBird.picFile);
     }
@@ -91,5 +93,6 @@ public class View extends JPanel {
     public void paint(Graphics g){
         g.drawImage(birdImg, mainBird.getxPos(), mainBird.getyPos(), Color.cyan, this);
         g.drawImage(foeImg, foe.getxPos(), foe.getyPos(), Color.cyan, this);
+        g.drawString(Integer.toString(scoreboard.foodGameScore), 30, 30);
     }
 }

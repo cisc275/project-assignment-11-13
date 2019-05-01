@@ -32,13 +32,13 @@ public class ViewStartMenu {
 
         frame.getContentPane().add(panel);
 
-        frame.setUndecorated(true);
+       // frame.setUndecorated(true);
         frame.setVisible(true);
         frame.setFocusable(true);
     }
 
     public void checkGameState(){
-        if(gs.equals(GameState.FOODGAME)){
+        if(!gs.equals(GameState.STARTMENU)){
             frame.setVisible(false);
         }
     }

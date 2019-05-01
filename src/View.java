@@ -44,7 +44,7 @@ public class View extends JPanel {
         frame.setBackground(Color.black);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(frameWidth, frameHeight);
-        frame.setUndecorated(true);
+        //frame.setUndecorated(true);
         frame.setVisible(true);
         frame.setFocusable(true);
 

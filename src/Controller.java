@@ -16,6 +16,7 @@ public class Controller implements ActionListener, KeyListener {
     	gs = GameState.STARTMENU;
     	startView = new ViewStartMenu();
     	gs = startView.gs;
+    	gs = GameState.FOODGAME;
     	checkGameState();
 
     }

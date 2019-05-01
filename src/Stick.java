@@ -1,6 +1,7 @@
 public class Stick extends GameObject {
 	int speedFalling = 3;
 	boolean isFalling = false;
+	int topOfPile;
 
 
 
@@ -25,13 +26,13 @@ public class Stick extends GameObject {
 	/*
 	 * The stick is incrementing downward until it reachs the bottom of the frame
 	 */
-	public void move(int frameWidth, int frameHeight){
+	public void move(int pileHeight, int topStick_xPos){
 		System.out.println(yPos);
 		if(isFalling == false) {
 			return;
 		}
 		yPos += speedFalling;
-		if (yPos >= frameHeight -200) {
+		if (yPos >= pileHeight) {
 			isFalling = false;
 		}
 		return;

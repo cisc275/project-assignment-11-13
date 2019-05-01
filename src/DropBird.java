@@ -21,7 +21,6 @@ public class DropBird extends Animal {
         droppedSticks +=1;
         switch(droppedSticks) {
             case 1:
-
                 stickOne.release(xPos, yPos);
                 break;
             case 2:

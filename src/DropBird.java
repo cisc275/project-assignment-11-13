@@ -1,17 +1,16 @@
+import java.util.LinkedList;
+
 public class DropBird extends Animal {
-    final int xIncr = 8;
+    int xIncr = 8;
     boolean xDir = true;		//false = neg, true = pos
-    boolean isHoldingStick = true;
     int droppedSticks = 0;
-    boolean spacePressed = false;
-    int towerHeight;
+    Stick topStick;
+    LinkedList<Stick> stickList = new LinkedList<Stick>();
+    int frameHeight;
 
-    Stick stickOne;
-    Stick stickTwo;
-    Stick stickThree;
 
-    public DropBird(String picFile, String name){
-        super(picFile, name);
+    public DropBird(String picFile, String name, int frameHeight){
+    	this.name = name;
         this.picFile = picFile;
         xPos = 10;
         yPos = 10;
@@ -19,22 +18,20 @@ public class DropBird extends Animal {
 
     public void dropStick(){
         droppedSticks +=1;
-        switch(droppedSticks) {
-            case 1:
-                stickOne.release(xPos, yPos);
-                break;
-            case 2:
-                stickTwo.release(xPos, yPos);
-                break;
-            case 3:
-                stickThree.release(xPos, yPos);
-                break;
-        }
+        xIncr += 2;
+        stickList.add(new Stick(100, 100, frameHeight));
+        stickList.getLast().release(xPos, yPos);
         return ;
 
     }
 
     public void move(int frameWidth, int frameHeight) {
+    	for(Stick s : stickList) {
+    		s.move(topStick);
+    		if (s.checkOnPile() == true) {
+    			topStick = s;
+    		}
+    	}
 
         //checks the location of dropBird, then moves it left or right
         if( xDir == true) {			//xDir is positive

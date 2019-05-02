@@ -19,9 +19,6 @@ class ModelNestGame{
 
     public void update(){
     		dropBird.move(frameWidth, frameHeight);
-    		dropBird.stickOne.move(frameWidth, frameHeight);
-    		dropBird.stickTwo.move(frameWidth, frameHeight);
-    		dropBird.stickThree.move(frameWidth, frameHeight);
     		nestTop = dropBird.topStick.yPos;
     		topStick_xPos = dropBird.topStick.xPos;
     }

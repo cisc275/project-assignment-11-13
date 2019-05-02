@@ -69,6 +69,15 @@ public class Controller implements ActionListener, KeyListener {
 				break;
 			case NESTGAME:
 				//Launch View and listener stuff for Osprey/Clapper Rail nest game
+				view =  ViewNestGame();
+				model = ModelNestGame(view.getWidth(), view.getHeight(), dropbird);
+				view.frame.addKeyListener(new KeyListener() {
+					public void keyPressed(KeyEvent e) {
+						if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+							dropbird.dropStick();
+						}
+					}
+				}
 				break;
 			case MIGRATIONGAME:
 				//Launch View and listener stuff for Osprey migration game

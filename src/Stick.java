@@ -1,15 +1,16 @@
 public class Stick extends GameObject {
 	int speedFalling = 3;
 	boolean isFalling = false;
-	int topOfPile;
+	boolean isTopStick = false;
+	int frameHeight;
 
 
 
-	public Stick(){
-		super("ProjectPics/Stick.png");
-		//Hard coding in the image size for now:
-		//  xSize = 180;
-		//ySize = 106;
+	public Stick(int xSize, int ySize, int frameHeight){
+		picFile = "ProjectPics/Stick.png";
+		this.xSize = xSize;
+		this.ySize = ySize;
+		this.frameHeight = frameHeight;
 
 	}
 
@@ -24,27 +25,49 @@ public class Stick extends GameObject {
 	}
 
 	/*
-	 * The stick is incrementing downward until it reachs the bottom of the frame
+	 * The stick is incrementing downward. 
+	 * Increments if it is supposed to be falling
+	 * Checks for collision, and registers if it is 
+	 * at the top of the nest
 	 */
-	public void move(int pileHeight, int topStick_xPos){
-		System.out.println(yPos);
+	public void move(Stick topStick){
 		if(isFalling == false) {
 			return;
 		}
 		yPos += speedFalling;
-		if (yPos >= pileHeight) {
+		if(topStick == null && yPos <= frameHeight - ySize) {
 			isFalling = false;
+			isTopStick = true;
+		}
+		else if(yPos >= topStick.yPos) {
+			if (this.collided(topStick)) {
+				isFalling = false;
+				isTopStick = true;
+			}
 		}
 		return;
 	}
 
 
-	public boolean collided(){
-		return true;
+	public boolean collided(Stick topStick){
+		if(xPos <= topStick.xPos || xPos >= topStick.xPos) {
+			if(yPos >= topStick.yPos ) {
+				return true;
+			}
+		}
+			return false;
 	}
 
+	/*
+	 * Checks if the stick is at the top of the pile. If it is, return true, otherwise 
+	 * returns false
+	 */
 	public boolean checkOnPile(){
-		return true;
+		if(isTopStick) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

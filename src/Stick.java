@@ -48,7 +48,10 @@ public class Stick extends GameObject {
 		return;
 	}
 
-
+	/*
+	 * The collided method compares the stick this another stick
+	 * and uses two if statements to check for collision.
+	 */
 	public boolean collided(Stick topStick){
 		if(xPos <= topStick.xPos || xPos >= topStick.xPos) {
 			if(yPos >= topStick.yPos ) {

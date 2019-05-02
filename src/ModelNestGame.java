@@ -1,6 +1,6 @@
 
     
-class ModelNestGame{
+class ModelNestGame extends Model{
 	
     private int frameWidth;
     private int frameHeight;

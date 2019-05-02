@@ -16,6 +16,11 @@ public class DropBird extends Animal {
         yPos = 10;
     }
 
+    /*
+     * DropStick method increases the count of dropped sticks, 
+     * increases the xIncr speed, adds a new stick to the Linkedlist, 
+     * and then calls its release method
+     */
     public void dropStick(){
         droppedSticks +=1;
         xIncr += 2;
@@ -24,7 +29,13 @@ public class DropBird extends Animal {
         return ;
 
     }
-
+    
+    
+    /*
+     * the move method uses an iterator for loop to call the move method for each stick
+     * then it moves the dropBrid in the x direction, reversing direction if it reaches a 
+     * boundary
+     */
     public void move(int frameWidth, int frameHeight) {
     	for(Stick s : stickList) {
     		s.move(topStick);
@@ -35,7 +46,6 @@ public class DropBird extends Animal {
 
         //checks the location of dropBird, then moves it left or right
         if( xDir == true) {			//xDir is positive
-            //System.out.println(xSize);
             if(xPos < (frameWidth- xSize)) {
                 xPos += xIncr;
             }else {

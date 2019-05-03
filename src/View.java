@@ -47,9 +47,6 @@ public class View extends JPanel {
         frame.setUndecorated(true);
         frame.setVisible(true);
         frame.setFocusable(true);
-
-
-
     }
 
     public void addObjects(PlayableBird bird, Foe foe) {

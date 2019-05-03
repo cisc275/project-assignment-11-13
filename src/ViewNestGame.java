@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class ViewNestGame extends JPanel {
+public class ViewNestGame extends View  {
 
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     JFrame frame = new JFrame();
@@ -17,14 +17,10 @@ public class ViewNestGame extends JPanel {
     final static int frameHeight = (int) screenSize.getHeight();
     String name;
 
-    //Need to not hard code this stuff!
     BufferedImage dropBirdImg;
     BufferedImage stickImg;
     String dropBirdFile = "ProjectPics/BirdStick.jpg";
     String stickFile = "ProjectPics/Stick.png";
-
-    private int xloc;
-    private int yloc;
     DropBird dropBird;
 
 
@@ -40,7 +36,7 @@ public class ViewNestGame extends JPanel {
     public int getHeight() {
         return frameHeight;
     }
-
+/*
     public ViewNestGame(){
         frame.getContentPane().add(this);
         frame.setBackground(Color.cyan);
@@ -49,27 +45,18 @@ public class ViewNestGame extends JPanel {
         frame.setUndecorated(true);
         frame.setVisible(true);
         frame.setFocusable(true);
-
-
-
     }
-
-    public void addObjects(DropBird dropBird, ) {
+*/
+    public void addObjects(DropBird dropBird) {
         this.dropBird = dropBird;
-    
-        stickOneImg = createImage(this.dropBird.stickOne.picFile);
-        stickTwoImg = createImage(this.dropBird.stickTwo.picFile);
-        stickThreeImg = createImage(this.dropBird.stickTwo.picFile);
+        stickImg = createImage(this.dropBird.stickList.getFirst().picFile);
+        
         dropBirdImg = createImage(this.dropBird.picFile);
+        return;
     }
 
-    public void update(int x, int y, DropBird dropBird, Stick stickOne, Stick stickTwo, Stick stickThree){
+    public void update(DropBird dropBird){
         this.dropBird = dropBird;
-        this.xloc = x;
-        this.yloc = y;
-        //this.picFile = bird.picFile;
-        //this.name = bird.name;
-
         frame.repaint();
         try {
             Thread.sleep(33);

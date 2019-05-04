@@ -11,16 +11,60 @@ public class Controller implements ActionListener, KeyListener {
 	private DropBird dropbird;
 	private Foe foe;
 	private GameState gs;
+	private Background background;
 
     Controller(){
     	gs = GameState.STARTMENU;
-    	startView = new ViewStartMenu();
-    	gs = startView.gs;
-    	checkGameState();
+    	view = new View();
+    	mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
+    	foe = new Foe("ProjectPics/Eagle.png", "Eagle", view.getWidth(), view.getHeight());
+    	background = new Background("ProjectPics/Background.png");
+    	
+    	model = new Model(view.getWidth(), view.getHeight(), mainBird, foe);
+    	view.food.addObjects(mainBird, foe, background);
+    	//startView = new ViewStartMenu();
+    	//gs = startView.gs;
+    	//checkGameState();
+    	view.frame.addKeyListener(new KeyListener() {
+        	public void keyPressed(KeyEvent e) {
+        		if (e.getKeyCode() == KeyEvent.VK_UP) {
+        			mainBird.setUpPressed(true);
+        		}
+        		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        			mainBird.setDownPressed(true);
+        		}
+        		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        			mainBird.setSpacePressed(true);
+        		}
+        		
+        		else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+        			System.exit(1);
+        		}
+        	}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//In place just to have all required methods
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_UP) {
+					mainBird.setUpPressed(false);
+	    		}
+				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+					mainBird.setDownPressed(false);
+	    		}
+				else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					mainBird.setSpacePressed(false);
+					
+	    		}
+			}
+        });
 
     }
 
-    private void checkGameState(){
+    /*private void checkGameState(){
 		switch (gs){
 			case FOODGAME:
 				view = new View();
@@ -77,7 +121,7 @@ public class Controller implements ActionListener, KeyListener {
 				//Launch View and listener stuff for the scoreboard
 				break;
 			default:
-				startView = new ViewStartMenu();
+				//startView = new ViewStartMenu();
 
 				startView.frame.addKeyListener(new KeyListener() {
 
@@ -121,12 +165,12 @@ public class Controller implements ActionListener, KeyListener {
 				break;
 
 		}
-	}
+	}*/
 
 	void start(){
 		while(true) {
 			model.update();
-			view.update(mainBird.xPos, mainBird.yPos, mainBird, foe);
+			view.update(mainBird, foe);
 		}
 	}
 

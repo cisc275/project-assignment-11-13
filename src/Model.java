@@ -9,6 +9,8 @@ public class Model {
     //int imgWidth;
     //int imgHeight;
     
+    public Model() {}
+    
     public Model(int frameWidth, int frameHeight, PlayableBird bird, Foe foe) {//, int imgWidth, int imgHeight){
     	this.gameState = gameState;
         this.frameWidth = frameWidth;

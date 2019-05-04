@@ -1,6 +1,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -14,15 +16,15 @@ public class View extends JPanel {
     final static int frameWidth = (int) screenSize.getWidth();
     final static int frameHeight = (int) screenSize.getHeight();
     String name;
-
-    //Need to not hard code this stuff!
-    BufferedImage birdImg;
-    BufferedImage foeImg;
-    String birdPicFile = "ProjectPics/Osprey.png";
-    String foePicFile = "ProjectPics/Eagle.png";
     
-    private int xloc;
-    private int yloc;
+    CardLayout cardLayout;
+    ViewStartMenu menu;
+    public ViewFoodGame food;
+    ViewNestGame nest;
+    
+    GameState gs;
+    
+    
     PlayableBird mainBird;
     Foe foe;
     
@@ -40,34 +42,56 @@ public class View extends JPanel {
     }
     
     public View(){
-    	frame.getContentPane().add(this);
+    	gs = GameState.STARTMENU;
+    	
+    	//frame.getContentPane().add(this);
         frame.setBackground(Color.black);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(frameWidth, frameHeight);
         frame.setUndecorated(true);
         frame.setVisible(true);
         frame.setFocusable(true);
+        
+        cardLayout = new CardLayout();
 
-
-
+	    frame.getContentPane().setLayout(cardLayout);
+	    
+	    ActionListener al = e -> cardLayout.next(frame.getContentPane());
+	    ActionListener osp = new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Osprey");
+	    		gs = GameState.FOODGAME;
+	    		cardLayout.next(frame.getContentPane());
+	    	}
+	    };
+	    ActionListener clap = new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Clapper Rail");
+	    		gs = GameState.FOODGAME;
+	    		cardLayout.next(frame.getContentPane());
+	    	}
+	    };
+	    
+	    menu = new ViewStartMenu(osp, clap,  "Select Bird:");
+	    food = new ViewFoodGame();
+	    
+	    frame.getContentPane().add(menu);
+	    frame.getContentPane().add(food);
+	    frame.setVisible(true);
     }
 
-    public void addObjects(PlayableBird bird, Foe foe) {
-        this.mainBird = bird;
-        this.foe = foe;
-        foeImg = createImage(this.foe.picFile);
-        birdImg = createImage(this.mainBird.picFile);
-    }
     
-    public void update(int x, int y, PlayableBird bird, Foe foe){
-        this.mainBird = bird;
-        this.foe = foe;
-    	this.xloc = x;
-        this.yloc = y;
-        //this.picFile = bird.picFile;
-        //this.name = bird.name;
-
-        frame.repaint();
+    public void update(PlayableBird bird, Foe foe){
+        //Pick which panel to update based on the game state
+    	switch(gs) {
+        case STARTMENU:
+        	break;
+        case FOODGAME:
+        	food.update(bird, foe);
+        	break;
+        }
+        
+        //Pause after each frame
         try {
             Thread.sleep(33);
         } catch (InterruptedException e) {
@@ -87,9 +111,7 @@ public class View extends JPanel {
         return null;
     }
 
-
+    //I don't think this will ever be necessary because paint is called in the individual subviews
     public void paint(Graphics g){
-        g.drawImage(birdImg, mainBird.getxPos(), mainBird.getyPos(), Color.cyan, this);
-        g.drawImage(foeImg, foe.getxPos(), foe.getyPos(), Color.cyan, this);
     }
 }

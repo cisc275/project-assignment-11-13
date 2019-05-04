@@ -1,4 +1,7 @@
 public class Background extends EnvironmentObject {
 
-    public Background(){}
+	String picFile;
+    public Background(String picFile){
+    	this.picFile = picFile;
+    }
 }

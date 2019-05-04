@@ -4,6 +4,7 @@ public class Model {
     private int frameHeight;
     private PlayableBird mainBird;
     private Foe foe;
+    private DropBird dropBird;
     
     //These two vars are irrelevant now, right?
     //int imgWidth;
@@ -17,6 +18,14 @@ public class Model {
         this.foe = foe;
         //this.imgWidth = imgWidth;
         //this.imgHeight = imgHeight;
+    }
+    
+    public Model(int frameWidth, int frameHeight, DropBird dropBird) {
+    	this.gameState = gameState;
+    	this.frameWidth = frameWidth;
+    	this.frameHeight = frameHeight;
+    	this.dropBird = dropBird;
+    	
     }
 
 

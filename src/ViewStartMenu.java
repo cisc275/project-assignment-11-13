@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class ViewStartMenu {
+public class ViewStartMenu extends View {
     //Game state attributes
     String birdType;
     GameState gs = GameState.STARTMENU;

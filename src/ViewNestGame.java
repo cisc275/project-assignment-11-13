@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ViewNestGame extends JPanel {
+public class ViewNestGame extends View {
 
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     JFrame frame = new JFrame();

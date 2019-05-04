@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 public class Controller implements ActionListener, KeyListener {
     private View view;
     private ViewStartMenu startView;
+    private ViewFoodGame foodView;
     private Model model;
 	private PlayableBird mainBird;
 	private DropBird dropbird;
@@ -16,6 +17,7 @@ public class Controller implements ActionListener, KeyListener {
     	gs = GameState.STARTMENU;
     	startView = new ViewStartMenu();
     	gs = startView.gs;
+    	gs = GameState.FOODGAME;
     	checkGameState();
 
     }
@@ -23,11 +25,11 @@ public class Controller implements ActionListener, KeyListener {
     private void checkGameState(){
 		switch (gs){
 			case FOODGAME:
-				view = new View();
+				foodView = new ViewFoodGame();
 				mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
 				foe = new Foe("ProjectPics/Eagle.png", "Eagle", view.getWidth(), view.getHeight());
 				model = new Model(view.getWidth(), view.getHeight(), mainBird, foe);
-				view.addObjects(mainBird, foe);
+				foodView.addObjects(mainBird, foe);
 
 				view.frame.addKeyListener(new KeyListener() {
 					public void keyPressed(KeyEvent e) {
@@ -69,6 +71,27 @@ public class Controller implements ActionListener, KeyListener {
 				break;
 			case NESTGAME:
 				//Launch View and listener stuff for Osprey/Clapper Rail nest game
+				view =  new ViewNestGame();
+				model = new ModelNestGame(view.getWidth(), view.getHeight(), dropbird);
+				view.frame.addKeyListener(new KeyListener() {
+					public void keyPressed(KeyEvent e) {
+						if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+							dropbird.dropStick();
+						}
+					}
+
+					@Override
+					public void keyTyped(KeyEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void keyReleased(KeyEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
 				break;
 			case MIGRATIONGAME:
 				//Launch View and listener stuff for Osprey migration game
@@ -126,7 +149,7 @@ public class Controller implements ActionListener, KeyListener {
 	void start(){
 		while(true) {
 			model.update();
-			view.update(mainBird.xPos, mainBird.yPos, mainBird, foe);
+			foodView.update(mainBird.xPos, mainBird.yPos, mainBird, foe);
 		}
 	}
 

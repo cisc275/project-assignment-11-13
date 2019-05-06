@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Collection;
 
 public class ViewFoodGame extends View {
 	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -25,6 +25,7 @@ public class ViewFoodGame extends View {
     private int yloc;
     PlayableBird mainBird;
     Foe foe;
+    Collection<Food> consumables;
     
     public static void main(String[] args) {
         Controller control = new Controller();
@@ -59,11 +60,12 @@ public class ViewFoodGame extends View {
         birdImg = createImage(this.mainBird.picFile);
     }
     
-    public void update(int x, int y, PlayableBird bird, Foe foe){
+    public void update(int x, int y, PlayableBird bird, Foe foe, Collection<Food> consumables){
         this.mainBird = bird;
         this.foe = foe;
     	this.xloc = x;
         this.yloc = y;
+        this.consumables = consumables;
         //this.picFile = bird.picFile;
         //this.name = bird.name;
 
@@ -91,5 +93,9 @@ public class ViewFoodGame extends View {
     public void paint(Graphics g){
         g.drawImage(birdImg, mainBird.getxPos(), mainBird.getyPos(), Color.cyan, this);
         g.drawImage(foeImg, foe.getxPos(), foe.getyPos(), Color.cyan, this);
+        for(Food f: consumables) {
+        	g.drawRect(f.getxPos(), f.getyPos(), f.getxSize(), f.getySize()); //TODO
+        	// need to replace this with an actual image
+        }
     }
 }

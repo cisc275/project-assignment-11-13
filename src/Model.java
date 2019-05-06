@@ -1,4 +1,8 @@
-public class Model {
+public interface Model {
+	public void update();
+}
+
+/* public class Model {
     GameState gameState;
     private int frameWidth;
     private int frameHeight;
@@ -33,4 +37,4 @@ public class Model {
 	    	mainBird.move(frameHeight);
 	    	foe.move(frameWidth, frameHeight);
     }
-}
+} */

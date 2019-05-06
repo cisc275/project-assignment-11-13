@@ -20,13 +20,17 @@ public class Foe extends Animal {
     public boolean move(int frameWidth, int frameHeight){
     	xPos -= speed;
     	if (xPos < -xSize) {
-    		xPos += frameWidth + 2*xSize;
-    		yPos = Math.abs(rand.nextInt()) % ((frameHeight/2)-ySize);
-    		speed = Math.abs(rand.nextInt())%5+15;
+    		reset(frameWidth, frameHeight);
     	}
         return true;
     }
 
+    public void reset(int frameWidth, int frameHeight) {
+    	xPos += frameWidth + 2*xSize;
+		yPos = Math.abs(rand.nextInt()) % ((frameHeight/2)-ySize);
+		speed = Math.abs(rand.nextInt())%5+15;
+    }
+    
     public boolean isCollided(){
         return true;
     }

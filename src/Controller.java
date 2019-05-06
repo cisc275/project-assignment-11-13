@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.util.*;
 
 public class Controller implements ActionListener, KeyListener {
     private View view;
@@ -11,11 +12,13 @@ public class Controller implements ActionListener, KeyListener {
 	private PlayableBird mainBird;
 	private DropBird dropbird;
 	private Foe foe;
+	private Collection<Food> foodGameConsumables;
 	private GameState gs;
 
     Controller(){
     	gs = GameState.STARTMENU;
     	startView = new ViewStartMenu();
+    	foodView = new ViewFoodGame();
     	gs = startView.gs;
     	gs = GameState.FOODGAME;
     	checkGameState();
@@ -25,13 +28,13 @@ public class Controller implements ActionListener, KeyListener {
     private void checkGameState(){
 		switch (gs){
 			case FOODGAME:
-				foodView = new ViewFoodGame();
 				mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
-				foe = new Foe("ProjectPics/Eagle.png", "Eagle", view.getWidth(), view.getHeight());
-				model = new Model(view.getWidth(), view.getHeight(), mainBird, foe);
+				foodGameConsumables = new ArrayList<Food>();
+				foe = new Foe("ProjectPics/Eagle.png", "Eagle", foodView.getWidth(), foodView.getHeight());
+				model = new ModelFoodGame(foodView.getWidth(), foodView.getHeight(), mainBird, foe, foodGameConsumables);
 				foodView.addObjects(mainBird, foe);
 
-				view.frame.addKeyListener(new KeyListener() {
+				foodView.frame.addKeyListener(new KeyListener() {
 					public void keyPressed(KeyEvent e) {
 						if (e.getKeyCode() == KeyEvent.VK_UP) {
 							mainBird.setUpPressed(true);
@@ -149,7 +152,7 @@ public class Controller implements ActionListener, KeyListener {
 	void start(){
 		while(true) {
 			model.update();
-			foodView.update(mainBird.xPos, mainBird.yPos, mainBird, foe);
+			foodView.update(mainBird.xPos, mainBird.yPos, mainBird, foe, foodGameConsumables);
 		}
 	}
 

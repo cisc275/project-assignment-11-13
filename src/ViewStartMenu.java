@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class ViewStartMenu extends JPanel{
     //Game state attributes
     String birdType;
-    GameState gs = GameState.STARTMENU;
+    //GameState gs = GameState.STARTMENU;
 
     //Screen and frame construction attributes
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -54,14 +54,14 @@ public class ViewStartMenu extends JPanel{
 //        frame.setFocusable(true);
 //    }
 
-    public void checkGameState(){
-        if(gs.equals(GameState.FOODGAME)){
-            frame.setVisible(false);
-        }
-    }
-
-    public static void main(String[] args) {
-        Controller control = new Controller();
-    }
+//    public void checkGameState(){
+//        if(gs.equals(GameState.FOODGAME)){
+//            frame.setVisible(false);
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        Controller control = new Controller();
+//    }
 
 }

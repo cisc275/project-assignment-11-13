@@ -14,6 +14,7 @@ public class PlayableBird extends Animal {
         //Hard coding in the image size for now:
         xSize = 123;
         ySize = 102;
+        this.image = this.createImage(picFile);
     }
 
     public boolean move(int frameHeight){

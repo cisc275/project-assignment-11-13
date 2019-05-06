@@ -15,18 +15,17 @@ public class View extends JPanel {
     JFrame frame = new JFrame();
     final static int frameWidth = (int) screenSize.getWidth();
     final static int frameHeight = (int) screenSize.getHeight();
-    String name;
+    //String name;
     
     CardLayout cardLayout;
     ViewStartMenu menu;
-    public ViewFoodGame food;
+    ViewFoodGame food;
     ViewNestGame nest;
     
     GameState gs;
     
     
-    PlayableBird mainBird;
-    Foe foe;
+    PlayableBird mainBird; //need in order to add listeners
     
     public static void main(String[] args) {
         Controller control = new Controller();
@@ -41,10 +40,8 @@ public class View extends JPanel {
         return frameHeight;
     }
     
-    public View(){
-    	gs = GameState.STARTMENU;
-    	
-    	//frame.getContentPane().add(this);
+    public View(GameState state){
+    	this.gs = state;
         frame.setBackground(Color.black);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(frameWidth, frameHeight);
@@ -77,18 +74,63 @@ public class View extends JPanel {
 	    
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
+	    //frame.getContentPane().add(nest);
 	    frame.setVisible(true);
     }
-
     
-    public void update(PlayableBird bird, Foe foe){
+    public void addListener(PlayableBird mainBird) {
+    	frame.addKeyListener(new KeyListener() {
+        	public void keyPressed(KeyEvent e) {
+        		if (e.getKeyCode() == KeyEvent.VK_UP) {
+        			mainBird.setUpPressed(true);
+        		}
+        		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        			mainBird.setDownPressed(true);
+        		}
+        		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        			mainBird.setSpacePressed(true);
+        		}
+        		
+        		else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+        			System.exit(1);
+        		}
+        	}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//In place just to have all required methods
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_UP) {
+					mainBird.setUpPressed(false);
+	    		}
+				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+					mainBird.setDownPressed(false);
+	    		}
+				else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					mainBird.setSpacePressed(false);
+					
+	    		}
+			}
+        });
+    }
+    
+    public void update(ArrayList<GameObject> objects, GameState gs){
+    	//System.out.println("view: " + this.gs);
+    	//check for change of gameState
+    	if (this.gs != gs)
+    		cardLayout.next(frame.getContentPane());
+    	this.gs = gs;
         //Pick which panel to update based on the game state
-    	switch(gs) {
+    	switch(this.gs) {
         case STARTMENU:
         	break;
         case FOODGAME:
-        	food.update(bird, foe);
+        	food.update(objects);
         	break;
+        default: break;
         }
         
         //Pause after each frame
@@ -99,18 +141,10 @@ public class View extends JPanel {
         }
     }
 
-    public BufferedImage createImage(String path) {
-        BufferedImage bufferedImage;
-        try {
-            System.out.println();
-            bufferedImage = ImageIO.read(new File(path)); //Utilizes the path name
-            return bufferedImage;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
+    public GameState getState() {
+    	return gs;
+    }
     //I don't think this will ever be necessary because paint is called in the individual subviews
     public void paint(Graphics g){
     }

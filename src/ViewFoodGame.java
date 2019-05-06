@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -13,16 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ViewFoodGame extends JPanel {
-    BufferedImage birdImg;
-    BufferedImage foeImg;
-    BufferedImage bgImg;
-	int x; int y;
 	
-	PlayableBird mainBird;
-    Foe foe;
+	ArrayList<GameObject> objects;
+	//PlayableBird mainBird;
+    //Foe foe;
     Background background;
 	
 	public ViewFoodGame() {
+		background = new Background("ProjectPics/Background.png");
 //		foeImg = createImage("ProjectPics/Osprey.png");
 //        birdImg = createImage("ProjectPics/Eagle.png");
 //        bgImg = createImage("ProjectPics/Background.png");
@@ -36,20 +35,15 @@ public class ViewFoodGame extends JPanel {
         //this.add(textLabel);
         //this.add(buttonNext);
 	}
-	
-    public void addObjects(PlayableBird bird, Foe foe, Background background) {
-        this.mainBird = bird;
-        this.foe = foe;
-        this.background = background;
-        foeImg = createImage(this.foe.picFile);
-        birdImg = createImage(this.mainBird.picFile);
-        bgImg = createImage(this.background.picFile);
+    
+    public void addObjects(ArrayList<GameObject> objects) {
+    	this.objects = objects;
     }
 	
-    public void update(PlayableBird bird, Foe foe){
-        this.mainBird = bird;
-        this.foe = foe;
-        this.repaint();
+    
+    public void update(ArrayList<GameObject> objects) {
+    	this.objects = objects;
+    	this.repaint();
     }
     
 	/*public GameState update() {
@@ -69,22 +63,9 @@ public class ViewFoodGame extends JPanel {
 	}*/
 	
 	public void paint(Graphics g) {
-		g.drawImage(bgImg, 0, 0, this);
-		g.drawImage(birdImg, mainBird.getxPos(), mainBird.getyPos(), this);
-        g.drawImage(foeImg, foe.getxPos(), foe.getyPos(), this);
+		g.drawImage(background.image, 0, 0, this);
+		for (GameObject go : objects) {
+			g.drawImage(go.image, go.getxPos(), go.getyPos(), this);
+		}
 	}
-	
-	public BufferedImage createImage(String path) {
-        BufferedImage bufferedImage;
-        try {
-            System.out.println();
-            bufferedImage = ImageIO.read(new File(path)); //Utilizes the path name
-            return bufferedImage;
-        } catch (IOException e) {
-            e.printStackTrace(); 
-        }
-        return null;
-    }
-	
-	
 }

@@ -8,6 +8,7 @@ public class Foe extends Animal {
     public Foe(String picFile, String name, int frameWidth, int frameHeight){
         super(picFile, name);
         this.picFile = picFile;
+        this.image = this.createImage(picFile);
     	//Hard coding in the image size for now:
         xSize = 180;
         ySize = 106;

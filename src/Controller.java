@@ -7,61 +7,14 @@ public class Controller implements ActionListener, KeyListener {
     private View view;
     private ViewStartMenu startView;
     private Model model;
-	private PlayableBird mainBird;
 	private DropBird dropbird;
-	private Foe foe;
 	private GameState gs;
-	private Background background;
 
     Controller(){
     	gs = GameState.STARTMENU;
-    	view = new View();
-    	mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
-    	foe = new Foe("ProjectPics/Eagle.png", "Eagle", view.getWidth(), view.getHeight());
-    	background = new Background("ProjectPics/Background.png");
-    	
-    	model = new Model(view.getWidth(), view.getHeight(), mainBird, foe);
-    	view.food.addObjects(mainBird, foe, background);
-    	//startView = new ViewStartMenu();
-    	//gs = startView.gs;
-    	//checkGameState();
-    	view.frame.addKeyListener(new KeyListener() {
-        	public void keyPressed(KeyEvent e) {
-        		if (e.getKeyCode() == KeyEvent.VK_UP) {
-        			mainBird.setUpPressed(true);
-        		}
-        		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-        			mainBird.setDownPressed(true);
-        		}
-        		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-        			mainBird.setSpacePressed(true);
-        		}
-        		
-        		else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-        			System.exit(1);
-        		}
-        	}
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				//In place just to have all required methods
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_UP) {
-					mainBird.setUpPressed(false);
-	    		}
-				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-					mainBird.setDownPressed(false);
-	    		}
-				else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-					mainBird.setSpacePressed(false);
-					
-	    		}
-			}
-        });
-
+    	view = new View(gs);
+    	model = new Model(view.getWidth(), view.getHeight(), gs);
+    	view.addListener(model.getPlayableBird());
     }
 
     /*private void checkGameState(){
@@ -169,8 +122,11 @@ public class Controller implements ActionListener, KeyListener {
 
 	void start(){
 		while(true) {
-			model.update();
-			view.update(mainBird, foe);
+			if (gs==GameState.STARTMENU)
+				gs = view.getState(); //need this because of buttons on the view of the startmenu
+			model.update(gs);
+			gs = model.getState();
+			view.update(model.getObjects(), gs);
 		}
 	}
 

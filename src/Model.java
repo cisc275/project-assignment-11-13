@@ -1,29 +1,47 @@
+import java.util.ArrayList;
+
 public class Model {
-    GameState gameState;
-    private int frameWidth;
-    private int frameHeight;
-    private PlayableBird mainBird;
-    private Foe foe;
+    GameState gs;
+    ModelFoodGame food;
     
-    //These two vars are irrelevant now, right?
-    //int imgWidth;
-    //int imgHeight;
     
     public Model() {}
     
-    public Model(int frameWidth, int frameHeight, PlayableBird bird, Foe foe) {//, int imgWidth, int imgHeight){
-    	this.gameState = gameState;
-        this.frameWidth = frameWidth;
-        this.frameHeight = frameHeight;
-        this.mainBird = bird;
-        this.foe = foe;
-        //this.imgWidth = imgWidth;
-        //this.imgHeight = imgHeight;
+    public Model(int frameWidth, int frameHeight, GameState gs) {
+    	this.gs = gs;
+        food = new ModelFoodGame(frameWidth, frameHeight, this.gs);
     }
 
-
-    public void update(){
-	    	mainBird.move(frameHeight);
-	    	foe.move(frameWidth, frameHeight);
+    public ArrayList<GameObject> getObjects(){
+    	ArrayList<GameObject> objects;// = new ArrayList<>();
+//    	switch(gs) {
+//    	case FOODGAME:
+//    		default:
+    		objects = food.getObjects();
+//    	}
+    		
+    	return objects;
+    }
+    
+    public void update(GameState gs){
+    	this.gs = gs;
+    	//System.out.println("model: " + gs);
+    	switch(this.gs) {
+        case STARTMENU:
+        	break;
+        case FOODGAME:
+        	food.update(gs);
+        	this.gs = food.getState();
+        	break;
+        case NESTGAME:
+        }
+    }
+    
+    public GameState getState() {
+    	return gs;//GameState.FOODGAME;
+    }
+    
+    public PlayableBird getPlayableBird() {
+    	return food.getPlayableBird();
     }
 }

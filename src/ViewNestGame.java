@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ViewNestGame extends JPanel {
 
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    JFrame frame = new JFrame();
+    //JFrame frame = new JFrame();
     final static int frameWidth = (int) screenSize.getWidth();
     final static int frameHeight = (int) screenSize.getHeight();
     String name;
@@ -24,8 +24,7 @@ public class ViewNestGame extends JPanel {
     String dropBirdFile = "ProjectPics/BirdStick.jpg";
     String stickFile = "ProjectPics/Stick.png";
 
-    private int xloc;
-    private int yloc;
+    
     DropBird dropBird;
 
 
@@ -43,13 +42,13 @@ public class ViewNestGame extends JPanel {
     }
 
     public ViewNestGame(){
-        frame.getContentPane().add(this);
-        frame.setBackground(Color.cyan);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(frameWidth, frameHeight);
-        frame.setUndecorated(true);
-        frame.setVisible(true);
-        frame.setFocusable(true);
+//        frame.getContentPane().add(this);
+//        frame.setBackground(Color.cyan);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setSize(frameWidth, frameHeight);
+//        frame.setUndecorated(true);
+//        frame.setVisible(true);
+//        frame.setFocusable(true);
 
 
 
@@ -71,12 +70,12 @@ public class ViewNestGame extends JPanel {
         this.dropBird.stickTwo = stickTwo;
         this.dropBird.stickOne = stickOne;
         this.dropBird.stickThree = stickThree;
-        this.xloc = x;
-        this.yloc = y;
+        //this.xloc = x;
+        //this.yloc = y;
         //this.picFile = bird.picFile;
         //this.name = bird.name;
 
-        frame.repaint();
+        this.repaint();
         try {
             Thread.sleep(33);
         } catch (InterruptedException e) {

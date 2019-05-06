@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Model {
     GameState gs;
     ModelFoodGame food;
+    ModelNestGame nest;
     
     
     public Model() {}
@@ -10,16 +11,19 @@ public class Model {
     public Model(int frameWidth, int frameHeight, GameState gs) {
     	this.gs = gs;
         food = new ModelFoodGame(frameWidth, frameHeight, this.gs);
+        nest = new ModelNestGame(frameWidth, frameHeight, this.gs);
     }
 
     public ArrayList<GameObject> getObjects(){
     	ArrayList<GameObject> objects;// = new ArrayList<>();
-//    	switch(gs) {
-//    	case FOODGAME:
-//    		default:
+    	switch(gs) {
+    	case FOODGAME:
     		objects = food.getObjects();
-//    	}
+    		break;
     		
+    		default:
+    			objects = nest.getObjects();
+    	}
     	return objects;
     }
     
@@ -34,6 +38,8 @@ public class Model {
         	this.gs = food.getState();
         	break;
         case NESTGAME:
+        	nest.update(gs);
+        	break;
         }
     }
     
@@ -43,5 +49,9 @@ public class Model {
     
     public PlayableBird getPlayableBird() {
     	return food.getPlayableBird();
+    }
+    
+    public DropBird getDropBird() {
+    	return nest.getDropBird();
     }
 }

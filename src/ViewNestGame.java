@@ -26,6 +26,7 @@ public class ViewNestGame extends JPanel {
 
     
     DropBird dropBird;
+    ArrayList<GameObject> objects;
 
 
     public static void main(String[] args) {
@@ -81,6 +82,9 @@ public class ViewNestGame extends JPanel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public void update(ArrayList<GameObject> objects) {
+    	this.objects = objects;
     }
 
     public BufferedImage createImage(String path) {

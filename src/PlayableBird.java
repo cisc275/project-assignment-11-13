@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 public class PlayableBird extends Animal {
 
 	final int yIncr = 8; //Just made up this value for now
+
 	boolean upPressed = false;
 	boolean downPressed = false;
 	boolean spacePressed = false;
@@ -12,8 +13,8 @@ public class PlayableBird extends Animal {
 		super(picFile, name);
     	this.picFile = picFile;
         //Hard coding in the image size for now:
-        xSize = 123;
-        ySize = 102;
+    	xSize = 123;
+    	ySize = 102;
         this.image = this.createImage(picFile);
     }
 

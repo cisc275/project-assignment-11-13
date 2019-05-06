@@ -15,6 +15,7 @@ public class DropBird extends Animal {
         this.picFile = picFile;
         xPos = 10;
         yPos = 10;
+        image = createImage(picFile);
     }
 
     public void dropStick(){

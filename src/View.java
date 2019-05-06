@@ -26,6 +26,7 @@ public class View extends JPanel {
     
     
     PlayableBird mainBird; //need in order to add listeners
+    DropBird dropBird; //need in order to add listeners
     
     public static void main(String[] args) {
         Controller control = new Controller();
@@ -78,7 +79,7 @@ public class View extends JPanel {
 	    frame.setVisible(true);
     }
     
-    public void addListener(PlayableBird mainBird) {
+    public void addFoodGameListener(PlayableBird mainBird) {
     	frame.addKeyListener(new KeyListener() {
         	public void keyPressed(KeyEvent e) {
         		if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -113,6 +114,31 @@ public class View extends JPanel {
 					mainBird.setSpacePressed(false);
 					
 	    		}
+			}
+        });
+    }
+    
+    public void addNestGameListener(DropBird dropBird) {
+    	frame.addKeyListener(new KeyListener() {
+        	public void keyPressed(KeyEvent e) {
+        		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        			dropBird.dropStick();
+        			System.out.println("space pressed");
+        		}
+        		
+        		else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+        			System.exit(1);
+        		}
+        	}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//In place just to have all required methods
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				//
 			}
         });
     }

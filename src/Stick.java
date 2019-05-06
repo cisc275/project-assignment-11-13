@@ -9,6 +9,7 @@ public class Stick extends GameObject {
 		//Hard coding in the image size for now:
 		//  xSize = 180;
 		//ySize = 106;
+		image = createImage(picFile);
 
 	}
 

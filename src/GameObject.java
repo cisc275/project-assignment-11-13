@@ -42,6 +42,12 @@ public class GameObject {
 		return ySize;
 	}
 	
+	public boolean collidesWith(GameObject other) {
+		return other.xSize > 0 && other.ySize > 0 && xSize > 0 && ySize > 0
+		&& other.xPos < xPos + xSize && other.xPos + other.xSize > xPos
+        && other.yPos < yPos + ySize && other.yPos + other.ySize > yPos;
+	 }
+	
 	public BufferedImage createImage(String path) {
         BufferedImage bufferedImage;
         try {

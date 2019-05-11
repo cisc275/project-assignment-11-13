@@ -1,45 +1,58 @@
+import java.util.LinkedList;
+
 public class DropBird extends Animal {
-    final int xIncr = 8;
+    int xIncr = 8;
     boolean xDir = true;		//false = neg, true = pos
-    boolean isHoldingStick = true;
     int droppedSticks = 0;
-    boolean spacePressed = false;
-    int towerHeight;
+    Stick topStick;
+    LinkedList<Stick> stickList = new LinkedList<Stick>();
+    int frameHeight;
+    boolean nestStarted = false;
 
-    Stick stickOne;
-    Stick stickTwo;
-    Stick stickThree;
 
-    public DropBird(String picFile, String name){
-        super(picFile, name);
+    public DropBird(String picFile, String name, int frameHeight){
+    	this.name = name;
         this.picFile = picFile;
+        System.out.println("The frame height is " + this.frameHeight);
         xPos = 10;
         yPos = 10;
     }
 
+    /*
+     * DropStick method increases the count of dropped sticks, 
+     * increases the xIncr speed, adds a new stick to the Linkedlist, 
+     * and then calls its release method
+     */
     public void dropStick(){
         droppedSticks +=1;
-        switch(droppedSticks) {
-            case 1:
-
-                stickOne.release(xPos, yPos);
-                break;
-            case 2:
-                stickTwo.release(xPos, yPos);
-                break;
-            case 3:
-                stickThree.release(xPos, yPos);
-                break;
-        }
+        xIncr += 2;
+        stickList.add(new Stick(100, 100, frameHeight));
+        stickList.getLast().release(xPos, yPos);
+        if(droppedSticks == 1) {
+    		topStick = stickList.getLast();
+    	}
         return ;
 
     }
-
+    
+    
+    /*
+     * the move method uses an iterator for loop to call the move method for each stick
+     * then it moves the dropBrid in the x direction, reversing direction if it reaches a 
+     * boundary
+     */
     public void move(int frameWidth, int frameHeight) {
+    	if(droppedSticks > 0) {
+	    	for(Stick s : stickList) {
+	    		s.move(topStick.getxPos(), topStick.getyPos());
+	    		if (s.checkOnPile() == true) {
+	    			topStick = s;
+	    		}
+	    	}
+    	}
 
         //checks the location of dropBird, then moves it left or right
         if( xDir == true) {			//xDir is positive
-            //System.out.println(xSize);
             if(xPos < (frameWidth- xSize)) {
                 xPos += xIncr;
             }else {

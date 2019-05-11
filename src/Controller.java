@@ -8,6 +8,7 @@ public class Controller implements ActionListener, KeyListener {
     private View view;
     private ViewStartMenu startView;
     private ViewFoodGame foodView;
+    private ViewNestGame nestView;
     private Model model;
 	private PlayableBird mainBird;
 	private DropBird dropbird;
@@ -19,8 +20,11 @@ public class Controller implements ActionListener, KeyListener {
     	gs = GameState.STARTMENU;
     	startView = new ViewStartMenu();
     	foodView = new ViewFoodGame();
+    	nestView = new ViewNestGame();
+    	
     	gs = startView.gs;
     	gs = GameState.FOODGAME;
+    	gs = GameState.NESTGAME;
     	checkGameState();
 
     }
@@ -74,9 +78,11 @@ public class Controller implements ActionListener, KeyListener {
 				break;
 			case NESTGAME:
 				//Launch View and listener stuff for Osprey/Clapper Rail nest game
-				view =  new ViewNestGame();
-				model = new ModelNestGame(view.getWidth(), view.getHeight(), dropbird);
-				view.frame.addKeyListener(new KeyListener() {
+				dropbird = new DropBird("ProjectPics/BirdStick.PNG", "stickbird", nestView.getHeight());
+				System.out.println(nestView.getHeight());
+				model = new ModelNestGame(nestView.getWidth(), nestView.getHeight(), dropbird);
+				nestView.addObjects(dropbird);
+				nestView.frame.addKeyListener(new KeyListener() {
 					public void keyPressed(KeyEvent e) {
 						if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 							dropbird.dropStick();
@@ -152,7 +158,8 @@ public class Controller implements ActionListener, KeyListener {
 	void start(){
 		while(true) {
 			model.update();
-			foodView.update(mainBird.xPos, mainBird.yPos, mainBird, foe, foodGameConsumables);
+			//foodView.update(mainBird.xPos, mainBird.yPos, mainBird, foe, foodGameConsumables);
+			nestView.update(dropbird);
 		}
 	}
 

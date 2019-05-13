@@ -8,14 +8,17 @@ public class DropBird extends Animal {
     LinkedList<Stick> stickList = new LinkedList<Stick>();
     int frameHeight;
     boolean nestStarted = false;
+    
 
 
     public DropBird(String picFile, String name, int frameHeight){
     	this.name = name;
         this.picFile = picFile;
-        System.out.println("The frame height is " + this.frameHeight);
+        this.frameHeight = frameHeight;
+        System.out.println("The frame height is " + frameHeight);
         xPos = 10;
         yPos = 10;
+        xSize = 400;
     }
 
     /*
@@ -24,13 +27,17 @@ public class DropBird extends Animal {
      * and then calls its release method
      */
     public void dropStick(){
-        droppedSticks +=1;
-        xIncr += 2;
-        stickList.add(new Stick(100, 100, frameHeight));
-        stickList.getLast().release(xPos, yPos);
-        if(droppedSticks == 1) {
-    		topStick = stickList.getLast();
+    	if(droppedSticks > 0) {								//check if any sticks have been dropped
+    		if(stickList.getLast().isFalling == true) {		//prevent a drop until the stick has reached rest
+    			System.out.println("No can do brochaco");
+    			return;
+    		}
     	}
+        xIncr += 2;
+        stickList.add(new Stick(100, 70, frameHeight));
+        stickList.getLast().release(xPos, yPos, stickList.getLast().xPos, droppedSticks);
+        droppedSticks +=1;
+        topStick = stickList.getLast();
         return ;
 
     }
@@ -45,9 +52,6 @@ public class DropBird extends Animal {
     	if(droppedSticks > 0) {
 	    	for(Stick s : stickList) {
 	    		s.move(topStick.getxPos(), topStick.getyPos());
-	    		if (s.checkOnPile() == true) {
-	    			topStick = s;
-	    		}
 	    	}
     	}
 

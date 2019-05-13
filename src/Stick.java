@@ -1,7 +1,8 @@
 public class Stick extends GameObject {
-	int speedFalling = 3;
+	int speedFalling = 20;
 	boolean isFalling = false;
-	boolean isTopStick = false;
+	boolean topStickXPos;
+	int droppedSticks = 0;
 	int frameHeight;
 
 
@@ -11,17 +12,18 @@ public class Stick extends GameObject {
 		this.xSize = xSize;
 		this.ySize = ySize;
 		this.frameHeight = frameHeight;
-
+		
 	}
 
 	/*
 	 * DropBird releases stick. xPos is set, isFalling becomes true
 	 */
-	public void release(int xPos, int yPos) {
-		System.out.println("accessed");
+	public void release(int xPos, int yPos, int topStackXPos, int droppedSticks) {
 		isFalling = true;
 		this.xPos = xPos;
 		this.yPos = yPos;
+		this.topStickXPos = topStickXPos;
+		this.droppedSticks = droppedSticks;
 		return;
 	}
 
@@ -36,19 +38,13 @@ public class Stick extends GameObject {
 			return;
 		}
 		yPos += speedFalling;
-		if( yPos >= frameHeight - ySize) {
-			System.out.println(yPos + " " + frameHeight+ " " + ySize);
+		if( yPos >= frameHeight - ySize - (ySize* droppedSticks)) {
+			System.out.println(yPos + " " + frameHeight+ " " + ySize + " " + droppedSticks);
 			isFalling = false;
-			isTopStick = true;
 		}
-		/*
-		else if(yPos >= topStickYPos) {
-			if (this.collided(topStickXPos, topStickYPos)) {
-				isFalling = false;
-				isTopStick = true;
-			}
-		}
-		*/
+		
+	
+		
 		return;
 	}
 
@@ -65,12 +61,5 @@ public class Stick extends GameObject {
 			return false;
 	}
 
-	/*
-	 * Checks if the stick is at the top of the pile. If it is, return true, otherwise 
-	 * returns false
-	 */
-	public boolean checkOnPile(){
-		return isTopStick;
-	}
 
 }

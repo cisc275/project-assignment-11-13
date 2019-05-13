@@ -45,7 +45,6 @@ public class ViewNestGame extends View {
         frame.setBackground(Color.cyan);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(frameWidth, frameHeight);
-        System.out.println("Its gonna be" + frameHeight);
         frame.setUndecorated(true);
         frame.setVisible(true);
         frame.setFocusable(true);
@@ -81,7 +80,6 @@ public class ViewNestGame extends View {
 
 
     public void paint(Graphics g){
-    	System.out.println(dropBird.getxPos()+ " " + dropBird.getyPos() + " ");
         g.drawImage(dropBirdImg, dropBird.getxPos(), dropBird.getyPos(), Color.cyan, this);
         for(Stick s: dropBird.stickList) {
         	g.drawImage(stickImg, s.getxPos(), s.getyPos(), Color.cyan, this);

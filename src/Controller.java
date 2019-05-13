@@ -79,7 +79,6 @@ public class Controller implements ActionListener, KeyListener {
 			case NESTGAME:
 				//Launch View and listener stuff for Osprey/Clapper Rail nest game
 				dropbird = new DropBird("ProjectPics/BirdStick.PNG", "stickbird", nestView.getHeight());
-				System.out.println(nestView.getHeight());
 				model = new ModelNestGame(nestView.getWidth(), nestView.getHeight(), dropbird);
 				nestView.addObjects(dropbird);
 				nestView.frame.addKeyListener(new KeyListener() {

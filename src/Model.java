@@ -11,18 +11,21 @@ public class Model {
     public Model(int frameWidth, int frameHeight, GameState gs) {
     	this.gs = gs;
         food = new ModelFoodGame(frameWidth, frameHeight, this.gs);
-        nest = new ModelNestGame(frameWidth, frameHeight, this.gs);
+        //nest = new ModelNestGame(frameWidth, frameHeight, this.gs);
     }
 
     public ArrayList<GameObject> getObjects(){
-    	ArrayList<GameObject> objects;// = new ArrayList<>();
+    	ArrayList<GameObject> objects = food.getObjects();// = new ArrayList<>();
     	switch(gs) {
     	case FOODGAME:
     		objects = food.getObjects();
     		break;
+    	case NESTGAME:
+    		//objects = nest.getObjects();
+    		break;
     		
-    		default:
-    			objects = nest.getObjects();
+    	default:
+    	objects = food.getObjects();
     	}
     	return objects;
     }
@@ -38,7 +41,7 @@ public class Model {
         	this.gs = food.getState();
         	break;
         case NESTGAME:
-        	nest.update(gs);
+        	//nest.update(gs);
         	break;
         }
     }

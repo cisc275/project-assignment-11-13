@@ -65,7 +65,7 @@ public class View extends JPanel {
 	    ActionListener clap = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Clapper Rail");
-	    		gs = GameState.FOODGAME;
+	    		gs = GameState.NESTGAME;
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };

@@ -19,21 +19,40 @@ public class ViewStartMenu extends JPanel{
     JButton ospreyButton;// = new JButton("Osprey");
     JButton clapperButton;// = new JButton("Clapper Rail");
     JLabel textLabel;
+    JLabel background;
 
     ViewStartMenu(ActionListener a1, ActionListener a2, String text) {
 		//JButton buttonNext = new JButton("next");
         //buttonNext.addActionListener(alNext);
         
-    	ospreyButton = new JButton("Osprey");
+    	ospreyButton = new JButton(new ImageIcon("ProjectPics/OspreyButton.jpg"));
     	ospreyButton.addActionListener(a1);
-    	clapperButton = new JButton("Clapper Rail");
+    	ospreyButton.setBorderPainted(false);
+    	ospreyButton.setFocusPainted(false);
+    	ospreyButton.setContentAreaFilled(false);
+    	
+    	clapperButton = new JButton( new ImageIcon("ProjectPics/ClapperButton.jpg"));
     	clapperButton.addActionListener(a2);
+    	clapperButton.setFocusPainted(false);
+    	clapperButton.setBorderPainted(false);
+    	clapperButton.setFocusPainted(false);
+    	clapperButton.setContentAreaFilled(false);
+    
+    	
         textLabel = new JLabel(text);
+        
+        background = new JLabel(new ImageIcon("ProjectPics/MainScreen.jpg"));
+        background.setLayout(new FlowLayout());
+        background.add(ospreyButton);
+        background.add(clapperButton);
 
-        this.add(textLabel);
-        this.add(ospreyButton);
-        this.add(clapperButton);
+        this.add(background);
 	}
+    
+    /*public void paint(Graphics g) {
+    	super.paintComponent(g);
+    	g.drawImage(background.image, 0, 0, this);
+    }*/
     
 //    ViewStartMenu(){
 //        //frame.getContentPane().add();

@@ -2,12 +2,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.util.*;
 
 public class Controller implements ActionListener, KeyListener {
     private View view;
     private ViewStartMenu startView;
     private Model model;
+    private PlayableBird mainBird;
 	private DropBird dropbird;
+	private Foe foe;
+	private Collection<Food> foodGameConsumables;
 	private GameState gs;
 
     Controller(){
@@ -21,8 +25,11 @@ public class Controller implements ActionListener, KeyListener {
 
 	void start(){
 		while(true) {
-			if (gs==GameState.STARTMENU)
-				gs = view.getState(); //need this because of buttons on the view of the startmenu
+			switch(gs){
+				case STARTMENU:
+					gs = view.getState();
+					break;
+			}
 			model.update(gs);
 			gs = model.getState();
 			view.update(model.getObjects(), gs);

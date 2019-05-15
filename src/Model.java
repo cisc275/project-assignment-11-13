@@ -11,7 +11,7 @@ public class Model {
     public Model(int frameWidth, int frameHeight, GameState gs) {
     	this.gs = gs;
         food = new ModelFoodGame(frameWidth, frameHeight, this.gs);
-        //nest = new ModelNestGame(frameWidth, frameHeight, this.gs);
+        nest = new ModelNestGame(frameWidth, frameHeight, this.gs);
     }
 
     public ArrayList<GameObject> getObjects(){
@@ -21,18 +21,18 @@ public class Model {
     		objects = food.getObjects();
     		break;
     	case NESTGAME:
-    		//objects = nest.getObjects();
+    		objects = nest.getObjects();
+    		//System.out.println(" The nest game objects deal has been actiavated");
     		break;
-    		
-    	default:
-    	objects = food.getObjects();
+    	//default:
+    	//objects = food.getObjects();
     	}
     	return objects;
     }
     
     public void update(GameState gs){
     	this.gs = gs;
-    	//System.out.println("model: " + gs);
+    	//System.out.println("model: " + this.gs);
     	switch(this.gs) {
         case STARTMENU:
         	break;
@@ -41,7 +41,8 @@ public class Model {
         	this.gs = food.getState();
         	break;
         case NESTGAME:
-        	//nest.update(gs);
+        	nest.update(gs);
+        	this.gs = nest.getState();
         	break;
         }
     }

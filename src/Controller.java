@@ -19,7 +19,7 @@ public class Controller implements ActionListener, KeyListener {
     	view = new View(gs);
     	model = new Model(view.getWidth(), view.getHeight(), gs);
     	view.addFoodGameListener(model.getPlayableBird());
-    	//view.addNestGameListener(model.getDropBird());
+    	view.addNestGameListener(model.getDropBird());
     }
 
 

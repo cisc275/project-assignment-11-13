@@ -72,10 +72,10 @@ public class View extends JPanel {
 	    
 	    menu = new ViewStartMenu(osp, clap,  "Select Bird:");
 	    food = new ViewFoodGame();
-	    
+	    nest = new ViewNestGame();
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
-	    //frame.getContentPane().add(nest);
+	    frame.getContentPane().add(nest);
 	    frame.setVisible(true);
     }
     
@@ -156,7 +156,12 @@ public class View extends JPanel {
         case FOODGAME:
         	food.update(objects);
         	break;
-        default: break;
+        case NESTGAME:
+        	nest.update(objects);
+        	System.out.println(objects.size());
+        	break;
+        default:
+        	break;
         }
         
         //Pause after each frame

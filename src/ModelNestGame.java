@@ -1,25 +1,54 @@
+import java.util.ArrayList;
 
-    
 class ModelNestGame{
-	
+	GameState gs;
     private int frameWidth;
     private int frameHeight;
     private DropBird  dropBird;
     int nestTop;
     int topStick_xPos;
     
-    // was for nestGame testing
-    public ModelNestGame (int frameWidth, int frameHeight, DropBird dropBird) {
+    /*
+     * Constructor gives the model the screen dimesnions, gamestate and creates the dropbird
+     */
+    public ModelNestGame (int frameWidth, int frameHeight, GameState gs) {
     	this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
-        this.dropBird = dropBird;
+        this.gs = gs;
+        dropBird = new DropBird("ProjectPics/BirdStick.PNG", "stickbird", frameHeight);
     }
     
 
-
-    public void update(){
-    		dropBird.move(frameWidth, frameHeight);
-    //		nestTop = dropBird.topStick.yPos;
-    //		topStick_xPos = dropBird.topStick.xPos;
+    /*
+     * update resets the game state, and calls the move method of the dropBird. The stick objects exist in DropBird, 
+     * so their move method is called in the dropbrid move method
+     */
+    public void update(GameState gs){
+    	this.gs = gs;
+    	dropBird.move(frameWidth, frameHeight);
+    }
+    
+    /*
+     * Places the dropbird into an arrayList and returns that list. This is done to 
+     * fit the modular architecture implemented
+     */
+    public ArrayList<GameObject> getObjects(){
+        ArrayList<GameObject> objects = new ArrayList<>();
+        objects.add(dropBird);
+    	return objects;
+    }
+  
+    /*
+     * getter method for dropbird object
+     */
+    public DropBird getDropBird() {
+    	return dropBird;
+    }
+    
+    /* 
+     * getter method for gamestate
+     */
+    public GameState getState() {
+    	return gs;
     }
 }

@@ -2,11 +2,12 @@ import java.awt.image.BufferedImage;
 
 public class PlayableBird extends Animal {
 
-	final int yIncr = 8; //Just made up this value for now
+	final int yIncr = 12; //Just made up this value for now
 
 	boolean upPressed = false;
 	boolean downPressed = false;
 	boolean spacePressed = false;
+	boolean floating = false;
 	int moveFrameHeight;
 
     public PlayableBird(String picFile, String name){
@@ -18,26 +19,28 @@ public class PlayableBird extends Animal {
         this.image = this.createImage(picFile);
     }
 
-    public boolean move(int frameHeight){
+    public boolean move(int frameHeight){ // Currently only vertical movement
     	moveFrameHeight = frameHeight;
-    	//This method should only deal with up and down, right? Because the bird doesn't move left/right, the background and everything else does.
-		if (dive()) {
+    	if ((!spacePressed && yPos > (frameHeight / 2) - ySize) || yPos + ySize + yIncr > frameHeight) {
+    		floating = true;
+    	}
+    	else if(yPos < (frameHeight / 2) - ySize) {
+    		floating = false;
+    	}
+    	if(floating) {
+    		yPos -= 2*yIncr;
+    	}
+    	else if (dive()) {
 			yPos += 2*yIncr;
 		}
 		else {
 			if (upPressed && yPos - yIncr > 0) {
 				yPos -= yIncr;
 			}
-			if (downPressed && yPos + yIncr < (moveFrameHeight / 2) - ySize) {
+			if (downPressed && yPos + yIncr < (frameHeight / 2) - ySize) {
 				yPos += yIncr;
 			}
-			if (!dive() && yPos > (moveFrameHeight / 2) - ySize) {
-				yPos -= yIncr;
-			}
 		}
-    	
- 
-    	
     	//System.out.println("Bird's y-position: " + yPos); //For testing to see that value was updating
     	return true;
     }

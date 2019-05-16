@@ -13,7 +13,7 @@ public class ModelFoodGame {
     
     private static final int EDIBLEFOODCOUNT = 3; // determines how many edible food objects will exist at any one time
     private static final int NONEDIBLECOUNT = 3; // determines how many non-edible food objects will exist at any one time
-    private static final int SCROLLSPEED = 8; // determines how fast the player bird moves through the environment (how fast food, background moves back)
+    private static final int SCROLLSPEED = 6; // determines how fast the player bird moves through the environment (how fast food, background moves back)
     
     public ModelFoodGame(int frameWidth, int frameHeight, GameState gs) {//, PlayableBird bird) {//, Foe foe) {//, int imgWidth, int imgHeight){
     	this.gs = gs;

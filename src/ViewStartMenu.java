@@ -48,39 +48,5 @@ public class ViewStartMenu extends JPanel{
 
         this.add(background);
 	}
-    
-    /*public void paint(Graphics g) {
-    	super.paintComponent(g);
-    	g.drawImage(background.image, 0, 0, this);
-    }*/
-    
-//    ViewStartMenu(){
-//        //frame.getContentPane().add();
-//        frame.setBackground(Color.cyan);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setTitle("Estuary Extravaganza");
-//        frame.setSize(frameWidth, frameHeight);
-//
-//        panel.add(ospreyButton);
-//        ospreyButton.setBounds(0, 0, 75, 25);
-//        panel.add(clapperButton);
-//        clapperButton.setBounds(50, 0, 75, 25);
-//
-//        frame.getContentPane().add(panel);
-//
-//        frame.setUndecorated(true);
-//        frame.setVisible(true);
-//        frame.setFocusable(true);
-//    }
-
-//    public void checkGameState(){
-//        if(gs.equals(GameState.FOODGAME)){
-//            frame.setVisible(false);
-//        }
-//    }
-//
-//    public static void main(String[] args) {
-//        Controller control = new Controller();
-//    }
 
 }

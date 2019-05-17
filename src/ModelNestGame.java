@@ -6,7 +6,7 @@ class ModelNestGame{
     private int frameHeight;
     private DropBird  dropBird;
     int nestTop;
-    int sticksLeft = 10;
+    int sticksAvalible = 10;
     int score = 1;
     
     /*
@@ -35,7 +35,7 @@ class ModelNestGame{
     		}
     	}
     	dropBird.score = score;
-    	if(dropBird.stickList.size() >= 10) {
+    	if(dropBird.stickList.size() >= sticksAvalible) {
     		this.gs = GameState.NESTQUIZ;
     	}
     }
@@ -62,5 +62,9 @@ class ModelNestGame{
      */
     public GameState getState() {
     	return gs;
+    }
+    
+    public void newSticks() {
+    	sticksAvalible+=5;
     }
 }

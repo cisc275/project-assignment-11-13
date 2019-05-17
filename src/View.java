@@ -78,8 +78,8 @@ public class View extends JPanel {
 	    };
 	    ActionListener incorrect = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("Correct");
-	    		gs = GameState.NESTGAME;
+	    		System.out.println("incorrect");
+	    		gs = GameState.SCOREBOARD;
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };

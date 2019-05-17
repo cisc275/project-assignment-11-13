@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class ViewNestQuiz extends JPanel{
     //Game state attributes
     String birdType;
-    //GameState gs = GameState.STARTMENU;
+    GameState gs = GameState.NESTGAME;
 
     //Screen and frame construction attributes
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

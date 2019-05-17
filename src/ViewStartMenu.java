@@ -39,7 +39,7 @@ public class ViewStartMenu extends JPanel{
     	clapperButton.setContentAreaFilled(false);
     
     	
-        textLabel = new JLabel(text);
+       textLabel = new JLabel(text);
         
         background = new JLabel(new ImageIcon("ProjectPics/MainScreen.jpg"));
         background.setLayout(new FlowLayout());

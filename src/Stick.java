@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Stick extends GameObject {
 	int speedFalling = 20;
 	boolean isFalling = false;
@@ -33,18 +35,21 @@ public class Stick extends GameObject {
 	 * Checks for collision, and registers if it is 
 	 * at the top of the nest
 	 */
-	public void move(int topStickXPos, int topStickYPos){
+	public void move(LinkedList<Stick> stickList){
 		if(isFalling == false) {
 			return;
 		}
 		yPos += speedFalling;
-		if( yPos >= frameHeight - ySize - (ySize* droppedSticks)) {
-			System.out.println(yPos + " " + frameHeight+ " " + ySize + " " + droppedSticks);
+		if( yPos >= frameHeight - ySize) {
 			isFalling = false;
 		}
-		
-	
-		
+		for(GameObject o : stickList) {
+			if( !this.equals(o)) {
+				if(this.collidesWith(o)) {
+					isFalling = false;
+				}
+			}
+		}
 		return;
 	}
 

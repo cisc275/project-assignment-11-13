@@ -20,13 +20,20 @@ public class ViewNestGame extends JPanel {
     BufferedImage stickImg;
     String stickFile = "ProjectPics/Stick.png";
     DropBird dropBird;
-
+    JLabel ScoreBoard;
+    JLabel SticksLeft;
+    JLabel scoreLabel;
+    int score;
 
 
 
 
     public ViewNestGame(){
     	background = new Background("ProjectPics/BackgroundNestGame.jpg");
+    	scoreLabel = new JLabel("Score: 0");
+    	scoreLabel.setBounds(10, 10, 100, 50);
+
+ 
     }
 
     public void addObjects(ArrayList<GameObject> objects) {
@@ -39,6 +46,7 @@ public class ViewNestGame extends JPanel {
     	for(GameObject o : objects) {
     		dropBird = (DropBird) o;
     	}
+    	score = dropBird.score;
     	this.repaint();
     	return;
     }
@@ -46,9 +54,9 @@ public class ViewNestGame extends JPanel {
 
 
     public void paint(Graphics g){
-    	System.out.println("The picFile is" + background.picFile);
-    	g.drawImage(background.image,  0,  0,  this);
-        g.drawImage(dropBird.image, dropBird.getxPos(), dropBird.getyPos(), Color.cyan, this);
+    	g.drawImage(background.image, 0, 0, this);
+    	scoreLabel.setText("Score: " + score);
+    	g.drawImage(dropBird.image, dropBird.getxPos(), dropBird.getyPos(), Color.cyan, this);
         for(Stick s: dropBird.stickList) {
         	g.drawImage(s.image, s.getxPos(), s.getyPos(), Color.cyan, this);
         }

@@ -3,7 +3,8 @@ public enum GameState {
 	NESTGAME("NestGame"),
 	MIGRATIONGAME("MigrationGame"),
 	STARTMENU("start"),
-	SCOREBOARD("score");
+	SCOREBOARD("score"),
+	NESTQUIZ("NestQuiz");
 	
 	
 	private String name = null;

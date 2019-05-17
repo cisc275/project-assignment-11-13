@@ -21,7 +21,7 @@ public class View extends JPanel {
     ViewStartMenu menu;
     ViewFoodGame food;
     ViewNestGame nest;
-    
+    ViewNestQuiz nestQuiz;
     GameState gs;
     
     
@@ -69,13 +69,30 @@ public class View extends JPanel {
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
+	    ActionListener correct = new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Correct");
+	    		gs = GameState.NESTGAME;
+	    		cardLayout.next(frame.getContentPane());
+	    	}
+	    };
+	    ActionListener incorrect = new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Correct");
+	    		gs = GameState.NESTGAME;
+	    		cardLayout.next(frame.getContentPane());
+	    	}
+	    };
+	    
 	    
 	    menu = new ViewStartMenu(osp, clap,  "Select Bird:");
 	    food = new ViewFoodGame();
 	    nest = new ViewNestGame();
+	    nestQuiz = new ViewNestQuiz(correct, incorrect, "Nest quiz : ");
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
 	    frame.getContentPane().add(nest);
+	    frame.getContentPane().add(nestQuiz);
 	    frame.setVisible(true);
     }
     
@@ -158,7 +175,6 @@ public class View extends JPanel {
         	break;
         case NESTGAME:
         	nest.update(objects);
-        	System.out.println(objects.size());
         	break;
         default:
         	break;

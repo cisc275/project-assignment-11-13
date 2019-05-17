@@ -32,7 +32,6 @@ public class DropBird extends Animal {
     public void dropStick(){
     	if(droppedSticks > 0) {								//check if any sticks have been dropped
     		if(stickList.getLast().isFalling == true) {		//prevent a drop until the stick has reached rest
-    			System.out.println("No can do brochaco");
     			return;
     		}
     	}

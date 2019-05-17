@@ -21,8 +21,7 @@ public class ModelFoodGame {
         this.frameHeight = frameHeight;
         mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
         this.foe = new Foe("ProjectPics/Eagle.png", "Eagle", frameWidth, frameHeight);
-        //time = 1000;
-        time = 1;
+        time = 1000;
         consumables = new ArrayList<Food>();
         createConsumables();
     }

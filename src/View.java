@@ -22,6 +22,7 @@ public class View extends JPanel {
     ViewFoodGame food;
     ViewNestGame nest;
     ViewNestQuiz nestQuiz;
+    ViewFoodQuiz foodQuiz;
     GameState gs;
     
     
@@ -78,8 +79,8 @@ public class View extends JPanel {
 	    };
 	    ActionListener incorrect = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("incorrect");
 	    		gs = GameState.SCOREBOARD;
+	    		System.out.println("Incorrect");
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
@@ -89,8 +90,10 @@ public class View extends JPanel {
 	    food = new ViewFoodGame();
 	    nest = new ViewNestGame();
 	    nestQuiz = new ViewNestQuiz(correct, incorrect, "Nest quiz : ");
+	    foodQuiz = new ViewFoodQuiz(correct, incorrect, "Food quiz: ");
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
+	    frame.getContentPane().add(foodQuiz);
 	    frame.getContentPane().add(nest);
 	    frame.getContentPane().add(nestQuiz);
 	    frame.setVisible(true);

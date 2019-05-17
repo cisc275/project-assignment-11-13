@@ -6,7 +6,8 @@ class ModelNestGame{
     private int frameHeight;
     private DropBird  dropBird;
     int nestTop;
-    int topStick_xPos;
+    int sticksLeft = 10;
+    int score = 1;
     
     /*
      * Constructor gives the model the screen dimesnions, gamestate and creates the dropbird
@@ -26,6 +27,17 @@ class ModelNestGame{
     public void update(GameState gs){
     	this.gs = gs;
     	dropBird.move(frameWidth, frameHeight);
+    	for(Stick s : dropBird.stickList) {
+    		if(!s.isFalling) {
+    			if(score < (1 +  (frameHeight - s.yPos)/ s.ySize)){
+    				score = (1 + (frameHeight - s.yPos)/ s.ySize);
+    			}
+    		}
+    	}
+    	dropBird.score = score;
+    	if(dropBird.stickList.size() >= 10) {
+    		this.gs = GameState.NESTQUIZ;
+    	}
     }
     
     /*

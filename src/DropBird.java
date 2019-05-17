@@ -8,6 +8,7 @@ public class DropBird extends Animal {
     LinkedList<Stick> stickList = new LinkedList<Stick>();
     int frameHeight;
     boolean nestStarted = false;
+    int score;
     
 
 
@@ -20,6 +21,7 @@ public class DropBird extends Animal {
         yPos = 10;
         xSize = 400;
         this.image = this.createImage(picFile);
+        score = 0;
     }
 
     /*
@@ -52,7 +54,7 @@ public class DropBird extends Animal {
     public void move(int frameWidth, int frameHeight) {
     	if(droppedSticks > 0) {
 	    	for(Stick s : stickList) {
-	    		s.move(topStick.getxPos(), topStick.getyPos());
+	    		s.move(stickList);
 	    	}
     	}
 

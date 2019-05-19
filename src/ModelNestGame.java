@@ -7,7 +7,7 @@ class ModelNestGame{
     private DropBird  dropBird;
     int nestTop;
     int sticksAvalible = 10;
-    int score = 1;
+    private static int score = 1;
     
     /*
      * Constructor gives the model the screen dimesnions, gamestate and creates the dropbird
@@ -25,6 +25,7 @@ class ModelNestGame{
      * so their move method is called in the dropbrid move method
      */
     public void update(GameState gs){
+    	System.out.println(gs);
     	this.gs = gs;
     	dropBird.move(frameWidth, frameHeight, sticksAvalible);
     	for(Stick s : dropBird.stickList) {
@@ -65,7 +66,11 @@ class ModelNestGame{
     	return gs;
     }
     
+    
     public void newSticks() {
     	sticksAvalible+=5;
+	}
+    public static int getScore() {
+    	return score;
     }
 }

@@ -36,8 +36,6 @@ public class ViewNestGame extends JPanel {
     public ViewNestGame(){
     	background = new Background("ProjectPics/BackgroundNestGame.jpg");
     	
-
- 
     }
 
     public void addObjects(ArrayList<GameObject> objects) {

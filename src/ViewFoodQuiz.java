@@ -72,7 +72,6 @@ public class ViewFoodQuiz extends JPanel{
         background = new JLabel(new ImageIcon("ProjectPics/FoodQuizBackground.jpg"));
         background.setLayout(new FlowLayout());
         background.add(question);
-        //background.add(question);
         background.add(optionA);
         background.add(optionB);
         background.add(optionC);

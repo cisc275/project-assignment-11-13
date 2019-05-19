@@ -23,6 +23,7 @@ public class View extends JPanel {
     ViewNestGame nest;
     ViewNestQuiz nestQuiz;
     ViewFoodQuiz foodQuiz;
+    ViewScoreboard scoreboard;
     GameState gs;
     
     
@@ -68,8 +69,10 @@ public class View extends JPanel {
 	    		System.out.println("Clapper Rail");
 	    		gs = GameState.NESTGAME;
 	    		cardLayout.next(frame.getContentPane());
+	    		//cardLayout.next(frame.getContentPane());
 	    	}
 	    };
+	    
 	    ActionListener correct = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Correct");
@@ -80,7 +83,7 @@ public class View extends JPanel {
 	    			// TODO Auto-generated catch block
 	    			e1.printStackTrace();
 	    		}
-	    		gs = GameState.NESTGAME;
+	    		gs = GameState.SCOREBOARD;
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
@@ -100,16 +103,19 @@ public class View extends JPanel {
 	    };
 	    
 	    
+	    
 	    menu = new ViewStartMenu(osp, clap,  "Select Bird:");
 	    food = new ViewFoodGame();
 	    nest = new ViewNestGame();
-	    nestQuiz = new ViewNestQuiz(correct, incorrect, "Nest quiz : ");
-	    foodQuiz = new ViewFoodQuiz(correct, incorrect, "Food quiz: ");
+	    nestQuiz = new ViewNestQuiz(incorrect, correct, "Nest quiz : ");
+	    //foodQuiz = new ViewFoodQuiz(incorrect, correct, "Food quiz: ");
+	    scoreboard = new ViewScoreboard();
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
-	    frame.getContentPane().add(foodQuiz);
+	    //frame.getContentPane().add(foodQuiz);
 	    frame.getContentPane().add(nest);
 	    frame.getContentPane().add(nestQuiz);
+	    frame.getContentPane().add(scoreboard);
 	    frame.setVisible(true);
     }
     
@@ -178,7 +184,6 @@ public class View extends JPanel {
     }
     
     public void update(ArrayList<GameObject> objects, GameState gs){
-    	//System.out.println("view: " + this.gs);
     	//check for change of gameState
     	if (this.gs != gs)
     		cardLayout.next(frame.getContentPane());

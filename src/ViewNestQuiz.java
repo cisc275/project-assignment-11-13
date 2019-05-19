@@ -15,122 +15,103 @@ import java.io.IOException;
 public class ViewNestQuiz extends JPanel{
     //Game state attributes
     String birdType;
-    GameState gs = GameState.NESTGAME;
+    //GameState gs = GameState.NESTGAME;
 
     //Screen and frame construction attributes
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     JFrame frame = new JFrame();
     final static int frameWidth = (int) screenSize.getWidth();
     final static int frameHeight = (int) screenSize.getHeight();
+    final static int buttonWidth = 100;
+    final static int buttonHeight = 40;
     //JPanel panel = new JPanel();
 
     //Buttons
-    JButton question, optionA, optionB, optionC, optionD;// = new JButton("Osprey");
-    BufferedImage greenCheck, redX;
-    JLabel textLabel;
+    JButton optionA, optionB, optionC, optionD;// = new JButton("Osprey");
+    JLabel question;
     JLabel background;
-    Graphics g;
+    JLabel answer;
+    
+    BufferedImage redX;
+    BufferedImage greenCheck;
     
     boolean isAnswered = false;
     boolean isCorrect;
 
     ViewNestQuiz(ActionListener incorrect, ActionListener correct , String text) {
-		//JButton buttonNext = new JButton("next");
-        //buttonNext.addActionListener(alNext);
-    	
-    	Border line = new LineBorder(Color.DARK_GRAY, 5);
+    	Border line = new LineBorder(Color.WHITE, 5);
     	Border margin = new EmptyBorder(5, 15, 5, 15);
     	Border compound = new CompoundBorder(line, margin);
     	
-    	question = new JButton(new ImageIcon("ProjectPics/NestQuizQuestion.PNG"));
-    	question.setBorderPainted(false);
-    	question.setFocusPainted(false);
-    	question.setContentAreaFilled(false);
-    	
     	optionA = new JButton("To attract mates");
     	optionA.addActionListener(correct);
-      	optionA.setBorder(compound);
-    	optionA.setFont(new Font(null, Font.BOLD, 18));
-    	optionA.setForeground(Color.DARK_GRAY);
+    	optionA.setFocusPainted(false);
+    	optionA.setBorder(compound);
+    	//optionA.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+    	optionA.setFont(new Font(null, Font.BOLD, 12));
+    	optionA.setForeground(Color.WHITE);
     	
     	optionB = new JButton("To protect against flood waters");
     	optionB.addActionListener(incorrect);
     	optionB.setFocusPainted(false);
-     	optionB.setBorder(compound);
-    	optionB.setFont(new Font(null, Font.BOLD, 18));
-    	optionB.setForeground(Color.DARK_GRAY);
+    	optionB.setBorder(compound);
+    	//optionB.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+    	optionB.setFont(new Font(null, Font.BOLD, 12));
+    	optionB.setForeground(Color.WHITE);
     	
-    	optionC = new JButton("To scare off other Clapper Rails");
+    	optionC = new JButton("To scare off other clapper rails");
     	optionC.addActionListener(incorrect);
     	optionC.setFocusPainted(false);
-     	optionC.setBorder(compound);
-    	optionC.setFont(new Font(null, Font.BOLD, 18));
-    	optionC.setForeground(Color.DARK_GRAY);
+    	optionC.setBorder(compound);
+    	//optionC.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+    	optionC.setFont(new Font(null, Font.BOLD, 12));
+    	optionC.setForeground(Color.WHITE);
     	
-    	optionD = new JButton( "To keep eggs out of salt water");
+    	optionD = new JButton("To keep the eggs away from water");
     	optionD.addActionListener(incorrect);
     	optionD.setFocusPainted(false);
-     	optionD.setBorder(compound);
-    	optionD.setFont(new Font(null, Font.BOLD, 18));
-    	optionD.setForeground(Color.DARK_GRAY);
-    	
-    	greenCheck =  createImage("ProjectPics/correct.png");
-    	
-    	redX =  createImage("ProjectPics/incorrect.png");
+    	optionD.setBorder(compound);
+    	//optionD.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+    	optionD.setFont(new Font(null, Font.BOLD, 12));
+    	optionD.setForeground(Color.WHITE);
     
     	
-    	textLabel = new JLabel(text);
+    	question = new JLabel("Why do clapper rails build tall nests?");
+    	question.setForeground(Color.WHITE);
+    	question.setFont(new Font(null, Font.BOLD, 24));
+    	
         
-        background = new JLabel(new ImageIcon("ProjectPics/NestGameBackgroud.jpg"));
+        background = new JLabel(new ImageIcon("ProjectPics/NestQuizBackground.jpg"));
         background.setLayout(new FlowLayout());
         background.add(question);
+        //background.add(question);
         background.add(optionA);
         background.add(optionB);
         background.add(optionC);
         background.add(optionD);
-        
-        
-        System.out.println("ViewNestQuiz accessed");
 
 
         this.add(background);
-	}
+}
+    
     
     public void setAnswer(boolean correct) {
-    	System.out.println("setAnswer method called'");
-    	isAnswered = true;
-    	if(correct == true) {
-    		isCorrect = true;
-        }else {
-    		isCorrect = false;
+    	System.out.println("Set answer accessed");
+    	if(correct == true) {												//correct answer
+    		answer = new JLabel("Correct! + 5 points!");
+    		answer.setForeground(Color.GREEN);
+    		answer.setFont(new Font(null, Font.BOLD, 24));
+        }else {																//incorrect answer
+        	answer = new JLabel("Incorrect, please try again");
+        	answer.setForeground(Color.RED);
+        	answer.setFont(new Font(null, Font.BOLD, 24));
        	}
-    	this.repaint();
+    	background.add(answer);
+        this.add(background);
        	return;
     }
     
     
-    public void paint(Graphics g) {
-    	System.out.println("viewNestGame paint method called'");
-    	if(isAnswered = true) {
-    		if(isCorrect = true) {
-    			g.drawImage(greenCheck, 200, 200, this);
-    		}else {
-    	    	g.drawImage(redX, 200, 200, this);
-    		}
-    	}
-    }
-    
-    
-    public BufferedImage createImage(String path) {
-        BufferedImage bufferedImage;
-        try {
-            bufferedImage = ImageIO.read(new File(path)); //Utilizes the path name
-            return bufferedImage;
-        } catch (IOException e) {
-            e.printStackTrace(); 
-        }
-        return null;
-    }
     
  }
     

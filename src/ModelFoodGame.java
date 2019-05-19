@@ -9,7 +9,7 @@ public class ModelFoodGame {
     private Foe foe;
     private int time;
     private Collection<Food> consumables;
-    private int score;
+    private static int score;
     
     private static final int EDIBLEFOODCOUNT = 3; // determines how many edible food objects will exist at any one time
     private static final int NONEDIBLECOUNT = 3; // determines how many non-edible food objects will exist at any one time
@@ -56,6 +56,7 @@ public class ModelFoodGame {
     	time--;
     	if (time < 0) {
     		this.gs = GameState.NESTGAME;
+    		System.out.println("Gamestate to be changed");
     	}
     	System.out.println("Score: " + score);
     }
@@ -77,5 +78,9 @@ public class ModelFoodGame {
     	for(int i = 0; i < NONEDIBLECOUNT; i++) {
     		consumables.add(new NonEdibleFood(frameWidth, frameHeight));
     	}
+    }
+    
+    public static int getScore() {
+    	return score;
     }
 }

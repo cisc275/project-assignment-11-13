@@ -23,6 +23,7 @@ public class View extends JPanel {
     ViewNestGame nest;
     ViewNestQuiz nestQuiz;
     ViewFoodQuiz foodQuiz;
+    ViewScoreboard scoreboard;
     GameState gs;
     
     
@@ -89,13 +90,15 @@ public class View extends JPanel {
 	    menu = new ViewStartMenu(osp, clap,  "Select Bird:");
 	    food = new ViewFoodGame();
 	    nest = new ViewNestGame();
-	    nestQuiz = new ViewNestQuiz(correct, incorrect, "Nest quiz : ");
-	    foodQuiz = new ViewFoodQuiz(correct, incorrect, "Food quiz: ");
+	    nestQuiz = new ViewNestQuiz(incorrect, correct, "Nest quiz : ");
+	    foodQuiz = new ViewFoodQuiz(incorrect, correct, "Food quiz: ");
+	    scoreboard = new ViewScoreboard();
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
 	    frame.getContentPane().add(foodQuiz);
 	    frame.getContentPane().add(nest);
 	    frame.getContentPane().add(nestQuiz);
+	    frame.getContentPane().add(scoreboard);
 	    frame.setVisible(true);
     }
     

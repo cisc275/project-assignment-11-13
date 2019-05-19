@@ -7,7 +7,7 @@ class ModelNestGame{
     private DropBird  dropBird;
     int nestTop;
     int sticksLeft = 10;
-    int score = 1;
+    private static int score = 1;
     
     /*
      * Constructor gives the model the screen dimesnions, gamestate and creates the dropbird
@@ -62,5 +62,9 @@ class ModelNestGame{
      */
     public GameState getState() {
     	return gs;
+    }
+    
+    public static int getScore() {
+    	return score;
     }
 }

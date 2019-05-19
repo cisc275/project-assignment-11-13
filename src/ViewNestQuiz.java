@@ -1,4 +1,9 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,54 +18,61 @@ public class ViewNestQuiz extends JPanel{
     JFrame frame = new JFrame();
     final static int frameWidth = (int) screenSize.getWidth();
     final static int frameHeight = (int) screenSize.getHeight();
+    final static int buttonWidth = 100;
+    final static int buttonHeight = 40;
     //JPanel panel = new JPanel();
 
     //Buttons
-    JButton question, optionA, optionB, optionC, optionD;// = new JButton("Osprey");
-    JLabel textLabel;
+    JButton optionA, optionB, optionC, optionD;// = new JButton("Osprey");
+    JLabel question;
     JLabel background;
 
     ViewNestQuiz(ActionListener incorrect, ActionListener correct , String text) {
-		//JButton buttonNext = new JButton("next");
-        //buttonNext.addActionListener(alNext);
-    	question = new JButton(new ImageIcon("ProjectPics/NestQuizQuestion.PNG"));
-    	question.setBorderPainted(false);
-    	question.setFocusPainted(false);
-    	question.setContentAreaFilled(false);
+    	Border line = new LineBorder(Color.WHITE, 5);
+    	Border margin = new EmptyBorder(5, 15, 5, 15);
+    	Border compound = new CompoundBorder(line, margin);
     	
-    	optionA = new JButton(new ImageIcon("ProjectPics/NGa.PNG"));
+    	optionA = new JButton("To attract mates");
     	optionA.addActionListener(correct);
-    	optionA.setBorderPainted(false);
     	optionA.setFocusPainted(false);
-    	optionA.setContentAreaFilled(false);
+    	optionA.setBorder(compound);
+    	//optionA.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+    	optionA.setFont(new Font(null, Font.BOLD, 12));
+    	optionA.setForeground(Color.WHITE);
     	
-    	optionB = new JButton( new ImageIcon("ProjectPics/NGb.PNG"));
+    	optionB = new JButton("To protect against flood waters");
     	optionB.addActionListener(incorrect);
     	optionB.setFocusPainted(false);
-    	optionB.setBorderPainted(false);
-    	optionB.setFocusPainted(false);
-    	optionB.setContentAreaFilled(false);
+    	optionB.setBorder(compound);
+    	//optionB.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+    	optionB.setFont(new Font(null, Font.BOLD, 12));
+    	optionB.setForeground(Color.WHITE);
     	
-    	optionC = new JButton( new ImageIcon("ProjectPics/NGc.PNG"));
+    	optionC = new JButton("To scare off other clapper rails");
     	optionC.addActionListener(incorrect);
     	optionC.setFocusPainted(false);
-    	optionC.setBorderPainted(false);
-    	optionC.setFocusPainted(false);
-    	optionC.setContentAreaFilled(false);
+    	optionC.setBorder(compound);
+    	//optionC.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+    	optionC.setFont(new Font(null, Font.BOLD, 12));
+    	optionC.setForeground(Color.WHITE);
     	
-    	optionD = new JButton( new ImageIcon("ProjectPics/NGd.PNG"));
+    	optionD = new JButton("To keep the eggs away from water");
     	optionD.addActionListener(incorrect);
     	optionD.setFocusPainted(false);
-    	optionD.setBorderPainted(false);
-    	optionD.setFocusPainted(false);
-    	optionD.setContentAreaFilled(false);
+    	optionD.setBorder(compound);
+    	//optionD.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
+    	optionD.setFont(new Font(null, Font.BOLD, 12));
+    	optionD.setForeground(Color.WHITE);
     
     	
-    	textLabel = new JLabel(text);
+    	question = new JLabel("Why do clapper rails build tall nests?");
+    	question.setForeground(Color.WHITE);
+    	question.setFont(new Font(null, Font.BOLD, 24));
         
-        background = new JLabel(new ImageIcon("ProjectPics/NestGameBackgroud.jpg"));
+        background = new JLabel(new ImageIcon("ProjectPics/NestQuizBackground.jpg"));
         background.setLayout(new FlowLayout());
         background.add(question);
+        //background.add(question);
         background.add(optionA);
         background.add(optionB);
         background.add(optionC);

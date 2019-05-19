@@ -29,13 +29,14 @@ public class ViewNestGame extends JPanel {
     JLabel SticksLeft;
     JLabel scoreLabel;
     int score;
+    GameObject tutorial ;
 
 
 
 
     public ViewNestGame(){
     	background = new Background("ProjectPics/BackgroundNestGame.jpg");
-    	
+    	tutorial = new GameObject("ProjectPics/spacebar.png");
     }
 
     public void addObjects(ArrayList<GameObject> objects) {
@@ -64,8 +65,16 @@ public class ViewNestGame extends JPanel {
         g.setFont(new Font("TimesRoman", Font.PLAIN, 60));
         g.drawString("Score: " + score, 1500, 100);
         g.drawString(dropBird.sticksAvalible - dropBird.droppedSticks + " sticks left", 1500, 200);
-        //if(dropBird.outOfSticks == true) {
-        	
-//        }
+        if(dropBird.stickList.size()  == 0) {
+        	g.setFont(new Font("SansSerif", Font.BOLD, 60));
+        	g.setColor(Color.WHITE);
+        	g.drawString("Press                      to drop sticks", 400, 550);
+    		g.drawImage(tutorial.image, 600 , 450, this);
+    	}else if(dropBird.stickList.size()  == 1 ) {
+    		g.setFont(new Font("SansSerif", Font.BOLD, 60));
+        	g.setColor(Color.WHITE);
+        	g.drawString("Stack the tower as high as you can to avoid high flood waters", 100, 1000);
+    	}
+        
     }
 }

@@ -30,7 +30,8 @@ public class ViewNestQuiz extends JPanel{
     JButton optionA, optionB, optionC, optionD;// = new JButton("Osprey");
     JLabel question;
     JLabel background;
-    JLabel answer;
+    JLabel answer, response;
+    String responseMessege = " ";
     
     BufferedImage redX;
     BufferedImage greenCheck;
@@ -39,6 +40,7 @@ public class ViewNestQuiz extends JPanel{
     boolean isCorrect;
 
     ViewNestQuiz(ActionListener incorrect, ActionListener correct , String text) {
+    	
     	Border line = new LineBorder(Color.WHITE, 5);
     	Border margin = new EmptyBorder(5, 15, 5, 15);
     	Border compound = new CompoundBorder(line, margin);
@@ -49,7 +51,7 @@ public class ViewNestQuiz extends JPanel{
     	optionA.setBorder(compound);
     	//optionA.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionA.setFont(new Font(null, Font.BOLD, 12));
-    	optionA.setForeground(Color.WHITE);
+    	optionA.setForeground(Color.BLACK);
     	
     	optionB = new JButton("To protect against flood waters");
     	optionB.addActionListener(incorrect);
@@ -57,7 +59,7 @@ public class ViewNestQuiz extends JPanel{
     	optionB.setBorder(compound);
     	//optionB.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionB.setFont(new Font(null, Font.BOLD, 12));
-    	optionB.setForeground(Color.WHITE);
+    	optionB.setForeground(Color.BLACK);
     	
     	optionC = new JButton("To scare off other clapper rails");
     	optionC.addActionListener(incorrect);
@@ -65,7 +67,7 @@ public class ViewNestQuiz extends JPanel{
     	optionC.setBorder(compound);
     	//optionC.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionC.setFont(new Font(null, Font.BOLD, 12));
-    	optionC.setForeground(Color.WHITE);
+    	optionC.setForeground(Color.BLACK);
     	
     	optionD = new JButton("To keep the eggs away from water");
     	optionD.addActionListener(incorrect);
@@ -73,43 +75,53 @@ public class ViewNestQuiz extends JPanel{
     	optionD.setBorder(compound);
     	//optionD.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionD.setFont(new Font(null, Font.BOLD, 12));
-    	optionD.setForeground(Color.WHITE);
+    	optionD.setForeground(Color.BLACK);
     
     	
     	question = new JLabel("Why do clapper rails build tall nests?");
-    	question.setForeground(Color.WHITE);
+    	question.setForeground(Color.BLACK);
     	question.setFont(new Font(null, Font.BOLD, 24));
     	
         
+    	
+    	
         background = new JLabel(new ImageIcon("ProjectPics/NestQuizBackground.jpg"));
         background.setLayout(new FlowLayout());
         background.add(question);
-        //background.add(question);
         background.add(optionA);
         background.add(optionB);
         background.add(optionC);
         background.add(optionD);
-
-
         this.add(background);
 }
     
-    
+    /*
     public void setAnswer(boolean correct) {
     	System.out.println("Set answer accessed");
     	if(correct == true) {												//correct answer
-    		answer = new JLabel("Correct! + 5 points!");
-    		answer.setForeground(Color.GREEN);
-    		answer.setFont(new Font(null, Font.BOLD, 24));
+    		isCorrect = true;
+    		responseMessege = "CORRECT!  +5 points";
         }else {																//incorrect answer
-        	answer = new JLabel("Incorrect, please try again");
-        	answer.setForeground(Color.RED);
-        	answer.setFont(new Font(null, Font.BOLD, 24));
+        	isCorrect = false;
+        	responseMessege = "incorrect,  try again";
        	}
-    	background.add(answer);
+    	question = new JLabel(responseMessege);
+    	question.setForeground(Color.BLACK);
+    	question.setFont(new Font(null, Font.BOLD, 24));
+    	
+    	background = new JLabel(new ImageIcon("ProjectPics/NestQuizBackground.jpg"));
+        background.setLayout(new FlowLayout());
+        background.add(question);
+        background.add(optionA);
+        background.add(optionB);
+        background.add(optionC);
+        background.add(optionD);
+        background.add(response);
         this.add(background);
        	return;
     }
+    */
+    
     
     
     

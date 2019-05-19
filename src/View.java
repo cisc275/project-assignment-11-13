@@ -69,14 +69,14 @@ public class View extends JPanel {
 	    		System.out.println("Clapper Rail");
 	    		gs = GameState.NESTGAME;
 	    		cardLayout.next(frame.getContentPane());
-	    		//cardLayout.next(frame.getContentPane());
+	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
 	    
 	    ActionListener correct = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Correct");
-	    		nestQuiz.setAnswer(true);
+	    		//nestQuiz.setAnswer(true);
 	    	 	try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
@@ -90,7 +90,7 @@ public class View extends JPanel {
 	    ActionListener incorrect = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Incorrect");
-	    		nestQuiz.setAnswer(false);
+	    		//nestQuiz.setAnswer(false);
 	    		try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {

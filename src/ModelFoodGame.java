@@ -10,6 +10,7 @@ public class ModelFoodGame {
     private int time;
     private Collection<Food> consumables;
     private static int score;
+    boolean tutorial = true;
     
     private static final int EDIBLEFOODCOUNT = 3; // determines how many edible food objects will exist at any one time
     private static final int NONEDIBLECOUNT = 3; // determines how many non-edible food objects will exist at any one time
@@ -37,6 +38,18 @@ public class ModelFoodGame {
     }
     
     public void update(GameState gs){
+    	if (tutorial == true) {
+    		this.gs = gs;
+        	mainBird.move(frameHeight);
+        	foe.move(frameWidth, frameHeight);
+        	if(mainBird.collidesWith(foe)){
+        		foe.reset(frameWidth, frameHeight);
+        	}
+        	if(mainBird.spacePressed == true) {
+        		tutorial = false;
+        	}
+    	}
+    	else {
     	this.gs = gs;
     	mainBird.move(frameHeight);
     	foe.move(frameWidth, frameHeight);
@@ -51,6 +64,7 @@ public class ModelFoodGame {
     			score += f.getPointValue();
     			f.reset(frameWidth, frameHeight);
     		}
+    	}
     	}
     	
     	time--;

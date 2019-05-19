@@ -26,7 +26,7 @@ class ModelNestGame{
      */
     public void update(GameState gs){
     	this.gs = gs;
-    	dropBird.move(frameWidth, frameHeight);
+    	dropBird.move(frameWidth, frameHeight, sticksAvalible);
     	for(Stick s : dropBird.stickList) {
     		if(!s.isFalling) {
     			if(score < (1 +  (frameHeight - s.yPos)/ s.ySize)){
@@ -36,8 +36,9 @@ class ModelNestGame{
     	}
     	dropBird.score = score;
     	if(dropBird.stickList.size() >= sticksAvalible) {
-    		this.gs = GameState.NESTQUIZ;
+    		this.gs = GameState.SCOREBOARD;
     	}
+    	return;
     }
     
     /*

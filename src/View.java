@@ -73,14 +73,28 @@ public class View extends JPanel {
 	    ActionListener correct = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Correct");
+	    		nestQuiz.setAnswer(true);
+	    	 	try {
+	    			Thread.sleep(1000);
+	    		} catch (InterruptedException e1) {
+	    			// TODO Auto-generated catch block
+	    			e1.printStackTrace();
+	    		}
 	    		gs = GameState.NESTGAME;
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
 	    ActionListener incorrect = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		gs = GameState.SCOREBOARD;
 	    		System.out.println("Incorrect");
+	    		nestQuiz.setAnswer(false);
+	    		try {
+	    			Thread.sleep(1000);
+	    		} catch (InterruptedException e1) {
+	    			// TODO Auto-generated catch block
+	    			e1.printStackTrace();
+	    		}
+	    		gs = GameState.SCOREBOARD;
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };

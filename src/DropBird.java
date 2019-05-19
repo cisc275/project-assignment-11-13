@@ -9,6 +9,7 @@ public class DropBird extends Animal {
     int frameHeight;
     boolean nestStarted = false;
     int score;
+    int sticksAvalible;
     
 
 
@@ -50,7 +51,8 @@ public class DropBird extends Animal {
      * then it moves the dropBrid in the x direction, reversing direction if it reaches a 
      * boundary
      */
-    public void move(int frameWidth, int frameHeight) {
+    public void move(int frameWidth, int frameHeight, int sticksAvalible) {
+    	this.sticksAvalible = sticksAvalible;
     	if(droppedSticks > 0) {
 	    	for(Stick s : stickList) {
 	    		s.move(stickList);

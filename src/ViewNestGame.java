@@ -1,5 +1,10 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -20,7 +25,7 @@ public class ViewNestGame extends JPanel {
     BufferedImage stickImg;
     String stickFile = "ProjectPics/Stick.png";
     DropBird dropBird;
-    JLabel ScoreBoard;
+    JButton ScoreBoard;
     JLabel SticksLeft;
     JLabel scoreLabel;
     int score;
@@ -30,8 +35,7 @@ public class ViewNestGame extends JPanel {
 
     public ViewNestGame(){
     	background = new Background("ProjectPics/BackgroundNestGame.jpg");
-    	scoreLabel = new JLabel("Score: 0");
-    	scoreLabel.setBounds(10, 10, 100, 50);
+    	
 
  
     }
@@ -55,10 +59,15 @@ public class ViewNestGame extends JPanel {
 
     public void paint(Graphics g){
     	g.drawImage(background.image, 0, 0, this);
-    	scoreLabel.setText("Score: " + score);
     	g.drawImage(dropBird.image, dropBird.getxPos(), dropBird.getyPos(), Color.cyan, this);
         for(Stick s: dropBird.stickList) {
         	g.drawImage(s.image, s.getxPos(), s.getyPos(), Color.cyan, this);
         }
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 60));
+        g.drawString("Score: " + score, 1500, 100);
+        g.drawString(dropBird.sticksAvalible - dropBird.droppedSticks + " sticks left", 1500, 200);
+        //if(dropBird.outOfSticks == true) {
+        	
+//        }
     }
 }

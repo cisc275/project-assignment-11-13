@@ -163,7 +163,6 @@ public class View extends JPanel {
         	public void keyPressed(KeyEvent e) {
         		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
         			dropBird.dropStick();
-        			System.out.println("space pressed");
         		}
         		
         		else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {

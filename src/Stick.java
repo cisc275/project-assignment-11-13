@@ -41,6 +41,7 @@ public class Stick extends GameObject {
 		}
 		yPos += speedFalling;
 		if( yPos >= frameHeight - ySize) {
+			System.out.println(ySize);
 			isFalling = false;
 		}
 		for(GameObject o : stickList) {

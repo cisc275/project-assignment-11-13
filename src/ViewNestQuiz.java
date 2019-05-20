@@ -51,7 +51,7 @@ public class ViewNestQuiz extends JPanel{
     	optionA.setBorder(compound);
     	//optionA.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionA.setFont(new Font(null, Font.BOLD, 12));
-    	optionA.setForeground(Color.BLACK);
+    	optionA.setForeground(Color.WHITE);
     	
     	optionB = new JButton("To protect against flood waters");
     	optionB.addActionListener(incorrect);
@@ -59,7 +59,7 @@ public class ViewNestQuiz extends JPanel{
     	optionB.setBorder(compound);
     	//optionB.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionB.setFont(new Font(null, Font.BOLD, 12));
-    	optionB.setForeground(Color.BLACK);
+    	optionB.setForeground(Color.WHITE);
     	
     	optionC = new JButton("To scare off other clapper rails");
     	optionC.addActionListener(incorrect);
@@ -67,7 +67,7 @@ public class ViewNestQuiz extends JPanel{
     	optionC.setBorder(compound);
     	//optionC.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionC.setFont(new Font(null, Font.BOLD, 12));
-    	optionC.setForeground(Color.BLACK);
+    	optionC.setForeground(Color.WHITE);
     	
     	optionD = new JButton("To keep the eggs away from water");
     	optionD.addActionListener(incorrect);
@@ -75,11 +75,11 @@ public class ViewNestQuiz extends JPanel{
     	optionD.setBorder(compound);
     	//optionD.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionD.setFont(new Font(null, Font.BOLD, 12));
-    	optionD.setForeground(Color.BLACK);
+    	optionD.setForeground(Color.WHITE);
     
     	
     	question = new JLabel("Why do clapper rails build tall nests?");
-    	question.setForeground(Color.BLACK);
+    	question.setForeground(Color.WHITE);
     	question.setFont(new Font(null, Font.BOLD, 24));
     	
         

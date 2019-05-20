@@ -73,6 +73,35 @@ public class View extends JPanel {
 	    	}
 	    };
 	    
+	    ActionListener correctFood = new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Correct");
+	    		//nestQuiz.setAnswer(true);
+	    	 	try {
+	    			Thread.sleep(1000);
+	    		} catch (InterruptedException e1) {
+	    			// TODO Auto-generated catch block
+	    			e1.printStackTrace();
+	    		}
+	    		gs = GameState.NESTGAME;
+	    		cardLayout.next(frame.getContentPane());
+	    	}
+	    };
+	    ActionListener incorrectFood = new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Incorrect");
+	    		//nestQuiz.setAnswer(false);
+	    		try {
+	    			Thread.sleep(1000);
+	    		} catch (InterruptedException e1) {
+	    			// TODO Auto-generated catch block
+	    			e1.printStackTrace();
+	    		}
+	    		gs = GameState.NESTGAME;
+	    		cardLayout.next(frame.getContentPane());
+	    	}
+	    };
+	    
 	    ActionListener correct = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Correct");
@@ -106,13 +135,13 @@ public class View extends JPanel {
 	    
 	    menu = new ViewStartMenu(osp, clap,  "Select Bird:");
 	    food = new ViewFoodGame();
+	    foodQuiz = new ViewFoodQuiz(incorrectFood, correctFood, "Food quiz: ");
 	    nest = new ViewNestGame();
 	    nestQuiz = new ViewNestQuiz(incorrect, correct, "Nest quiz : ");
-	    //foodQuiz = new ViewFoodQuiz(incorrect, correct, "Food quiz: ");
 	    scoreboard = new ViewScoreboard();
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
-	    //frame.getContentPane().add(foodQuiz);
+	    frame.getContentPane().add(foodQuiz);
 	    frame.getContentPane().add(nest);
 	    frame.getContentPane().add(nestQuiz);
 	    frame.getContentPane().add(scoreboard);

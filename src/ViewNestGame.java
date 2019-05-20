@@ -55,12 +55,11 @@ public class ViewNestGame extends JPanel {
     }
 
 
-
     public void paint(Graphics g){
     	g.drawImage(background.image, 0, 0, this);
-    	g.drawImage(dropBird.image, dropBird.getxPos(), dropBird.getyPos(), Color.cyan, this);
+    	g.drawImage(dropBird.image, dropBird.getxPos(), dropBird.getyPos(), this);
         for(Stick s: dropBird.stickList) {
-        	g.drawImage(s.image, s.getxPos(), s.getyPos(), Color.cyan, this);
+        	g.drawImage(s.image, s.getxPos(), s.getyPos(), this);
         }
         g.setFont(new Font("TimesRoman", Font.PLAIN, 60));
         g.drawString("Score: " + score, 1500, 100);
@@ -73,7 +72,7 @@ public class ViewNestGame extends JPanel {
     	}else if(dropBird.stickList.size()  == 1 ) {
     		g.setFont(new Font("SansSerif", Font.BOLD, 60));
         	g.setColor(Color.WHITE);
-        	g.drawString("Stack the tower as high as you can to avoid high flood waters", 100, 1000);
+        	g.drawString("Stack the tower as high as you can to avoid high flood waters!", 100, 1000);
     	}
         
     }

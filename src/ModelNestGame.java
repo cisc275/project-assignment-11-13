@@ -16,7 +16,7 @@ class ModelNestGame{
     	this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
         this.gs = gs;
-        dropBird = new DropBird("ProjectPics/BirdStick.PNG", "stickbird", frameHeight);
+        dropBird = new DropBird("ProjectPics/ClapperRail.png", "stickbird", frameHeight);
     }
     
 

@@ -44,6 +44,7 @@ public class ModelFoodGame {
     public void update(GameState gs){
     	if (tutorial == true) {
     		this.gs = gs;
+    		time++;
         	mainBird.move(frameHeight);
         	foe.move(frameWidth, frameHeight);
         	if(mainBird.collidesWith(foe)){

@@ -76,4 +76,6 @@ public class PlayableBird extends Animal {
 	void setSpacePressed(boolean space){
     	this.spacePressed = space;
 	}
+	
+	
 }

@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,11 +46,13 @@ public class ViewFoodGame extends JPanel {
 	
 	public void paint(Graphics g) {
 		g.drawImage(background.image, 0, 0, this);
-		g.drawImage(tutorial.image, 300, 0, this);
+		//g.drawImage(tutorial.image, 300, 0, this);
 		for (GameObject go : objects) {
 			g.drawImage(go.image, go.getxPos(), go.getyPos(), this);
 		}
 		g.drawImage(map.map, map.getXPos(), map.getMapYPos(), this);
 		g.drawImage(map.getCurrentMapPath(), map.getXPos(), map.getPathYPos() + map.getPathHeight() - map.getProgress(), this);
+		g.setFont(new Font("Ariel", Font.ITALIC, 40));
+        g.drawString("SCORE: " + objects.get(0).getScore(), 1700, 400);
 	}
 }

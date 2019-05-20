@@ -12,6 +12,9 @@ public class ModelFoodGame {
     private static int score;
     boolean tutorial = true;
     private Minimap map;
+    GameObject tutorialUpDn;
+    GameObject tutorialSpace;
+    GameObject tutorialItems;
     
     private static final int startTime = 1000;
     private static final int EDIBLEFOODCOUNT = 3; // determines how many edible food objects will exist at any one time
@@ -24,8 +27,11 @@ public class ModelFoodGame {
         this.frameHeight = frameHeight;
         mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
         this.foe = new Foe("ProjectPics/Eagle.png", "Eagle", frameWidth, frameHeight);
-        time = startTime;
+        time = startTime+100;
         map = new Minimap("ProjectPics/Map.png", "ProjectPics/MapPath.png", frameWidth, frameHeight);
+        tutorialUpDn = new GameObject("ProjectPics/Food_Instructions_UpDn.png", 200, 10);
+        tutorialSpace = new GameObject("ProjectPics/Food_Instructions_Space.png", 500, 10);
+        tutorialItems = new GameObject("ProjectPics/Food_Instructions_Items.png", 400, 10);
         consumables = new ArrayList<Food>();
         createConsumables();
         score = 0;
@@ -34,54 +40,76 @@ public class ModelFoodGame {
     public ArrayList<GameObject> getObjects(){
     	ArrayList<GameObject> objects = new ArrayList<>();
         objects.add(mainBird);
-        objects.add(foe);
-        for (Food f : consumables) {
-        	objects.add(f);
+        if (tutorial) {
+        	if (time > startTime+25) {
+        		objects.add(tutorialUpDn);
+        	}
+        	else if (time > startTime) {
+        		objects.add(tutorialUpDn);
+        		objects.add(tutorialSpace);
+        	}
+        	else {
+        		time++;
+        		objects.add(tutorialUpDn);
+        		objects.add(tutorialSpace);
+        	}
         }
+        else {
+        	if (time > startTime-100)
+        		objects.add(tutorialItems);
+        	objects.add(foe);
+        	for (Food f : consumables) {
+        		objects.add(f);
+        	}
+        }
+        //objects.add(tutorialUpDn);
         return objects;
     }
     
     public void update(GameState gs){
+    	time--;
     	if (tutorial == true) {
     		this.gs = gs;
-    		time++;
-        	mainBird.move(frameHeight);
-        	foe.move(frameWidth, frameHeight);
-        	if(mainBird.collidesWith(foe)){
-        		foe.reset(frameWidth, frameHeight);
-        	}
-        	if(mainBird.spacePressed == true) {
-        		tutorial = false;
-        	}
+    		mainBird.move(frameHeight);
+    		foe.move(frameWidth, frameHeight);
+    		if(mainBird.collidesWith(foe)){
+    			foe.reset(frameWidth, frameHeight);
+    		}
+    		if(mainBird.spacePressed == true) {
+    			tutorial = false;
+    			time = startTime;
+    		}
+    		map.updateProgress(0);
     	}
     	else {
-    	this.gs = gs;
-    	mainBird.move(frameHeight);
-    	foe.move(frameWidth, frameHeight);
-    	if(mainBird.collidesWith(foe)){
-    		score -= 10;
-    		foe.reset(frameWidth, frameHeight);
-    		System.out.println("ow");
-    	}
-    	for(Food f: consumables) {
-    		f.move(SCROLLSPEED, frameWidth, frameHeight);
-    		if(mainBird.collidesWith(f)) {
-    			score += f.getPointValue();
-    			f.reset(frameWidth, frameHeight);
+    		this.gs = gs;
+    		mainBird.move(frameHeight);
+    		foe.move(frameWidth, frameHeight);
+    		if(mainBird.collidesWith(foe)){
+    			score -= 10;
+    			foe.reset(frameWidth, frameHeight);
+    			System.out.println("ow");
     		}
-    	}
+    		for(Food f: consumables) {
+    			f.move(SCROLLSPEED, frameWidth, frameHeight);
+    			if(mainBird.collidesWith(f)) {
+    				score += f.getPointValue();
+    				f.reset(frameWidth, frameHeight);
+    			}
+    		}
+    		double percentDone = startTime;
+        	percentDone = (startTime-time)/percentDone;
+        	map.updateProgress(percentDone);
+        	mainBird.setScore(score);
     	}
     	
-    	time--;
-    	double percentDone = startTime;
-    	percentDone = (startTime-time)/percentDone;
-    	map.updateProgress(percentDone);
     	
+
     	if (time < 0) {
     		this.gs = GameState.NESTGAME;
-    		System.out.println("Gamestate to be changed");
+    		//System.out.println("Gamestate to be changed");
     	}
-    	System.out.println("Score: " + score);
+    	//System.out.println("Score: " + score);
     }
     
     public GameState getState() {

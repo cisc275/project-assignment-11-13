@@ -13,7 +13,8 @@ public class GameObject {
     int ySize;
     int frameCount;
     BufferedImage image;
-
+    int score;
+    
     GameObject(){}
 
     GameObject(String picFile){
@@ -22,6 +23,14 @@ public class GameObject {
     	//this.frameCount = frameCount;
     }
 
+    GameObject(String picFile, int x, int y){
+    	this.picFile = picFile;
+    	image = createImage(picFile);
+    	this.xPos = x;
+    	this.yPos  = y;
+    	//this.frameCount = frameCount;
+    }
+    
     public String getPicFile() {
     	return picFile;
     }
@@ -40,6 +49,14 @@ public class GameObject {
 
 	public int getySize() {
 		return ySize;
+	}
+	
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 	
 	public boolean collidesWith(GameObject other) {

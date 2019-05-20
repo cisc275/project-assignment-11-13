@@ -31,6 +31,11 @@ public class Controller implements ActionListener, KeyListener {
 					break;
 			}
 			model.update(gs);
+			
+			// One-time insertion of new score into score board
+			if(model.getState().equals(GameState.SCOREBOARD) && !gs.equals(GameState.SCOREBOARD)) {
+				view.scoreboard.insertNewScore();
+			}
 			gs = model.getState();
 			view.update(model.getObjects(), gs);
 		}

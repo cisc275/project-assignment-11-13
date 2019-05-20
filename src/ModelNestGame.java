@@ -22,7 +22,7 @@ class ModelNestGame{
 
     /*
      * update resets the game state, and calls the move method of the dropBird. The stick objects exist in DropBird, 
-     * so their move method is called in the dropbrid move method
+     * so their move method is called in the dropbird move method
      */
     public void update(GameState gs){
     	System.out.println(gs);

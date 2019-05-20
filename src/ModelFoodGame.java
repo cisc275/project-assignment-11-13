@@ -25,6 +25,7 @@ public class ModelFoodGame {
         time = 1000;
         consumables = new ArrayList<Food>();
         createConsumables();
+        score = 0;
     }
 
     public ArrayList<GameObject> getObjects(){

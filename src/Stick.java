@@ -6,6 +6,7 @@ public class Stick extends GameObject {
 	boolean topStickXPos;
 	int droppedSticks = 0;
 	int frameHeight;
+	final int bufferConstant = 50;
 
 
 
@@ -24,7 +25,6 @@ public class Stick extends GameObject {
 		isFalling = true;
 		this.xPos = xPos;
 		this.yPos = yPos;
-		this.topStickXPos = topStickXPos;
 		this.droppedSticks = droppedSticks;
 		return;
 	}
@@ -36,11 +36,12 @@ public class Stick extends GameObject {
 	 * at the top of the nest
 	 */
 	public void move(LinkedList<Stick> stickList){
+		System.out.println(ySize);
 		if(isFalling == false) {
 			return;
 		}
 		yPos += speedFalling;
-		if( yPos >= frameHeight - ySize) {
+		if( yPos >= frameHeight - ySize- bufferConstant) {
 			System.out.println(ySize);
 			isFalling = false;
 		}

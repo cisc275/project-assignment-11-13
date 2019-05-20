@@ -59,7 +59,6 @@ public class GameObject {
 		return score;
 	}
 	
-	public void resize()
 	
 	public boolean collidesWith(GameObject other) {
 		return other.xSize > 0 && other.ySize > 0 && xSize > 0 && ySize > 0

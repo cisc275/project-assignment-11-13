@@ -69,6 +69,7 @@ public class ViewFoodQuiz extends JPanel{
     	question.setForeground(Color.DARK_GRAY);
     	question.setFont(new Font(null, Font.BOLD, 36));
         
+    	
         background = new JLabel(new ImageIcon("ProjectPics/FoodQuizBackground.jpg"));
         background.setLayout(new FlowLayout());
         background.add(question);

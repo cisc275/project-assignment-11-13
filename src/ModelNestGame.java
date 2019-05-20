@@ -30,14 +30,16 @@ class ModelNestGame{
     	dropBird.move(frameWidth, frameHeight, sticksAvalible);
     	for(Stick s : dropBird.stickList) {
     		if(!s.isFalling) {
-    			if(score < (1 +  (frameHeight - s.yPos)/ s.ySize)){
-    				score = (1 + (frameHeight - s.yPos)/ s.ySize);
+    			if(score < (  (frameHeight - s.yPos)/ s.ySize)){
+    				score = ((frameHeight - s.yPos)/ s.ySize);
     			}
     		}
     	}
     	dropBird.score = score;
     	if(dropBird.stickList.size() >= sticksAvalible) {
-    		this.gs = GameState.SCOREBOARD;
+    		if(dropBird.stickList.getLast().isFalling == false) {
+    			this.gs = GameState.SCOREBOARD;
+    		}
     	}
     	return;
     }

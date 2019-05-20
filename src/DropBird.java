@@ -17,7 +17,6 @@ public class DropBird extends Animal {
     	this.name = name;
         this.picFile = picFile;
         this.frameHeight = frameHeight;
-        System.out.println("The frame height is " + frameHeight);
         xPos = 10;
         yPos = 10;
         xSize = 400;
@@ -36,8 +35,8 @@ public class DropBird extends Animal {
     			return;
     		}
     	}
-        xIncr += 2;
-        stickList.add(new Stick(100, 70, frameHeight));
+        xIncr += 6;
+        stickList.add(new Stick(200, 80, frameHeight));
         stickList.getLast().release(xPos, yPos, stickList.getLast().xPos, droppedSticks);
         droppedSticks +=1;
         topStick = stickList.getLast();

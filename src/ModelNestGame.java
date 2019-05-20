@@ -8,6 +8,7 @@ class ModelNestGame{
     int nestTop;
     int sticksAvalible = 10;
     private static int score = 1;
+    int delayTimer = 50;
     
     /*
      * Constructor gives the model the screen dimesnions, gamestate and creates the dropbird
@@ -38,7 +39,12 @@ class ModelNestGame{
     	dropBird.score = score;
     	if(dropBird.stickList.size() >= sticksAvalible) {
     		if(dropBird.stickList.getLast().isFalling == false) {
-    			this.gs = GameState.SCOREBOARD;
+    			if(delayTimer > 0) {
+    				delayTimer--;
+    			}else {
+    				this.gs = GameState.SCOREBOARD;
+    			}
+    			
     		}
     	}
     	return;

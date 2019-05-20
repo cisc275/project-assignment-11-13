@@ -94,36 +94,6 @@ public class ViewNestQuiz extends JPanel{
         background.add(optionD);
         this.add(background);
 }
-    
-    /*
-    public void setAnswer(boolean correct) {
-    	System.out.println("Set answer accessed");
-    	if(correct == true) {												//correct answer
-    		isCorrect = true;
-    		responseMessege = "CORRECT!  +5 points";
-        }else {																//incorrect answer
-        	isCorrect = false;
-        	responseMessege = "incorrect,  try again";
-       	}
-    	question = new JLabel(responseMessege);
-    	question.setForeground(Color.BLACK);
-    	question.setFont(new Font(null, Font.BOLD, 24));
-    	
-    	background = new JLabel(new ImageIcon("ProjectPics/NestQuizBackground.jpg"));
-        background.setLayout(new FlowLayout());
-        background.add(question);
-        background.add(optionA);
-        background.add(optionB);
-        background.add(optionC);
-        background.add(optionD);
-        background.add(response);
-        this.add(background);
-       	return;
-    }
-    */
-    
-    
-    
-    
+ 
  }
     

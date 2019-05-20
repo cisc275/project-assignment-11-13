@@ -23,7 +23,7 @@ public class ViewNestGame extends JPanel {
     
     BufferedImage dropBirdImg;
     BufferedImage stickImg;
-    GameObject smallStick;
+    GameObject scoreBoard;
     String stickFile = "ProjectPics/Stick.png";
     DropBird dropBird;
     JButton ScoreBoard;
@@ -38,8 +38,7 @@ public class ViewNestGame extends JPanel {
     public ViewNestGame(){
     	background = new Background("ProjectPics/BackgroundNestGame.jpg");
     	tutorial = new GameObject("ProjectPics/spacebar.png");
-    	smallStick = new GameObject("ProjectPics/stick.png");
-    	
+    	scoreBoard = new GameObject("ProjectPics/NestScoreBoard.PNG");
     }
 
     public void addObjects(ArrayList<GameObject> objects) {
@@ -64,9 +63,20 @@ public class ViewNestGame extends JPanel {
         for(Stick s: dropBird.stickList) {
         	g.drawImage(s.image, s.getxPos(), s.getyPos(), this);
         }
-        g.setFont(new Font("TimesRoman", Font.PLAIN, 60));
-        g.drawString("Score: " + score, 1500, 100);
-        g.drawString(dropBird.sticksAvalible - dropBird.droppedSticks + " sticks left", 1500, 200);
+        g.drawImage(scoreBoard.image, 1650 ,400, this);
+        g.setFont(new Font("TimesRoman", Font.BOLD, 50));
+        g.drawString(" " + (dropBird.sticksAvalible - dropBird.droppedSticks) , 1795, 525);
+        if(score < 2) {
+        	g.setColor(Color.RED);
+        }else if(score < 4) {
+        	g.setColor(Color.YELLOW);
+        }else if (score < 6) {
+        	g.setColor(Color.ORANGE);
+        }else {
+        	g.setColor(Color.GREEN);
+        }
+        g.drawString(" "+ score, 1800, 450);
+        
         if(dropBird.stickList.size()  == 0) {
         	g.setFont(new Font("SansSerif", Font.BOLD, 60));
         	g.setColor(Color.BLACK);

@@ -105,7 +105,6 @@ public class View extends JPanel {
 	    ActionListener correct = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Correct");
-	    		//nestQuiz.setAnswer(true);
 	    	 	try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {

@@ -35,6 +35,9 @@ public class DropBird extends Animal {
     			return;
     		}
     	}
+    	if(stickList.size() == 10) {
+    		return;
+    	}
         xIncr += 6;
         stickList.add(new Stick(200, 80, frameHeight));
         stickList.getLast().release(xPos, yPos, stickList.getLast().xPos, droppedSticks);

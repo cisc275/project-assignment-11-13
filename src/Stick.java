@@ -36,7 +36,6 @@ public class Stick extends GameObject {
 	 * at the top of the nest
 	 */
 	public void move(LinkedList<Stick> stickList){
-		System.out.println(ySize);
 		if(isFalling == false) {
 			return;
 		}

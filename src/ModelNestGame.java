@@ -8,7 +8,7 @@ class ModelNestGame{
     int nestTop;
     int sticksAvalible = 10;
     private static int score = 1;
-    int delayTimer = 50;
+    int delayTimer = 10;
     
     /*
      * Constructor gives the model the screen dimesnions, gamestate and creates the dropbird
@@ -26,13 +26,13 @@ class ModelNestGame{
      * so their move method is called in the dropbird move method
      */
     public void update(GameState gs){
-    	System.out.println(gs);
     	this.gs = gs;
     	dropBird.move(frameWidth, frameHeight, sticksAvalible);
     	for(Stick s : dropBird.stickList) {
     		if(!s.isFalling) {
-    			if(score < (  (frameHeight - s.yPos)/ s.ySize)){
-    				score = ((frameHeight - s.yPos)/ s.ySize);
+    			if(score <= (  (frameHeight - s.yPos + 20) / s.ySize)){
+    				score = ((frameHeight - s.yPos + 20) / s.ySize);
+    				System.out.println(frameHeight + " "+ s.yPos +" "+ s.ySize + " "+ score);
     			}
     		}
     	}
@@ -74,10 +74,6 @@ class ModelNestGame{
     	return gs;
     }
     
-    
-    public void newSticks() {
-    	sticksAvalible+=5;
-	}
     public static int getScore() {
     	return score;
     }

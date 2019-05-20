@@ -209,6 +209,23 @@ public class View extends JPanel {
             e.printStackTrace();
         }
     }
+    
+    public void update(ArrayList<GameObject> objects, Minimap map, GameState gs){
+    	//System.out.println("view: " + this.gs);
+    	//check for change of gameState
+    	if (this.gs != gs)
+    		cardLayout.next(frame.getContentPane());
+    	this.gs = gs;
+    	
+    	food.update(objects, map);
+    	
+        //Pause after each frame
+        try {
+            Thread.sleep(33);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public GameState getState() {

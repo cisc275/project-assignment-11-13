@@ -11,7 +11,9 @@ public class ModelFoodGame {
     private Collection<Food> consumables;
     private static int score;
     boolean tutorial = true;
+    private Minimap map;
     
+    private static final int startTime = 1000;
     private static final int EDIBLEFOODCOUNT = 3; // determines how many edible food objects will exist at any one time
     private static final int NONEDIBLECOUNT = 3; // determines how many non-edible food objects will exist at any one time
     private static final int SCROLLSPEED = 6; // determines how fast the player bird moves through the environment (how fast food, background moves back)
@@ -22,7 +24,8 @@ public class ModelFoodGame {
         this.frameHeight = frameHeight;
         mainBird = new PlayableBird("ProjectPics/Osprey.png", "Osprey");
         this.foe = new Foe("ProjectPics/Eagle.png", "Eagle", frameWidth, frameHeight);
-        time = 1000;
+        time = startTime;
+        map = new Minimap("ProjectPics/Map.png", "ProjectPics/MapPath.png", frameWidth, frameHeight);
         consumables = new ArrayList<Food>();
         createConsumables();
         score = 0;
@@ -69,6 +72,10 @@ public class ModelFoodGame {
     	}
     	
     	time--;
+    	double percentDone = startTime;
+    	percentDone = (startTime-time)/percentDone;
+    	map.updateProgress(percentDone);
+    	
     	if (time < 0) {
     		this.gs = GameState.NESTGAME;
     		System.out.println("Gamestate to be changed");
@@ -82,6 +89,10 @@ public class ModelFoodGame {
     
     public PlayableBird getPlayableBird() {
     	return mainBird;
+    }
+
+    public Minimap getMap() {
+    	return map;
     }
     
     private void createConsumables() {

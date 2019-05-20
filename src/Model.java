@@ -58,4 +58,9 @@ public class Model {
     public DropBird getDropBird() {
     	return nest.getDropBird();
     }
+    
+
+    public Minimap getMap() {
+    	return food.getMap();
+    }
 }

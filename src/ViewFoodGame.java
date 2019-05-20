@@ -17,9 +17,11 @@ public class ViewFoodGame extends JPanel {
 	
 	ArrayList<GameObject> objects;
     Background background;
+    Background tutorial;
 	
 	public ViewFoodGame() {
 		background = new Background("ProjectPics/Background.png");
+		tutorial = new Background("ProjectPics/Food_Instructions.png");
 	}
     
     public void addObjects(ArrayList<GameObject> objects) {
@@ -35,8 +37,10 @@ public class ViewFoodGame extends JPanel {
 	
 	public void paint(Graphics g) {
 		g.drawImage(background.image, 0, 0, this);
+		g.drawImage(tutorial.image, 0, 0, this);
 		for (GameObject go : objects) {
 			g.drawImage(go.image, go.getxPos(), go.getyPos(), this);
 		}
+
 	}
 }

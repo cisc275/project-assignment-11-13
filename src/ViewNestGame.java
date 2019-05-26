@@ -14,13 +14,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-
+/**
+ * The ViewNestGame class displays the gameObjects onto the screen
+ * and is updated from NestGameModel
+ */
 public class ViewNestGame extends JPanel {
-
-
 	ArrayList<GameObject> objects;
     Background background;
-    
     BufferedImage dropBirdImg;
     BufferedImage stickImg;
     GameObject scoreBoard;
@@ -32,21 +32,32 @@ public class ViewNestGame extends JPanel {
     int score;
     GameObject tutorial ;
 
-
-
-
+    /**
+     * Constructor creates a background and new game objects for the tutorial 
+     * and scoreboard
+     */
     public ViewNestGame(){
     	background = new Background("ProjectPics/BackgroundNestGame.jpg");
     	tutorial = new GameObject("ProjectPics/spacebar.png");
     	scoreBoard = new GameObject("ProjectPics/NestScoreBoard.PNG");
     }
 
+    /**
+     * This method updates the ArrayList objects
+     * 
+     * @param objects an arrayList containing the GameObjects
+     */
     public void addObjects(ArrayList<GameObject> objects) {
        this.objects = objects;
-      // dropBirdImg = createImage(this.dropBird.picFile);
-       //stickImg = createImage(stickFile);
     }        
 
+    /**
+     * This method pulls the dropBird out of the gameObject arrayList, 
+     * updates the score, and then calls the repaint method to update the view
+     * on the screen
+     * 
+     * @param objects ArrayList containing the game object
+     */
     public void update(ArrayList<GameObject> objects){
     	for(GameObject o : objects) {
     		dropBird = (DropBird) o;
@@ -57,6 +68,12 @@ public class ViewNestGame extends JPanel {
     }
 
 
+    /**
+     * The paint method overlays all of the game objects on the background, and keeps the 
+     * score up to date and posted on the screen
+     * 
+     * @param g Graphics object each gameObject is drawn on
+     */
     public void paint(Graphics g){
     	g.drawImage(background.image, 0, 0, this);
     	g.drawImage(dropBird.image, dropBird.getxPos(), dropBird.getyPos(), this);

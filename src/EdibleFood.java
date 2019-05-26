@@ -9,7 +9,14 @@ public class EdibleFood extends Food {
 	
 	Random rand = new Random();
 	boolean golden;
-
+	String picFile = "ProjectPics/fish.png";
+	
+	/**
+	 * Constructor for EdibleFood instantiates EdibleFood attributes
+	 * 
+	 * @param frameWidth
+	 * @param frameHeight
+	 */
 	public EdibleFood(int frameWidth, int frameHeight) {
 		super(frameWidth, frameHeight, EDIBLEFOOD_POINTVALUE);
 		xSize = EDIBLEFOOD_XSIZE;
@@ -20,13 +27,22 @@ public class EdibleFood extends Food {
 		else {
 			golden = false;
 		}
-		image = this.createImage("ProjectPics/fish.png");
+		image = this.createImage(picFile);
 	}
-
+	/**
+	 * Default move function for the object
+	 * 
+	 * @return boolean
+	 */
     public boolean move(){
         return true;
     }
 
+    /**
+     * boolean calling the isCollected function of the Food class, used for collisions, scoring, and view changes
+     * 
+     * @return boolean
+     */
     public boolean collected(){
         return super.isCollected;
     }

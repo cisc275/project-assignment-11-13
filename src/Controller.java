@@ -14,6 +14,7 @@ public class Controller implements ActionListener, KeyListener {
 	private Collection<Food> foodGameConsumables;
 	private GameState gs;
 
+	/* Constructor for Controller responsible for initializin the model, gameState, and views */
     Controller(){
     	gs = GameState.STARTMENU;
     	view = new View(gs);
@@ -22,7 +23,11 @@ public class Controller implements ActionListener, KeyListener {
     	view.addNestGameListener(model.getDropBird());
     }
 
-
+    /** 
+     * Initial verification of gameState, performing operations to load the specific view pertaining to the gameState 
+     * 
+     * @return void
+     **/
 	void start(){
 		while(true) {
 			switch(gs){
@@ -45,6 +50,9 @@ public class Controller implements ActionListener, KeyListener {
 		}
 	}
 
+	/** 
+	 * The following Action and Key Events are in place solely to meet import requirements
+	 */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -63,11 +71,23 @@ public class Controller implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
-
+    
+    /**
+     * GameState getter
+     * 
+     * @return GameState
+     */
+    
     public GameState getGS(){
     	return this.gs;
 	}
 
+    /**
+     * GameState setter
+     *  
+     * @param gs
+     * @return void
+     */
 	public void setGS(GameState gs){
     	this.gs = gs;
 	}

@@ -8,9 +8,20 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class EnvironmentObject {
-
+	
+	/** 
+	 * Default constructor for EnvironmentObject
+	 */
     public EnvironmentObject(){}
-
+    
+    /**
+     * Manages the scaling of images in the game ensuring they fit to the screen aptly
+     * 
+     * @param WIDTH
+     * @param HEIGHT
+     * @param filename
+     * @return BufferedImage
+     */
     public static BufferedImage scaleImage(int WIDTH, int HEIGHT, String filename) {
         BufferedImage bi = null;
         try {
@@ -26,6 +37,12 @@ public class EnvironmentObject {
         return bi;
     }
     
+    /**
+     * Generates the image to be displayed in the pertaining view
+     * 
+     * @param path
+     * @return BufferedImage
+     */
 	public BufferedImage createImage(String path) {
         BufferedImage bufferedImage;
         try {

@@ -136,7 +136,7 @@ public class View extends JPanel {
 	    food = new ViewFoodGame();
 	    foodQuiz = new ViewFoodQuiz(incorrectFood, correctFood, "Food quiz: ");
 	    nest = new ViewNestGame();
-	    nestQuiz = new ViewNestQuiz(incorrect, correct, "Nest quiz : ");
+	    nestQuiz = new ViewNestQuiz(incorrect, correct);
 	    scoreboard = new ViewScoreboard();
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);

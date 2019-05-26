@@ -1,5 +1,8 @@
 import java.util.LinkedList;
 
+/**
+ * An extension of gameObject, the dropbird is the central object of the nest game
+ */
 public class DropBird extends Animal {
     int xIncr = 8;
     boolean xDir = true;		//false = neg, true = pos
@@ -10,24 +13,40 @@ public class DropBird extends Animal {
     boolean nestStarted = false;
     int score;
     int sticksAvalible;
+    private final int STICKWIDTH = 200;
+    private final int STICKHEIGHT = 80;
+    private final int MAXSTICKS = 80;
+    private final int DROPBIRDSIZE = 400;
+    private final int STARTX = 10;
+    private final int STARTY = 10;
     
 
-
+	/**
+	 * The constructor sets the name defines the picfile, frameHeight
+	 * starting x and y position, and creates the bufferedImage
+	 * 
+	 * @param picFile
+	 * @param name
+	 * @param frameHeight
+	 */
     public DropBird(String picFile, String name, int frameHeight){
     	this.name = name;
         this.picFile = picFile;
         this.frameHeight = frameHeight;
-        xPos = 10;
-        yPos = 10;
-        xSize = 400;
+        xPos = STARTX;
+        yPos = STARTY;
         this.image = this.createImage(picFile);
         score = 0;
     }
 
-    /*
+    /**
      * DropStick method increases the count of dropped sticks, 
      * increases the xIncr speed, adds a new stick to the Linkedlist, 
      * and then calls its release method
+     * 
+     * @param void
+     * @return void
+     * 
      */
     public void dropStick(){
     	if(droppedSticks > 0) {								//check if any sticks have been dropped
@@ -35,11 +54,11 @@ public class DropBird extends Animal {
     			return;
     		}
     	}
-    	if(stickList.size() == 10) {
+    	if(stickList.size() == MAXSTICKS) {
     		return;
     	}
         xIncr += 6;
-        stickList.add(new Stick(200, 80, frameHeight));
+        stickList.add(new Stick(STICKWIDTH, STICKHEIGHT, frameHeight));
         stickList.getLast().release(xPos, yPos, stickList.getLast().xPos, droppedSticks);
         droppedSticks +=1;
         topStick = stickList.getLast();
@@ -48,10 +67,15 @@ public class DropBird extends Animal {
     }
     
     
-    /*
+    /**
      * the move method uses an iterator for loop to call the move method for each stick
      * then it moves the dropBrid in the x direction, reversing direction if it reaches a 
      * boundary
+     * 
+     * @param frameWidth the x axis distnace of the screen
+     * @param frameHeight the y axis distance of the screen
+     * @param sticksAvalible the number of sticks the user still can drop
+     * @return void
      */
     public void move(int frameWidth, int frameHeight, int sticksAvalible) {
     	this.sticksAvalible = sticksAvalible;
@@ -63,7 +87,7 @@ public class DropBird extends Animal {
 
         //checks the location of dropBird, then moves it left or right
         if( xDir == true) {			//xDir is positive
-            if(xPos < (frameWidth- xSize)) {
+            if(xPos < (frameWidth- DROPBIRDSIZE)) {
                 xPos += xIncr;
             }else {
                 xDir = false;

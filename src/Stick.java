@@ -1,5 +1,9 @@
 import java.util.LinkedList;
 
+/**
+ * The stick class extends the gameObject class, and is used to represent sticks 
+ * in the nestGame
+ */
 public class Stick extends GameObject {
 	int speedFalling = 20;
 	boolean isFalling = false;
@@ -10,6 +14,14 @@ public class Stick extends GameObject {
 
 
 
+	/**
+	 * The stick constructor defines the file to use as the picture, sets the size of
+	 * the object, provides the frameHieght, creates the BufferedImage
+	 * 
+	 * @param xSize The x diminsion of the stick
+	 * @param ySize The y dininsion of the stick
+	 * @param frameHeight the y boundary of the nest game. Serves as the ground of the game
+	 */
 	public Stick(int xSize, int ySize, int frameHeight){
 		picFile = "ProjectPics/Stick.png";
 		this.xSize = xSize;
@@ -18,8 +30,12 @@ public class Stick extends GameObject {
 		this.image = this.createImage(picFile);		
 	}
 
-	/*
+	/**
 	 * DropBird releases stick. xPos is set, isFalling becomes true
+	 * 
+	 * @param xPos the x position of the stick when it is  released
+	 * @param yPos the y position of the stick when it is released
+	 * @param droppedSticks an int representing the number of sticks the dropBird has released 
 	 */
 	public void release(int xPos, int yPos, int topStackXPos, int droppedSticks) {
 		isFalling = true;
@@ -29,11 +45,14 @@ public class Stick extends GameObject {
 		return;
 	}
 
-	/*
-	 * The stick is incrementing downward. 
+	/**
+	 * In this move method, the stick is incrementing downward. 
 	 * Increments if it is supposed to be falling
 	 * Checks for collision, and registers if it is 
 	 * at the top of the nest
+	 * 
+	 * @param sticklisk a LinkedList of every stick that has been dropped
+	 * @return void
 	 */
 	public void move(LinkedList<Stick> stickList){
 		if(isFalling == false) {
@@ -53,19 +72,5 @@ public class Stick extends GameObject {
 		}
 		return;
 	}
-
-	/*
-	 * The collided method compares the stick this another stick
-	 * and uses two if statements to check for collision.
-	 */
-	public boolean collided( int topXPos, int topYPos){
-		if(xPos <= topXPos || xPos >= topYPos) {
-			if(yPos >= topYPos ) {
-				return true;
-			}
-		}
-			return false;
-	}
-
 
 }

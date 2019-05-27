@@ -1,8 +1,6 @@
-import java.awt.image.BufferedImage;
-
 public class PlayableBird extends Animal {
 
-	final int yIncr = 12; //Just made up this value for now
+	final int yIncr = 12;
 
 	boolean upPressed = false;
 	boolean downPressed = false;
@@ -13,13 +11,12 @@ public class PlayableBird extends Animal {
     public PlayableBird(String picFile, String name){
 		super(picFile, name);
     	this.picFile = picFile;
-        //Hard coding in the image size for now:
     	xSize = 123;
     	ySize = 102;
         this.image = this.createImage(picFile);
     }
 
-    public boolean move(int frameHeight){ // Currently only vertical movement
+    public boolean move(int frameHeight){
     	moveFrameHeight = frameHeight;
     	if ((!spacePressed && yPos > (frameHeight / 2) - ySize) || yPos + ySize + yIncr > frameHeight) {
     		floating = true;
@@ -41,7 +38,6 @@ public class PlayableBird extends Animal {
 				yPos += yIncr;
 			}
 		}
-    	//System.out.println("Bird's y-position: " + yPos); //For testing to see that value was updating
     	return true;
     }
 

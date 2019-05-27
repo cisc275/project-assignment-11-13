@@ -1,11 +1,4 @@
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 public class Background extends EnvironmentObject {
 
@@ -27,7 +20,6 @@ public class Background extends EnvironmentObject {
        	this.uncutImage = scaleImage(View.frameWidth*3,View.frameHeight, picFile);
        	position = 0;
        	slice();
-        //this.image = this.createImage(picFile);
     }
     
     /**

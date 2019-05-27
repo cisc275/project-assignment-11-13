@@ -62,7 +62,6 @@ public class ModelFoodGame {
         		objects.add(f);
         	}
         }
-        //objects.add(tutorialUpDn);
         return objects;
     }
     
@@ -107,9 +106,7 @@ public class ModelFoodGame {
 
     	if (time < 0) {
     		this.gs = GameState.NESTGAME;
-    		//System.out.println("Gamestate to be changed");
     	}
-    	//System.out.println("Score: " + score);
     }
     
     public GameState getState() {

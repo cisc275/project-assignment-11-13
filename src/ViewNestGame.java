@@ -1,23 +1,13 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * The ViewNestGame class displays the gameObjects onto the screen
  * and is updated from NestGameModel
  */
+@SuppressWarnings("serial")
 public class ViewNestGame extends JPanel {
 	ArrayList<GameObject> objects;
     Background background;

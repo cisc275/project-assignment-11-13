@@ -1,21 +1,17 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class View extends JPanel {
 	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     JFrame frame = new JFrame();
     final static int frameWidth = (int) screenSize.getWidth();
     final static int frameHeight = (int) screenSize.getHeight();
-    //String name;
     
     CardLayout cardLayout;
     ViewStartMenu menu;
@@ -56,7 +52,8 @@ public class View extends JPanel {
 
 	    frame.getContentPane().setLayout(cardLayout);
 	    
-	    ActionListener al = e -> cardLayout.next(frame.getContentPane());
+	    @SuppressWarnings("unused")
+		ActionListener al = e -> cardLayout.next(frame.getContentPane());
 	    ActionListener osp = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Osprey");
@@ -76,11 +73,9 @@ public class View extends JPanel {
 	    ActionListener correctFood = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Correct");
-	    		//nestQuiz.setAnswer(true);
 	    	 	try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
-	    			// TODO Auto-generated catch block
 	    			e1.printStackTrace();
 	    		}
 	    		gs = GameState.NESTGAME;
@@ -90,11 +85,9 @@ public class View extends JPanel {
 	    ActionListener incorrectFood = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Incorrect");
-	    		//nestQuiz.setAnswer(false);
 	    		try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
-	    			// TODO Auto-generated catch block
 	    			e1.printStackTrace();
 	    		}
 	    		gs = GameState.NESTGAME;
@@ -108,7 +101,6 @@ public class View extends JPanel {
 	    	 	try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
-	    			// TODO Auto-generated catch block
 	    			e1.printStackTrace();
 	    		}
 	    		gs = GameState.SCOREBOARD;
@@ -118,11 +110,9 @@ public class View extends JPanel {
 	    ActionListener incorrect = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Incorrect");
-	    		//nestQuiz.setAnswer(false);
 	    		try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
-	    			// TODO Auto-generated catch block
 	    			e1.printStackTrace();
 	    		}
 	    		gs = GameState.SCOREBOARD;
@@ -166,9 +156,7 @@ public class View extends JPanel {
         	}
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				//In place just to have all required methods
-			}
+			public void keyTyped(KeyEvent e) {}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -199,14 +187,10 @@ public class View extends JPanel {
         	}
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				//In place just to have all required methods
-			}
+			public void keyTyped(KeyEvent e) {}
 
 			@Override
-			public void keyReleased(KeyEvent e) {
-				//
-			}
+			public void keyReleased(KeyEvent e) {}
         });
     }
     
@@ -238,7 +222,6 @@ public class View extends JPanel {
     }
     
     public void update(ArrayList<GameObject> objects, Minimap map, GameState gs){
-    	//System.out.println("view: " + this.gs);
     	//check for change of gameState
     	if (this.gs != gs)
     		cardLayout.next(frame.getContentPane());

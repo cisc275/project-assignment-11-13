@@ -10,7 +10,7 @@ public class Food extends GameObject {
     private Random rand = new Random();
 
     /**
-     * Generates viable food in the water for the PlayableBird to eat at random Y positions on the right of the screen at varying speeds.
+     * Generates food in the water for the PlayableBird to eat or avoid at random Y positions on the right of the screen at varying speeds.
      * 
      * @param frameWidth
      * @param frameHeight

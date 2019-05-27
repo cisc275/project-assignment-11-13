@@ -2,19 +2,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
-import java.util.*;
 
 public class Controller implements ActionListener, KeyListener {
     private View view;
-    private ViewStartMenu startView;
     private Model model;
-    private PlayableBird mainBird;
-	private DropBird dropbird;
-	private Foe foe;
-	private Collection<Food> foodGameConsumables;
-	private GameState gs;
+    private GameState gs;
 
-	/* Constructor for Controller responsible for initializin the model, gameState, and views */
+	/** 
+	 * Constructor for Controller responsible for initializin the model, gameState, and views 
+	 */
     Controller(){
     	gs = GameState.STARTMENU;
     	view = new View(gs);
@@ -27,7 +23,8 @@ public class Controller implements ActionListener, KeyListener {
      * Initial verification of gameState, performing operations to load the specific view pertaining to the gameState 
      * 
      * @return void
-     **/
+     */
+	@SuppressWarnings("incomplete-switch")
 	void start(){
 		while(true) {
 			switch(gs){

@@ -1,29 +1,22 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class ViewStartMenu extends JPanel{
-    //Game state attributes
     String birdType;
-    //GameState gs = GameState.STARTMENU;
 
-    //Screen and frame construction attributes
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     JFrame frame = new JFrame();
     final static int frameWidth = (int) screenSize.getWidth();
     final static int frameHeight = (int) screenSize.getHeight();
-    //JPanel panel = new JPanel();
 
-    //Buttons
-    JButton ospreyButton;// = new JButton("Osprey");
-    JButton clapperButton;// = new JButton("Clapper Rail");
+    JButton ospreyButton;
+    JButton clapperButton;
     JLabel textLabel;
     JLabel background;
 
     ViewStartMenu(ActionListener a1, ActionListener a2, String text) {
-		//JButton buttonNext = new JButton("next");
-        //buttonNext.addActionListener(alNext);
         
     	ospreyButton = new JButton(new ImageIcon("ProjectPics/OspreyButton.jpg"));
     	ospreyButton.addActionListener(a1);

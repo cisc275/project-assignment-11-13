@@ -28,7 +28,6 @@ public class GameObject {
     GameObject(String picFile){
     	this.picFile = picFile;
     	image = createImage(picFile);
-    	//this.frameCount = frameCount;
     }
 
     /**
@@ -43,7 +42,6 @@ public class GameObject {
     	image = createImage(picFile);
     	this.xPos = x;
     	this.yPos  = y;
-    	//this.frameCount = frameCount;
     }
     
     /**

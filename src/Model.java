@@ -29,7 +29,8 @@ public class Model {
      * 
      * @return ArrayList of objects dependent on the game
      */
-    public ArrayList<GameObject> getObjects(){
+    @SuppressWarnings("incomplete-switch")
+	public ArrayList<GameObject> getObjects(){
     	ArrayList<GameObject> objects = food.getObjects();// = new ArrayList<>();
     	switch(gs) {
     	case FOODGAME:
@@ -37,10 +38,7 @@ public class Model {
     		break;
     	case NESTGAME:
     		objects = nest.getObjects();
-    		//System.out.println(" The nest game objects deal has been actiavated");
     		break;
-    	//default:
-    	//objects = food.getObjects();
     	}
     	return objects;
     }
@@ -50,7 +48,8 @@ public class Model {
      * 
      * @param gs
      */
-    public void update(GameState gs){
+    @SuppressWarnings("incomplete-switch")
+	public void update(GameState gs){
     	this.gs = gs;
     	switch(this.gs) {
         case STARTMENU:
@@ -70,7 +69,7 @@ public class Model {
      * @return the current GameState
      */
     public GameState getState() {
-    	return gs;//GameState.FOODGAME;
+    	return gs;
     }
     
     /**

@@ -1,16 +1,13 @@
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class ViewScoreboard extends JPanel{
 	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     JFrame frame = new JFrame();
@@ -57,7 +54,6 @@ public class ViewScoreboard extends JPanel{
     	String[][] tableData = new String[10][3];
     	String[] columnNames = {"Total Score", "Osprey Game Score", "Clapper Rail Game Score"};
     	
-    	// ArrayList<Score> scores = scoreboard.getScores();
     	ArrayList<Score> scores = scoreboard.getScores();
     	
     	// As much as I'd rather use an iterator, JTable only accepts array parameters

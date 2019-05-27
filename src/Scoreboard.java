@@ -1,5 +1,6 @@
 import java.util.*;
 
+@SuppressWarnings("serial")
 // Scoreboard class is further below in this file.
 // Scores are merely the element components comprising the Scoreboard.
 class Score implements Comparable<Score>, java.io.Serializable{
@@ -25,6 +26,7 @@ class Score implements Comparable<Score>, java.io.Serializable{
 	
 }
 
+@SuppressWarnings("serial")
 public class Scoreboard implements java.io.Serializable{
 
 	private ArrayList<Score> scores;

@@ -5,13 +5,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class ViewFoodQuiz extends JPanel{
     //Game state attributes
     String birdType;
-    //GameState gs = GameState.STARTMENU;
 
     //Screen and frame construction attributes
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -20,10 +19,9 @@ public class ViewFoodQuiz extends JPanel{
     final static int frameHeight = (int) screenSize.getHeight();
     final static int buttonWidth = 100;
     final static int buttonHeight = 40;
-    //JPanel panel = new JPanel();
 
     //Buttons
-    JButton optionA, optionB, optionC, optionD;// = new JButton("Osprey");
+    JButton optionA, optionB, optionC, optionD;
     JLabel question;
     JLabel background;
 
@@ -36,7 +34,6 @@ public class ViewFoodQuiz extends JPanel{
     	optionA.addActionListener(incorrect);
     	optionA.setFocusPainted(false);
     	optionA.setBorder(compound);
-    	//optionA.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionA.setFont(new Font(null, Font.BOLD, 18));
     	optionA.setForeground(Color.DARK_GRAY);
     	
@@ -44,7 +41,6 @@ public class ViewFoodQuiz extends JPanel{
     	optionB.addActionListener(incorrect);
     	optionB.setFocusPainted(false);
     	optionB.setBorder(compound);
-    	//optionB.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionB.setFont(new Font(null, Font.BOLD, 18));
     	optionB.setForeground(Color.DARK_GRAY);
     	
@@ -52,7 +48,6 @@ public class ViewFoodQuiz extends JPanel{
     	optionC.addActionListener(correct);
     	optionC.setFocusPainted(false);
     	optionC.setBorder(compound);
-    	//optionC.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionC.setFont(new Font(null, Font.BOLD, 18));
     	optionC.setForeground(Color.DARK_GRAY);
     	
@@ -60,7 +55,6 @@ public class ViewFoodQuiz extends JPanel{
     	optionD.addActionListener(incorrect);
     	optionD.setFocusPainted(false);
     	optionD.setBorder(compound);
-    	//optionD.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionD.setFont(new Font(null, Font.BOLD, 18));
     	optionD.setForeground(Color.DARK_GRAY);
     

@@ -1,4 +1,3 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -6,16 +5,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
+@SuppressWarnings("serial")
 public class ViewNestQuiz extends JPanel{
     //Game state attributes
     String birdType;
-    //GameState gs = GameState.NESTGAME;
 
     //Screen and frame construction attributes
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -24,7 +20,6 @@ public class ViewNestQuiz extends JPanel{
     final static int frameHeight = (int) screenSize.getHeight();
     final static int buttonWidth = 100;
     final static int buttonHeight = 40;
-    //JPanel panel = new JPanel();
 
     //Buttons
     JButton optionA, optionB, optionC, optionD;// = new JButton("Osprey");
@@ -56,7 +51,6 @@ public class ViewNestQuiz extends JPanel{
     	optionA.addActionListener(correct);
     	optionA.setFocusPainted(false);
     	optionA.setBorder(compound);
-    	//optionA.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionA.setFont(new Font(null, Font.BOLD, 12));
     	optionA.setForeground(Color.BLACK);
     	
@@ -64,7 +58,6 @@ public class ViewNestQuiz extends JPanel{
     	optionB.addActionListener(incorrect);
     	optionB.setFocusPainted(false);
     	optionB.setBorder(compound);
-    	//optionB.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionB.setFont(new Font(null, Font.BOLD, 12));
     	optionB.setForeground(Color.BLACK);
     	
@@ -72,7 +65,6 @@ public class ViewNestQuiz extends JPanel{
     	optionC.addActionListener(incorrect);
     	optionC.setFocusPainted(false);
     	optionC.setBorder(compound);
-    	//optionC.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionC.setFont(new Font(null, Font.BOLD, 12));
     	optionC.setForeground(Color.BLACK);
     	
@@ -80,7 +72,6 @@ public class ViewNestQuiz extends JPanel{
     	optionD.addActionListener(incorrect);
     	optionD.setFocusPainted(false);
     	optionD.setBorder(compound);
-    	//optionD.setPreferredSize(new Dimension(buttonWidth,buttonHeight));
     	optionD.setFont(new Font(null, Font.BOLD, 12));
     	optionD.setForeground(Color.BLACK);
     

@@ -1,19 +1,10 @@
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ViewFoodGame extends JPanel {
 	
 	ArrayList<GameObject> objects;
@@ -46,7 +37,6 @@ public class ViewFoodGame extends JPanel {
 	
 	public void paint(Graphics g) {
 		g.drawImage(background.image, 0, 0, this);
-		//g.drawImage(tutorial.image, 300, 0, this);
 		for (GameObject go : objects) {
 			g.drawImage(go.image, go.getxPos(), go.getyPos(), this);
 		}

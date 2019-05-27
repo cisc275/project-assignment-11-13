@@ -48,14 +48,14 @@ public class ViewNestQuiz extends JPanel{
     	Border compound = new CompoundBorder(line, margin);
     	
     	optionA = new JButton("To attract mates");
-    	optionA.addActionListener(correct);
+    	optionA.addActionListener(incorrect);
     	optionA.setFocusPainted(false);
     	optionA.setBorder(compound);
     	optionA.setFont(new Font(null, Font.BOLD, 12));
     	optionA.setForeground(Color.BLACK);
     	
     	optionB = new JButton("To protect against flood waters");
-    	optionB.addActionListener(incorrect);
+    	optionB.addActionListener(correct);
     	optionB.setFocusPainted(false);
     	optionB.setBorder(compound);
     	optionB.setFont(new Font(null, Font.BOLD, 12));

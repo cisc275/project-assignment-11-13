@@ -5,6 +5,7 @@
 
 public enum GameState {
 	FOODGAME("FoodGame"),
+	FOODQUIZ("FoodQuiz"),
 	NESTGAME("NestGame"),
 	MIGRATIONGAME("MigrationGame"),
 	STARTMENU("start"),

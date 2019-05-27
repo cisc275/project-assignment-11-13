@@ -51,6 +51,7 @@ class ModelNestGame{
     			if(delayTimer > 0) {
     				delayTimer--;
     			}else {
+    				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClapper Rail Final Score: "+ score);
     				this.gs = GameState.SCOREBOARD;
     			}
     			

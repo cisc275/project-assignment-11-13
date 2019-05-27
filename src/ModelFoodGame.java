@@ -62,6 +62,7 @@ public class ModelFoodGame {
         		objects.add(f);
         	}
         }
+        //objects.add(tutorialUpDn);
         return objects;
     }
     
@@ -85,14 +86,22 @@ public class ModelFoodGame {
     		mainBird.move(frameHeight);
     		foe.move(frameWidth, frameHeight);
     		if(mainBird.collidesWith(foe)){
-    			score -= 10;
+    			score -= 5;
+    			if (score < 0)
+    				score = 0;
+    			mainBird.ow();
     			foe.reset(frameWidth, frameHeight);
-    			System.out.println("ow");
+    			//System.out.println("ow");
     		}
     		for(Food f: consumables) {
     			f.move(SCROLLSPEED, frameWidth, frameHeight);
     			if(mainBird.collidesWith(f)) {
     				score += f.getPointValue();
+    				if (score < 0)
+    					score = 0;
+    				if (f.getPointValue() < 0)
+    					mainBird.ow();
+    				else mainBird.yay();
     				f.reset(frameWidth, frameHeight);
     			}
     		}
@@ -105,10 +114,15 @@ public class ModelFoodGame {
     	
 
     	if (time < 0) {
-    		this.gs = GameState.NESTGAME;
+    		this.gs = GameState.FOODQUIZ;
+    		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOsprey Final Score: "+ score);
     	}
     }
-    
+    public void reset() {
+    	time = startTime;
+    	score = 0;
+    	mainBird.setScore(0);
+    }
     public GameState getState() {
     	return gs;
     }

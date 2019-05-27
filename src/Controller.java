@@ -9,7 +9,7 @@ public class Controller implements ActionListener, KeyListener {
     private GameState gs;
 
 	/** 
-	 * Constructor for Controller responsible for initializin the model, gameState, and views 
+	 * Constructor for Controller responsible for initializing the model, gameState, and views 
 	 */
     Controller(){
     	gs = GameState.STARTMENU;

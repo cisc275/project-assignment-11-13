@@ -40,8 +40,9 @@ public class ViewNestQuiz extends JPanel{
      * 
      * @param incorrect The actionListener that returns if the incorrect choice is picked
      * @param correct The actionListener that returns if correct choice is picked
+     * @param text a filler parameter to meet the constructor requirements
      */
-    ViewNestQuiz(ActionListener incorrect, ActionListener correct) {
+    ViewNestQuiz(ActionListener incorrect, ActionListener correct, String text) {
     	
     	Border line = new LineBorder(Color.WHITE, 5);
     	Border margin = new EmptyBorder(5, 15, 5, 15);

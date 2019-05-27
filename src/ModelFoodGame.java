@@ -21,6 +21,13 @@ public class ModelFoodGame {
     private static final int NONEDIBLECOUNT = 3; // determines how many non-edible food objects will exist at any one time
     private static final int SCROLLSPEED = 6; // determines how fast the player bird moves through the environment (how fast food, background moves back)
     
+    /**
+     * Constructor for ModelFoodGame; establishes all objects necessary for the main game as well as the tutorial
+     * 
+     * @param frameWidth
+     * @param frameHeight
+     * @param gs
+     */
     public ModelFoodGame(int frameWidth, int frameHeight, GameState gs) {//, PlayableBird bird) {//, Foe foe) {//, int imgWidth, int imgHeight){
     	this.gs = gs;
         this.frameWidth = frameWidth;
@@ -36,7 +43,12 @@ public class ModelFoodGame {
         createConsumables();
         score = 0;
     }
-
+    
+    /**
+     * Generates all objects dependent on the time elapsed in the game (tutorial based or main game based)
+     * 
+     * @return ArrayList<GameObject>
+     */
     public ArrayList<GameObject> getObjects(){
     	ArrayList<GameObject> objects = new ArrayList<>();
         objects.add(mainBird);
@@ -66,6 +78,13 @@ public class ModelFoodGame {
         return objects;
     }
     
+    /**
+     * Updates the game and gives appropriate instructions to change the view as communicated through the controller
+     * Also addresses the situations regarding collisions
+     * 
+     * @return void
+     * @param gs
+     */
     public void update(GameState gs){
     	time--;
     	if (tutorial == true) {
@@ -111,28 +130,55 @@ public class ModelFoodGame {
         	mainBird.setScore(score);
     	}
     	
+    	
+
     	if (time < 0) {
     		this.gs = GameState.FOODQUIZ;
     		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOsprey Final Score: "+ score);
     	}
     }
+    
+    /**
+     * Resets the game's state if necessary (used in the tutorial)
+     */
     public void reset() {
     	time = startTime;
     	score = 0;
     	mainBird.setScore(0);
     }
+    /**
+     * Retrieves the game's state
+     * 
+     * @return GameState
+     */
     public GameState getState() {
     	return gs;
     }
     
+    /**
+     * Retrieves the mainBird
+     * 
+     * @return PlayableBird
+     */
     public PlayableBird getPlayableBird() {
     	return mainBird;
     }
 
+    /**
+     * Retrieves the map
+     * 
+     * @return Minimpap
+     */
     public Minimap getMap() {
     	return map;
     }
     
+    /**
+     * Generates the consumables as necessary based upon the amount of edible and non-edible food desired
+     * Can be modified to change difficulty
+     * 
+     * @return void
+     */
     private void createConsumables() {
     	// initializing the ArrayList with the proper number of each type of food
     	
@@ -144,6 +190,11 @@ public class ModelFoodGame {
     	}
     }
     
+    /**
+     * Retrieves the score
+     * 
+     * @return int
+     */
     public static int getScore() {
     	return score;
     }

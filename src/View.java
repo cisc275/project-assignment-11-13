@@ -26,19 +26,43 @@ public class View extends JPanel {
     PlayableBird mainBird; //need in order to add listeners
     DropBird dropBird; //need in order to add listeners
     
+    /**
+     * The main method
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         Controller control = new Controller();
         control.start();
     }
     
+    /**
+     * Retrieves the frame width
+     * 
+     * @return int
+     */
     public int getWidth() {
         return frameWidth;
     }
 
+    /**
+     * Retrieves the frame height
+     * 
+     * @return int
+     */
     public int getHeight() {
         return frameHeight;
     }
     
+    /**
+     * Constructor for the View object (utilized for all subclasses as well)
+     * Initializes the cardLayout used for view transitions throughout the game 
+     * Also implements action listeners in order to understand when screen transitions are to occur
+     * 
+     * Generates initial frame
+     * 
+     * @param state
+     */
     public View(GameState state){
     	this.gs = state;
         frame.setBackground(Color.black);
@@ -123,7 +147,7 @@ public class View extends JPanel {
 	    food = new ViewFoodGame();
 	    foodQuiz = new ViewFoodQuiz(incorrectFood, correctFood, "Food quiz: ");
 	    nest = new ViewNestGame();
-	    nestQuiz = new ViewNestQuiz(incorrectNest, correctNest, "text");
+	    nestQuiz = new ViewNestQuiz(incorrectNest, correctNest);
 	    scoreboard = new ViewScoreboard();
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
@@ -134,6 +158,12 @@ public class View extends JPanel {
 	    frame.setVisible(true);
     }
     
+    /**
+     * Generates the listener for the food game with actions performed on specific arrow key presses
+     * 
+     * @return void
+     * @param mainBird
+     */
     public void addFoodGameListener(PlayableBird mainBird) {
     	frame.addKeyListener(new KeyListener() {
         	public void keyPressed(KeyEvent e) {
@@ -171,6 +201,12 @@ public class View extends JPanel {
         });
     }
     
+    /**
+     * Generates the listener for the nest game with actions performed on space key presses
+     * 
+     * @return void
+     * @param mainBird
+     */
     public void addNestGameListener(DropBird dropBird) {
     	frame.addKeyListener(new KeyListener() {
         	public void keyPressed(KeyEvent e) {
@@ -191,6 +227,13 @@ public class View extends JPanel {
         });
     }
     
+    /**
+     * Checker for the game state, observing which view is to be loaded based upon the cardLayout
+     * 
+     * @return void
+     * @param objects
+     * @param gs
+     */
     public void update(ArrayList<GameObject> objects, GameState gs){
     	//check for change of gameState
     	if (this.gs != gs)
@@ -218,6 +261,14 @@ public class View extends JPanel {
         }
     }
     
+    /**
+     * Overloaded function specifically for the food game, designed to load the next frame
+     * 
+     * @return void
+     * @param objects
+     * @param map
+     * @param gs
+     */
     public void update(ArrayList<GameObject> objects, Minimap map, GameState gs){
     	//check for change of gameState
     	if (this.gs != gs)
@@ -234,11 +285,21 @@ public class View extends JPanel {
         }
     }
 
-
+    /**
+     * Retrieves the game state
+     * 
+     * @return GameState
+     */
     public GameState getState() {
     	return gs;
     }
-    //I don't think this will ever be necessary because paint is called in the individual subviews
+    
+    /**
+     * Empty paint method used as a placeholder for frame updating
+     * 
+     * @param g
+     * @return void
+     */
     public void paint(Graphics g){
     }
 }

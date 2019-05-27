@@ -1,52 +1,38 @@
-import java.util.*;
+public class NonEdibleFood extends Food {
 
-@SuppressWarnings("serial")
-// Scoreboard class is further below in this file.
-// Scores are merely the element components comprising the Scoreboard.
-class Score implements Comparable<Score>, java.io.Serializable{
+	private static final int NONEDIBLEFOOD_XSIZE = 80;
+	private static final int NONEDIBLEFOOD_YSIZE = 40;
+	private static final int NONEDIBLEFOOD_POINTVALUE = -3;
 	
-	int foodgame_score;
-	int nestgame_score;
-	int cumulative_score;
-	
-	Score(int foodgamescore, int nestgamescore){
-		foodgame_score = foodgamescore;
-		nestgame_score = nestgamescore;
-		cumulative_score = foodgamescore + nestgamescore;
+	/**
+	 * Constructor for NonEdibleFood; initializes all class attributes
+	 * 
+	 * @param frameWidth
+	 * @param frameHeight
+	 */
+	public NonEdibleFood(int frameWidth, int frameHeight) {
+		super(frameWidth, frameHeight, NONEDIBLEFOOD_POINTVALUE);
+		xSize = NONEDIBLEFOOD_XSIZE;
+		ySize = NONEDIBLEFOOD_YSIZE;
+		image = this.createImage("ProjectPics/trash.png");
 	}
-	
-	public int compareTo(Score other) {
-		if(this.cumulative_score <= other.cumulative_score) {
-			return 1;
-		}
-		else {
-			return -1;
-		}
-	}
-	
-}
 
-@SuppressWarnings("serial")
-public class Scoreboard implements java.io.Serializable{
+	/**
+	 * Move function for the non-edible food
+	 * 
+	 * @return boolean
+	 */
+    public boolean move(){
+        return true;
+    }
+    
+    /**
+     * Provides a template function for whether or not the non-edible food has collided with the playable bird
+     * 
+     * @return boolean
+     */
+    public boolean collected(){
+        return super.isCollected;
+    }
 
-	private ArrayList<Score> scores;
-	private static final int MAX_SCOREBOARD_SIZE = 10;
-	
-    public Scoreboard(){
-    	scores = new ArrayList<Score>();
-    }
-    
-    public void addScore(int foodgame_score, int nestgame_score) {
-    	scores.add(new Score(foodgame_score, nestgame_score));
-    	scores.sort((s1, s2) -> s1.compareTo(s2));
-    	if(scores.size() > MAX_SCOREBOARD_SIZE) {
-    		scores.remove(MAX_SCOREBOARD_SIZE);
-    	}
-    	scores.trimToSize();
-    }
-    
-    public ArrayList<Score> getScores(){
-    	return scores;
-    }
-    
 }

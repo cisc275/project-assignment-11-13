@@ -15,6 +15,14 @@ public class Minimap extends EnvironmentObject {
 	int xPos;
 	int yPos;
 	
+    /**
+     * Creates a minimap of the PlayableBird's travel as migration is happening.
+     * 
+     * @param mapFile
+     * @param mapPathFile
+     * @param frameWidth
+     * @param frameHeight
+     */
     public Minimap(String mapFile, String mapPathFile, int frameWidth, int frameHeight){
     	this.mapFile = mapFile;
     	this.mapPathFile = mapPathFile;
@@ -25,6 +33,11 @@ public class Minimap extends EnvironmentObject {
     	yPos = 0;
     }
     
+    /**
+     * Updates how much of the game has been completed as a percent
+     * 
+     * @param percentDone
+     */
     public void updateProgress(double percentDone) {
     	progress = (int) (percentDone * pathHeight);
     	//Prevent progress form being 0 to avoid error from creating subimage of zero height
@@ -32,30 +45,51 @@ public class Minimap extends EnvironmentObject {
     		progress++;
     }
     
+    /** 
+     * @return Progress of the game
+     */
     public int getProgress() {
     	return progress;
     }
     
+    /**
+     * @return X position
+     */
     public int getXPos() {
     	return xPos;
     }
     
+    /**
+     * @return Y position
+     */
     public int getMapYPos() {
     	return yPos;
     }
     
+    /**
+     * @return YPos and pathOffset added together
+     */
     public int getPathYPos() {
     	return yPos + pathOffset;
     }
     
+    /**
+     * @return Height of the path on the map
+     */
     public int getPathHeight() {
     	return pathHeight;
     }
     
+    /**
+     * @return Height of the map
+     */
     public int getMapHeight() {
     	return mapHeight;
     }
     
+    /**
+     * @return visual path on the minimap
+     */
     public BufferedImage getCurrentMapPath() {
     	return mapPath.getSubimage(0, pathHeight-progress, pathWidth, progress);
     }

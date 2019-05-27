@@ -147,7 +147,7 @@ public class View extends JPanel {
 	    food = new ViewFoodGame();
 	    foodQuiz = new ViewFoodQuiz(incorrectFood, correctFood, "Food quiz: ");
 	    nest = new ViewNestGame();
-	    nestQuiz = new ViewNestQuiz(incorrectNest, correctNest);
+	    nestQuiz = new ViewNestQuiz(incorrectNest, correctNest, "Nest Quiz: ");
 	    scoreboard = new ViewScoreboard();
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);
@@ -161,7 +161,7 @@ public class View extends JPanel {
     /**
      * Generates the listener for the food game with actions performed on specific arrow key presses
      * 
-     * @return void
+     * @return voi
      * @param mainBird
      */
     public void addFoodGameListener(PlayableBird mainBird) {

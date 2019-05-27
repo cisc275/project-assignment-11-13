@@ -1,38 +1,77 @@
-public class NonEdibleFood extends Food {
+import java.util.*;
 
-	private static final int NONEDIBLEFOOD_XSIZE = 80;
-	private static final int NONEDIBLEFOOD_YSIZE = 40;
-	private static final int NONEDIBLEFOOD_POINTVALUE = -3;
+@SuppressWarnings("serial")
+// Scoreboard class is further below in this file.
+// Scores are merely the element components comprising the Scoreboard.
+class Score implements Comparable<Score>, java.io.Serializable{
+	
+	int foodgame_score;
+	int nestgame_score;
+	int cumulative_score;
 	
 	/**
-	 * Constructor for NonEdibleFood; initializes all class attributes
-	 * 
-	 * @param frameWidth
-	 * @param frameHeight
+	 * Constructor for Score object; initializes three scoring criteria
+	 * @param foodgamescore
+	 * @param nestgamescore
 	 */
-	public NonEdibleFood(int frameWidth, int frameHeight) {
-		super(frameWidth, frameHeight, NONEDIBLEFOOD_POINTVALUE);
-		xSize = NONEDIBLEFOOD_XSIZE;
-		ySize = NONEDIBLEFOOD_YSIZE;
-		image = this.createImage("ProjectPics/trash.png");
+	Score(int foodgamescore, int nestgamescore){
+		foodgame_score = foodgamescore;
+		nestgame_score = nestgamescore;
+		cumulative_score = foodgamescore + nestgamescore;
 	}
-
+	
 	/**
-	 * Move function for the non-edible food
+	 * Checker to see if the score is greater than a previous score; used for the scoreboard ordering
 	 * 
-	 * @return boolean
+	 * @return int
 	 */
-    public boolean move(){
-        return true;
+	public int compareTo(Score other) {
+		if(this.cumulative_score <= other.cumulative_score) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
+	
+}
+
+@SuppressWarnings("serial")
+public class Scoreboard implements java.io.Serializable{
+
+	private ArrayList<Score> scores;
+	private static final int MAX_SCOREBOARD_SIZE = 10;
+	
+	/**
+	 * Constructor for the Scoreboard class
+	 */
+    public Scoreboard(){
+    	scores = new ArrayList<Score>();
     }
     
     /**
-     * Provides a template function for whether or not the non-edible food has collided with the playable bird
+     * Adds a valued score to the scoreboard
      * 
-     * @return boolean
+     * @return void
+     * @param foodgame_score
+     * @param nestgame_score
      */
-    public boolean collected(){
-        return super.isCollected;
+    public void addScore(int foodgame_score, int nestgame_score) {
+    	scores.add(new Score(foodgame_score, nestgame_score));
+    	scores.sort((s1, s2) -> s1.compareTo(s2));
+    	if(scores.size() > MAX_SCOREBOARD_SIZE) {
+    		scores.remove(MAX_SCOREBOARD_SIZE);
+    	}
+    	scores.trimToSize();
     }
-
+    
+    /**
+     * Retrieves the scores
+     * 
+     * @return ArrayList<Score>
+     */
+    public ArrayList<Score> getScores(){
+    	return scores;
+    }
+    
 }

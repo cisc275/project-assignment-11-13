@@ -19,6 +19,12 @@ public class ViewScoreboard extends JPanel{
     Scoreboard scoreboard;
     JLabel background;
     
+    /**
+     * The constructor uses a try catch block to attempt to open a file containing high
+     * scores. If suck file exists, it is saved as a scoreboard object. If not, a new
+     * scoreboard file is created. 
+     * After this, the scoreboard is projected over the background
+     */
     public ViewScoreboard(){
     	FileInputStream fis;
 		try {
@@ -50,6 +56,9 @@ public class ViewScoreboard extends JPanel{
     	
     }
     
+    /**
+     * This method creates a 10x3 table for the scoreboard, to be projected onto the screen
+     */
     private void makeJTable() {
     	String[][] tableData = new String[10][3];
     	String[] columnNames = {"Total Score", "Osprey Game Score", "Clapper Rail Game Score"};
@@ -68,6 +77,9 @@ public class ViewScoreboard extends JPanel{
     	
     }
     
+    /**
+     * This method takes the users score and inserts it into the file
+     */
     public void insertNewScore() {
     	scoreboard.addScore(ModelFoodGame.getScore(), ModelNestGame.getScore());
     	makeJTable();

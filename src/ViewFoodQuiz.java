@@ -25,6 +25,14 @@ public class ViewFoodQuiz extends JPanel{
     JLabel question;
     JLabel background;
 
+    /**
+     * The constructor viewFoodQuiz builds a background and adds JButton and 
+     * JLabels to create a quiz view that had built in listeners
+     * 
+     * @param incorrect The actionListener that returns if the incorrect choice is picked
+     * @param correct The actionListener that returns if correct choice is picked
+     * @param text a filler parameter to meet the constructor requirements
+     */
     ViewFoodQuiz(ActionListener incorrect, ActionListener correct , String text) {
     	Border line = new LineBorder(Color.DARK_GRAY, 5);
     	Border margin = new EmptyBorder(5, 15, 5, 15);

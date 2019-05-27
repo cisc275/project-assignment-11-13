@@ -24,22 +24,47 @@ public class ViewFoodGame extends JPanel {
     final int scoreOffset = 20;
     final int scoreSize = 34;
 	
+    /**
+     * The constructor creates a background object and tutorial game object
+     */
 	public ViewFoodGame() {
 		background = new Background("ProjectPics/Background.png");
 		tutorial = new GameObject("ProjectPics/Food_Instructions.png");
 	}
     
+	/**
+	 * Adds an array list of the game objects 
+	 * 
+	 * @param objects An array list of gameObjects  
+	 */
     public void addObjects(ArrayList<GameObject> objects) {
     	this.objects = objects;
     }
 	
     
+    /**
+     * This method updates the gameObject list from the model class, then
+     * calls the repaint method to update the GUI to reflect the current status
+     * of the game. Lastly, the background is updated
+     * 
+     * @param objects ArrayList of gameObjects from the model
+     */
     public void update(ArrayList<GameObject> objects) {
     	this.objects = objects;
     	this.repaint();
     	background.update();
     }
     
+    /**
+     * /**
+     * This method updates the gameObject list from the model class, then
+     * calls the repaint method to update the GUI to reflect the current status
+     * of the game. Map, which serves as a timer for the user, is also updated. 
+     * Lastly, the background is updated
+     * 
+     * @param objects ArrayList of gameObjects from the model
+     * @param map a minimap object that reflects the users postion in the game
+     */
     public void update(ArrayList<GameObject> objects, Minimap map) {
     	this.objects = objects;
     	this.map = map;
@@ -47,6 +72,12 @@ public class ViewFoodGame extends JPanel {
     	background.update();
     }
 	
+    /**
+     * the method called in the repaint method that updates the users interface. 
+     * Up to date gameObejcts are projected onto the screen. 
+     * 
+     * @param g the graphics object that is updated
+     */
 	public void paint(Graphics g) {
 		g.drawImage(background.image, 0, 0, this);
 		for (GameObject go : objects) {

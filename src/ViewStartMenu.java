@@ -16,6 +16,15 @@ public class ViewStartMenu extends JPanel{
     JLabel textLabel;
     JLabel background;
 
+    /**
+     * This constructor builds a background object and adds two JButtons to it. 
+     * One takes the user to the osprey game, the other takes the user to the clapper
+     * rail game
+     * 
+     * @param a1 action listener for the osprey button
+     * @param a2 action listener for the clapper rail game
+     * @param text text for the label to be printed over the background
+     */
     ViewStartMenu(ActionListener a1, ActionListener a2, String text) {
         
     	ospreyButton = new JButton(new ImageIcon("ProjectPics/OspreyButton.jpg"));

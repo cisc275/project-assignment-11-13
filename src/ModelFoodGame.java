@@ -111,8 +111,6 @@ public class ModelFoodGame {
         	mainBird.setScore(score);
     	}
     	
-    	
-
     	if (time < 0) {
     		this.gs = GameState.FOODQUIZ;
     		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOsprey Final Score: "+ score);

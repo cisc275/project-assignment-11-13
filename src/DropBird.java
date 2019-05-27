@@ -15,7 +15,7 @@ public class DropBird extends Animal {
     int sticksAvalible;
     private final int STICKWIDTH = 200;
     private final int STICKHEIGHT = 80;
-    private final int MAXSTICKS = 80;
+    private final int MAXSTICKS = 10;
     private final int DROPBIRDSIZE = 400;
     private final int STARTX = 10;
     private final int STARTY = 10;

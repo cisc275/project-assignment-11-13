@@ -93,6 +93,12 @@ public class GameObject {
 		return score;
 	}
 	
+	/**
+	 * @return image
+	 */
+	public BufferedImage getImage() {
+		return image;
+	}
 	
 	/**
 	 * Collision function that returns true if two game objects have collided on the screen in the playable area

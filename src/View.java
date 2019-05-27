@@ -56,15 +56,14 @@ public class View extends JPanel {
 		ActionListener al = e -> cardLayout.next(frame.getContentPane());
 	    ActionListener osp = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("Osprey");
 	    		gs = GameState.FOODGAME;
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
 	    ActionListener clap = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("Clapper Rail");
 	    		gs = GameState.NESTGAME;
+	    		cardLayout.next(frame.getContentPane());
 	    		cardLayout.next(frame.getContentPane());
 	    		cardLayout.next(frame.getContentPane());
 	    	}
@@ -72,7 +71,6 @@ public class View extends JPanel {
 	    
 	    ActionListener correctFood = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("Correct");
 	    	 	try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
@@ -80,11 +78,11 @@ public class View extends JPanel {
 	    		}
 	    		gs = GameState.NESTGAME;
 	    		cardLayout.next(frame.getContentPane());
+	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
 	    ActionListener incorrectFood = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("Incorrect");
 	    		try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
@@ -92,12 +90,12 @@ public class View extends JPanel {
 	    		}
 	    		gs = GameState.NESTGAME;
 	    		cardLayout.next(frame.getContentPane());
+	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
 	    
-	    ActionListener correct = new ActionListener() {
+	    ActionListener correctNest = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("Correct");
 	    	 	try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
@@ -107,9 +105,8 @@ public class View extends JPanel {
 	    		cardLayout.next(frame.getContentPane());
 	    	}
 	    };
-	    ActionListener incorrect = new ActionListener() {
+	    ActionListener incorrectNest = new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("Incorrect");
 	    		try {
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e1) {
@@ -126,7 +123,7 @@ public class View extends JPanel {
 	    food = new ViewFoodGame();
 	    foodQuiz = new ViewFoodQuiz(incorrectFood, correctFood, "Food quiz: ");
 	    nest = new ViewNestGame();
-	    nestQuiz = new ViewNestQuiz(incorrect, correct, "text");
+	    nestQuiz = new ViewNestQuiz(incorrectNest, correctNest, "text");
 	    scoreboard = new ViewScoreboard();
 	    frame.getContentPane().add(menu);
 	    frame.getContentPane().add(food);

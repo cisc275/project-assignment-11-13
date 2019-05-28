@@ -34,6 +34,25 @@ public class View extends JPanel {
     public static void main(String[] args) {
         Controller control = new Controller();
         control.start();
+    	/*
+    	MyTests tests = new MyTests();
+    	tests.Test1();
+    	tests.Test2();
+    	tests.Test3();
+    	tests.Test4();
+    	tests.Test5();
+    	tests.Test6();
+    	tests.Test7();
+    	tests.Test8();
+    	tests.Test9();
+    	tests.Test10();
+    	tests.Test11();
+    	tests.Test12();
+    	tests.Test13();
+    	tests.Test14();
+    	tests.Test15();
+    	tests.Test16();
+    	*/
     }
     
     /**

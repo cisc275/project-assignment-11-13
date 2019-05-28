@@ -44,8 +44,6 @@ public class DropBird extends Animal {
      * increases the xIncr speed, adds a new stick to the Linkedlist, 
      * and then calls its release method
      * 
-     * @param void
-     * @return void
      * 
      */
     public void dropStick(){

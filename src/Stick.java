@@ -18,8 +18,8 @@ public class Stick extends GameObject {
 	 * The stick constructor defines the file to use as the picture, sets the size of
 	 * the object, provides the frameHieght, creates the BufferedImage
 	 * 
-	 * @param xSize The x diminsion of the stick
-	 * @param ySize The y dininsion of the stick
+	 * @param xSize The x dimension of the stick
+	 * @param ySize The y dimension of the stick
 	 * @param frameHeight the y boundary of the nest game. Serves as the ground of the game
 	 */
 	public Stick(int xSize, int ySize, int frameHeight){
@@ -71,6 +71,10 @@ public class Stick extends GameObject {
 			}
 		}
 		return;
+		
+	}
+	public void setIsFalling(boolean isFalling) {
+		this.isFalling = isFalling;
 	}
 
 }

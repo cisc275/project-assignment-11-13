@@ -198,4 +198,12 @@ public class ModelFoodGame {
     public static int getScore() {
     	return score;
     }
+    
+    /**
+     * getter for the time, only used in testing
+     * @return time
+     */
+    public int getTime() {
+    	return time;
+    }
 }

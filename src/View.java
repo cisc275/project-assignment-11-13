@@ -32,6 +32,7 @@ public class View extends JPanel {
      * @param args
      */
     public static void main(String[] args) {
+    	
         Controller control = new Controller();
         control.start();
     	/*

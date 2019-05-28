@@ -34,5 +34,4 @@ public class NonEdibleFood extends Food {
     public boolean collected(){
         return super.isCollected;
     }
-
 }
